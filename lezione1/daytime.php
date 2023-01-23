@@ -1,5 +1,6 @@
 <?php
 $siteTitle = "Benvenuto nella mia pagina";
+$name = "Paolo";
 ?>
 <!DOCTYPE html>
 <html lang="ita">
@@ -14,6 +15,9 @@ $siteTitle = "Benvenuto nella mia pagina";
         <?php echo "Hello <br> world"; ?>
         <?php echo "<ul><li>list item 1</li><li>list item 2</li><li>" . $siteTitle . "</li></ul>"; ?>
     </p>
+    <script>
+        alert("Ciao <?php echo $name; ?>");
+    </script>
 </body>
 
 </html>
