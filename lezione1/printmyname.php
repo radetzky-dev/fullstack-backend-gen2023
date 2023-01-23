@@ -12,8 +12,7 @@ echo "Il mio nome è " . $name."<br>";
 
 
 /**
- * printMyName
- *
+ * Stampa il nome
  * @param  mixed $name
  * @return void
  */
@@ -24,7 +23,7 @@ function printMyName(string $name) : void
 printMyName($name);
 
 /**
- * somma
+ * Ritorna la somma di due interi
  *
  * @param  mixed $a
  * @param  mixed $b
