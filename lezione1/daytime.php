@@ -1,5 +1,5 @@
 <?php
-$siteTitle ="Benvenuto nella mia pagina";
+$siteTitle = "Benvenuto nella mia pagina";
 ?>
 <!DOCTYPE html>
 <html lang="ita">
@@ -10,8 +10,9 @@ $siteTitle ="Benvenuto nella mia pagina";
 
 <body>
     <p>
-        TIME: <?php echo date('H:i'); ?> <br>DAY <?php echo date('d/m/Y');?>
-        <?php echo "Hello world"; ?>
+        TIME: <?php echo date('H:i'); ?> <br>DAY <?php echo date('d/m/Y'); ?>
+        <?php echo "Hello <br> world"; ?>
+        <?php echo "<ul><li>list item 1</li><li>list item 2</li><li>" . $siteTitle . "</li></ul>"; ?>
     </p>
 </body>
 
