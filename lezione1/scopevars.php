@@ -29,3 +29,20 @@ testStaticScope();
 testStaticScope();
 echo "Fuori " . $myVar."<br>";
 testStaticScope();
+
+
+$varEsterna = 10;
+/**
+ * sum
+ *
+ * @param  mixed $b
+ * @return void
+ */
+function sum($b)
+{
+    global $myVar;
+    global $varEsterna;  //vede la var esterna
+    echo $myVar;
+    return $varEsterna + $b;
+}
+echo sum(5);
