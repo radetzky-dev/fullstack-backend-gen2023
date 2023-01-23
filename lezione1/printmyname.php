@@ -8,7 +8,7 @@ lines
 
 # another comment type
 $name = "Paolo";
-echo "Il mio nome è " . $name;
+echo "Il mio nome è " . $name."<br>";
 
 
 /**
@@ -22,3 +22,17 @@ function printMyName(string $name) : void
     echo "<strong>Ciao " . $name . "!</strong>";
 }
 printMyName($name);
+
+/**
+ * somma
+ *
+ * @param  mixed $a
+ * @param  mixed $b
+ * @return int
+ */
+function somma(int $a, int $b) : int
+{
+    return $a + $b;
+}
+
+echo "<br>Somma: ".somma(3, 5);
