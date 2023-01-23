@@ -16,7 +16,8 @@ $name = "Paolo";
         <?php echo "<ul><li>list item 1</li><li>list item 2</li><li>" . $siteTitle . "</li></ul>"; ?>
     </p>
     <script>
-        alert("Ciao <?php echo $name; ?>");
+        my_name="<?php echo $name; ?>";
+        alert("Ciao "+my_name);
     </script>
 </body>
 
