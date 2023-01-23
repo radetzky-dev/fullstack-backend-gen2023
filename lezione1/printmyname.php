@@ -12,12 +12,12 @@ echo "Il mio nome è " . $name;
 
 
 /**
- * print_my_name
+ * printMyName
  *
  * @param  mixed $name
  * @return void
  */
-function printMyName($name)
+function printMyName(string $name) : void
 {
     echo "<strong>Ciao " . $name . "!</strong>";
 }
