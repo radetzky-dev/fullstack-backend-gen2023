@@ -10,7 +10,7 @@ function printMyName(string $name): void
 printMyName(
     $myVar
 );
-echo "Fuori " . $myVar."<br>";
+
 
 /**
  * testStaticScope
@@ -26,4 +26,6 @@ function testStaticScope() : void
 
 testStaticScope();
 testStaticScope();
+testStaticScope();
+echo "Fuori " . $myVar."<br>";
 testStaticScope();
