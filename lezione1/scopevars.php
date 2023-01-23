@@ -32,17 +32,21 @@ testStaticScope();
 
 
 $varEsterna = 10;
+
+
+
 /**
  * sum
  *
- * @param  mixed $b
- * @return void
+ * @param  mixed $myParamNumber
+ * @return int
  */
-function sum($b)
+function sum(int $myParamNumber) : int
 {
     global $myVar;
     global $varEsterna;  //vede la var esterna
     echo $myVar;
-    return $varEsterna + $b;
+    return $varEsterna + $myParamNumber;
 }
-echo sum(5);
+echo sum("prova");
+echo sum(17);
