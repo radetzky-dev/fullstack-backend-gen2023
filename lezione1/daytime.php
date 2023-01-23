@@ -1,8 +1,11 @@
+<?php
+$siteTitle ="Benvenuto nella mia pagina";
+?>
 <!DOCTYPE html>
 <html lang="ita">
 
 <head>
-    <title><?php echo "This is the page title"; ?></title>
+    <title><?php echo $siteTitle; ?></title>
 </head>
 
 <body>
