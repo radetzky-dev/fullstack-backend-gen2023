@@ -4,7 +4,6 @@ $myVar = "hello";
 
 function printMyName(string $name): void
 {
-    // echo $myVar;
     echo $name;
 }
 
@@ -13,4 +12,18 @@ printMyName(
 );
 echo "Fuori " . $myVar."<br>";
 
-echo "Name ".$name;
+/**
+ * testStaticScope
+ *
+ * @return void
+ */
+function testStaticScope() : void
+{
+    static $counter = 0;
+    echo $counter."<br>";
+    $counter++;
+}
+
+testStaticScope();
+testStaticScope();
+testStaticScope();
