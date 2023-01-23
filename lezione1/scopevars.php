@@ -48,5 +48,5 @@ function sum(int $myParamNumber) : int
     echo $myVar;
     return $varEsterna + $myParamNumber;
 }
-echo sum(14);
+echo sum("prova");
 echo sum(17);
