@@ -12,31 +12,42 @@
     <?php
     $catalogo = array(
         "utensili" => array(
-            "prodotto" =>
+            
             array(
                 "nome" => "martello",
                 "prezzo" => 7.99
             ),
+           
             array(
                 "nome" => "pinza",
                 "prezzo" => 5.99
             )
         ),
         "casalinghi" => array(
-            "prodotto" => array(
+             array(
                 "nome" => "scolapasta",
                 "prezzo" => 1.99
             )
         ),
         "giardinaggio" => array(
-            "prodotto" => array(
+             array(
                 "nome" => "rastrello",
                 "prezzo" => 22.75
             )
         ),
     );
 
-    var_dump($catalogo['utensili']['prodotto']);
+    echo '<hr>';
+    echo "<h4>Elenco utensili</h4>";
+    foreach ($catalogo['utensili'] as $key => $prodotti) {
+           if (is_array($prodotti))
+           {
+            foreach ($prodotti as $key => $prodotto) {
+                echo $prodotto.'<br>';
+
+            }
+           }
+         }
     echo '<hr>';
     var_dump($catalogo['casalinghi']);
     echo '<hr>';
