@@ -57,3 +57,52 @@ $annidato["Rossi"]["secondoLivello"] = array ("1","2",3);
 $annidato["Rossi"]["secondoLivello"]["terzoLivello"] = array ("A","B","C");
 
 var_dump($annidato["Rossi"]);
+
+//modi diversi di creare Array
+$array = array(
+    "foo" => "bar",
+    "bar" => "foo",
+);
+
+// Using the short array syntax
+$array = [
+    "foo" => "bar",
+    "bar" => "foo",
+];
+
+$array = array(
+    "foo" => "bar",
+    42    => 24,
+    "multi" => array(
+         "dimensional" => array(
+             "array" => "foo",
+             "pippo" => "eccomi"
+         )
+    )
+);
+
+var_dump($array["foo"]);
+var_dump($array[42]);
+var_dump($array["multi"]["dimensional"]["array"]);
+var_dump($array["multi"]["dimensional"]["pippo"]);
+
+echo '<hr>';
+
+// Create a simple array.
+$array = array(1, 2, 3, 4, 5);
+print_r($array);
+echo '<hr>';
+// Now delete every item, but leave the array itself intact:
+foreach ($array as $i => $value) {
+    unset($array[$i]);
+}
+print_r($array);
+echo '<hr>';
+// Append an item (note that the new key is 5, instead of 0).
+$array[] = 6;
+print_r($array);
+echo '<hr>';
+// Re-index:
+$array = array_values($array);
+$array[] = 7;
+print_r($array);
