@@ -48,19 +48,13 @@
         <tbody>
 
             <?php
+            //refactor con tutto il catalogo e non solo una categoria
             foreach ($catalogo['utensili'] as $key => $prodotti) {
                 if (is_array($prodotti)) {
-                    echo "<tr><td>" . $prodotti['nome'] . "</td><td>" . $prodotti['prezzo'] . "</td></tr>";
+                    echo "<tr><td>" . $prodotti['nome'] . "</td><td>" . $prodotti['prezzo'] . "</td><td>CAT</td></tr>";
                 }
             }
 
-            //stampa 5 prodotti contenuti in un array con prezzi in una tabella (visualizza immagine)
-            //bootstrap per la tabella
-            //array è multidimensionale e al primo livello categorie: utensili, casalinghi, giardinaggio -> lista di 5 prodotti nome,descriz, prezzo e url immagine 
-
-            //foreach ($mioArray as $key => $value) {
-            //    echo " chiave {$key} => {$value} ";
-            // }
             ?>
         </tbody>
     </table>
