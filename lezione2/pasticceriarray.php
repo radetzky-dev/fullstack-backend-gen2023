@@ -5,32 +5,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pasticceria</title>
+    <title>General Store</title>
 </head>
 
 <body>
     <?php
     $catalogo = array(
         "utensili" => array(
-            
             array(
                 "nome" => "martello",
                 "prezzo" => 7.99
             ),
-           
             array(
                 "nome" => "pinza",
                 "prezzo" => 5.99
             )
         ),
         "casalinghi" => array(
-             array(
+            array(
                 "nome" => "scolapasta",
                 "prezzo" => 1.99
             )
         ),
         "giardinaggio" => array(
-             array(
+            array(
                 "nome" => "rastrello",
                 "prezzo" => 22.75
             )
@@ -40,19 +38,12 @@
     echo '<hr>';
     echo "<h4>Elenco utensili</h4>";
     foreach ($catalogo['utensili'] as $key => $prodotti) {
-           if (is_array($prodotti))
-           {
+        if (is_array($prodotti)) {
             foreach ($prodotti as $key => $prodotto) {
-                echo $prodotto.'<br>';
-
+                echo $prodotto . '<br>';
             }
-           }
-         }
-    echo '<hr>';
-    var_dump($catalogo['casalinghi']);
-    echo '<hr>';
-    var_dump($catalogo['giardinaggio']);
-    echo '<hr>';
+        }
+    }
 
     //stampa 5 prodotti contenuti in un array con prezzi in una tabella (visualizza immagine)
     //bootstrap per la tabella
