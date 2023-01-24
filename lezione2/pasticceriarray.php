@@ -37,22 +37,33 @@
 
     echo '<hr>';
     echo "<h4>Elenco utensili</h4>";
-    foreach ($catalogo['utensili'] as $key => $prodotti) {
-        if (is_array($prodotti)) {
-            foreach ($prodotti as $key => $prodotto) {
-                echo $prodotto . '<br>';
-            }
-        }
-    }
-
-    //stampa 5 prodotti contenuti in un array con prezzi in una tabella (visualizza immagine)
-    //bootstrap per la tabella
-    //array è multidimensionale e al primo livello categorie: utensili, casalinghi, giardinaggio -> lista di 5 prodotti nome,descriz, prezzo e url immagine 
-
-    //foreach ($mioArray as $key => $value) {
-    //    echo " chiave {$key} => {$value} ";
-    // }
     ?>
+    <table>
+        <thead>
+            <tr>
+                <th>Descrizione</th>
+                <th>Prezzo</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <?php
+            foreach ($catalogo['utensili'] as $key => $prodotti) {
+                if (is_array($prodotti)) {
+                    echo "<tr><td>" . $prodotti['nome'] . "</td><td>" . $prodotti['prezzo'] . "</td></tr>";
+                }
+            }
+
+            //stampa 5 prodotti contenuti in un array con prezzi in una tabella (visualizza immagine)
+            //bootstrap per la tabella
+            //array è multidimensionale e al primo livello categorie: utensili, casalinghi, giardinaggio -> lista di 5 prodotti nome,descriz, prezzo e url immagine 
+
+            //foreach ($mioArray as $key => $value) {
+            //    echo " chiave {$key} => {$value} ";
+            // }
+            ?>
+        </tbody>
+    </table>
 
 </body>
 
