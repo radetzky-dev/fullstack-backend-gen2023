@@ -32,7 +32,6 @@ if ($a === $b) {
     echo "a is not equal to b<br>";
 }
 
-//***** esercizio */
 echo '<br>TEST TASSE<br>';
 function haiPagatoLeTasse(String $nome)
 {
@@ -54,7 +53,28 @@ $userName = 'mio nome';
 if (haiPresentatoUnico($userName) && haiPagatoLeTasse($userName)) {
     echo 'Complimenti hai pagato le tasse';
     //spedisco mail monopattino
-} else
-{
+} else {
     echo 'Devi rimetterti in regola!';
 }
+
+
+echo '<hr>';
+echo "<h3>Postincrement</h3>";
+$a = 5;
+echo "Should be 5: " . $a++ . "<br />\n";
+echo "Should be 6: " . $a . "<br />\n";
+
+echo "<h3>Preincrement</h3>";
+$a = 5;
+echo "Should be 6: " . ++$a . "<br />\n";
+echo "Should be 6: " . $a . "<br />\n";
+
+echo "<h3>Postdecrement</h3>";
+$a = 5;
+echo "Should be 5: " . $a-- . "<br />\n";
+echo "Should be 4: " . $a . "<br />\n";
+
+echo "<h3>Predecrement</h3>";
+$a = 5;
+echo "Should be 4: " . --$a . "<br />\n";
+echo "Should be 4: " . $a . "<br />\n";
