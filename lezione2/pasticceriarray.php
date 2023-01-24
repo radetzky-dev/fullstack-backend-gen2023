@@ -34,12 +34,12 @@
             )
         ),
     );
-
-    echo '<hr>';
-    echo "<h4>Elenco utensili</h4>";
     ?>
     <table>
         <thead>
+            <tr>
+                <th colspan=2>Categoria: Utensili</th>
+            </tr>
             <tr>
                 <th>Descrizione</th>
                 <th>Prezzo</th>
