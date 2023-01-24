@@ -44,7 +44,9 @@ function showCategory(array $catalogo, string $catName): void
 {
     foreach ($catalogo[$catName] as $key => $prodotti) {
         if (is_array($prodotti)) {
-            echo "<tr><td>" . $prodotti['qta'] . "</td><td>" . $prodotti['nome'] . "</td><td>" . $prodotti['prezzo'] . " €" . "</td><td>" . $catName . "</td></tr>";
+            echo "<tr><td>" . $prodotti['qta'] . "</td><td>" . $prodotti['nome'] . "</td><td>" . $prodotti['prezzo'] . " €" . "</td><td>" . $catName . "</td>
+            <td><button class='btn btn-primary'>Compra</button></td>
+            </tr>";
         }
     }
 }
@@ -55,7 +57,7 @@ function showCategory(array $catalogo, string $catName): void
 
 //quantità mostra solo quantità > 0
 //se = 1 scrive ULTIMO PEZZO (scotno del 10% calcoliamo)
-//esaurito
+//esaurito e disabilita bottone compra
 
 ?>
 
@@ -73,6 +75,7 @@ function showCategory(array $catalogo, string $catName): void
 <body>
     <container>
         <div class="container">
+            <h3>General store</h3>
             <table class="table table-bordered">
                 <thead thead class="thead-dark">
                     <tr>
@@ -80,6 +83,7 @@ function showCategory(array $catalogo, string $catName): void
                         <th>Descrizione</th>
                         <th>Prezzo</th>
                         <th>Categoria</th>
+                        <th>Buy</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
