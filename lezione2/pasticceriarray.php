@@ -44,11 +44,37 @@ function showCategory(array $catalogo, string $catName): void
 {
     foreach ($catalogo[$catName] as $key => $prodotti) {
         if (is_array($prodotti)) {
-            echo "<tr><td>" . $prodotti['qta'] . "</td><td>" . $prodotti['nome'] . "</td><td>" . $prodotti['prezzo'] . " €" . "</td><td>" . $catName . "</td>
+
+            $qta = checkIfLast($prodotti['qta']);
+            $price = $prodotti['prezzo'];
+
+            if ($qta == "ULTIMO")
+            {
+                $price = calculateDiscount ($price,10);
+            }
+
+            echo "<tr><td>" . $qta. "</td><td>" . $prodotti['nome'] . "</td><td>" . $price . " €" . "</td><td>" . $catName . "</td>
             <td><button class='btn btn-primary'>Compra</button></td>
             </tr>";
         }
     }
+}
+
+function calculateDiscount ($price, $percentDiscount)
+{
+    //TODO
+    return 0;
+}
+
+function checkIfLast($qta)
+{
+    if ($qta == 0) {
+        //TODO in ROSSO
+        return "ESAURITO";
+    } elseif ($qta == 1) {
+        return "ULTIMO";
+    }
+    return $qta;
 }
 
 //to do manca un header GENERAL STORE
