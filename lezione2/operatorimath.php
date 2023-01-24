@@ -29,3 +29,17 @@ echo '<br>Sottraggo<br>';
 $a--;
 $b--;
 echo "a = $a  e b = $b <br><hr>";
+
+echo "<hr><br>";
+echo "Esempi di assegnazione<br>";
+$a = 3;
+$a += 5; // sets $a to 8, as if we had said: $a = $a + 5;
+echo $a . '<br>';
+$b = "Hello ";
+$b .= "There!"; // sets $b to "Hello There!", just like $b = $b . "There!";
+echo $b . '<br>';
+
+$a= 16; $b = 14;
+echo "a = $a  e b = $b <br><hr>";
+$a -= $b; //$a = $a - $b
+echo $b;
