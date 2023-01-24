@@ -22,3 +22,12 @@ if ($a > $b) {
 } else {
     echo "a is smaller than b<br>";
 }
+
+$a = 8;
+$b = 8.00;
+//ciclo per il confronto
+if ($a === $b) {
+    echo "a is equal b <br>";
+} else {
+    echo "a is not equal to b<br>";
+}
