@@ -16,3 +16,12 @@ $ages[] = 9;
 $ages[2] = 20;
 
 var_dump($ages);
+
+echo '<hr>';
+//Array multidimensionali
+$famiglia = array (
+    "Rossi" => array ("1","2","3"),
+    "Verdi" => array ("A","b","c"),
+);
+
+var_dump($famiglia);
