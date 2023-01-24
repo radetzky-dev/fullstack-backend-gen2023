@@ -31,3 +31,30 @@ if ($a === $b) {
 } else {
     echo "a is not equal to b<br>";
 }
+
+//***** esercizio */
+echo '<br>TEST TASSE<br>';
+function haiPagatoLeTasse(String $nome)
+{
+    //todo controlli databese
+    //elaborazioni
+    $risultato = true;
+    return $risultato;
+}
+
+function haiPresentatoUnico(String $nome)
+{
+    //todo controlli databese
+    //elaborazioni
+    $risultato = true;
+    return $risultato;
+}
+
+$userName = 'mio nome';
+if (haiPresentatoUnico($userName) && haiPagatoLeTasse($userName)) {
+    echo 'Complimenti hai pagato le tasse';
+    //spedisco mail monopattino
+} else
+{
+    echo 'Devi rimetterti in regola!';
+}
