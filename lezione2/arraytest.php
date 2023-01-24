@@ -28,7 +28,8 @@ $famiglia["Gialli"] = array ("A","b","c");
 $famiglia[] = 14;
 $famiglia["Verdi"][] = "d";
 $famiglia["Gialli"][] = "d";
-$famiglia["2"][] = "elemento";
+$famiglia["2"][] = "elementoA";
+$famiglia["2"][] = "elementoB";
 
 var_dump($famiglia);
 
