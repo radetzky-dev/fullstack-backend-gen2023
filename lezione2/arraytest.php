@@ -12,4 +12,7 @@ $ages = array ("Mario" => 32,"Elena" => 27, "Guido" => 29);
 $ages["Pietro"] = 81;
 $ages[] = "Paolo";
 $ages["Maria"] = "16";
+$ages[] = 9;
+$ages[2] = 20;
+
 var_dump($ages);
