@@ -24,4 +24,12 @@ $famiglia = array (
     "Verdi" => array ("A","b","c"),
 );
 
+$famiglia["Gialli"] = array ("A","b","c");
+$famiglia[] = 14;
+$famiglia["Verdi"][] = "d";
+$famiglia["Gialli"][] = "d";
+$famiglia[2][] = "e";
+
 var_dump($famiglia);
+
+$famiglia["Verdi"] = "d"; //cancella Verdi e inserisce solo d
