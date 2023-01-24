@@ -23,11 +23,32 @@ $catalogo = array(
         )
     ),
 );
-$catalogo["utensili"]["terzoLivello"] = array("nome" => "pala", "prezzo" => 14.99);
-$catalogo["casalinghi"]["secondoLivello"] = array("nome" => "tegame", "prezzo" => 35.99);
-$catalogo["casalinghi"]["terzoLivello"] = array("nome" => "pentola", "prezzo" => 45.99);
-$catalogo["giardinaggio"]["secondoLivello"] = array("nome" => "vaso", "prezzo" => 9.99);
-$catalogo["giardinaggio"]["terzoLivello"] = array("nome" => "zappa", "prezzo" => 12.99);
+$catalogo["utensili"][] = array("nome" => "pala", "prezzo" => 14.99);
+$catalogo["casalinghi"][] = array("nome" => "tegame", "prezzo" => 35.99);
+$catalogo["casalinghi"][] = array("nome" => "pentola", "prezzo" => 45.99);
+$catalogo["giardinaggio"][] = array("nome" => "vaso", "prezzo" => 9.99);
+$catalogo["giardinaggio"][] = array("nome" => "zappa", "prezzo" => 12.99);
+
+/**
+ * showCategory
+ *
+ * @param  mixed $catalogo
+ * @param  mixed $catName
+ * @return void
+ */
+function showCategory(array $catalogo, string $catName): void
+{
+    foreach ($catalogo[$catName] as $key => $prodotti) {
+        if (is_array($prodotti)) {
+            echo "<tr><td>" . $prodotti['nome'] . "</td><td>" . $prodotti['prezzo'] . " €" . "</td><td>" . $catName . "</td></tr>";
+        }
+    }
+}
+
+//to do manca un header GENERAL STORE
+//assegnare un colore ad ogni categoria
+//visualizzare immagine prodotto
+
 ?>
 
 <!DOCTYPE html>
@@ -43,32 +64,25 @@ $catalogo["giardinaggio"]["terzoLivello"] = array("nome" => "zappa", "prezzo" =>
 
 <body>
     <container>
-        <div class="container-md">
+        <div class="container">
             <table class="table table-bordered">
                 <thead thead class="thead-dark">
                     <tr>
-                        <th colspan=2>Categoria: Utensili</th>
-                    </tr>
-                    <tr>
                         <th>Descrizione</th>
                         <th>Prezzo</th>
+                        <th>Categoria</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
                 <?php
-                foreach ($catalogo['utensili'] as $key => $prodotti) {
-                    if (is_array($prodotti)) {
-                        echo "<tr><td>" . $prodotti['nome'] . "</td><td>" . $prodotti['prezzo'] . " €" . "</td></tr>";
-                    }
+                foreach ($catalogo as $key => $categorie) {
+                    showCategory($catalogo, $key);
                 }
                 ?>
                 </tbody>
             </table>
         </div>
     </container>
-
-
-
 </body>
 
 </html>
