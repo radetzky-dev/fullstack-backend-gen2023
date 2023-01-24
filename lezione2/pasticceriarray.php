@@ -49,6 +49,8 @@ function showCategory(array $catalogo, string $catName): void
 //assegnare un colore ad ogni categoria
 //visualizzare immagine prodotto
 
+//quantità mostra solo quantità > 0
+
 ?>
 
 <!DOCTYPE html>
