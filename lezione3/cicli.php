@@ -127,7 +127,7 @@ $arr = array(1, 2, 3, 4);
 foreach ($arr as &$value) {  //modifica e chiama la referenza diretta ai valori
     $value = $value * 2;
 }
-unset ($value);
+unset($value);
 print_r($arr);
 
 echo "<hr>";
@@ -166,19 +166,31 @@ foreach ($array as list($a, $b)) {
 
 echo "<br>";
 $catalogo = [
-    ["pesce", 22.55,"OCEANO"],
-    ["carne", 43.5,"FATTORIA"],
-    ["olio", 12.5,"CARLI"]
+    ["pesce", 22.55, "OCEANO"],
+    ["carne", 43.5, "FATTORIA"],
+    ["olio", 12.5, "CARLI"]
 ];
 
-foreach ($catalogo as list($prodotto, $prezzo,$marca)) {
+foreach ($catalogo as list($prodotto, $prezzo, $marca)) {
     // $a contains the first element of the nested array,
     // and $b contains the second element.
-    echo $prodotto . " ". $prezzo . " ".$marca ."<br>";
+    echo $prodotto . " " . $prezzo . " " . $marca . "<br>";
 }
 
 echo "<br>";
-foreach ($catalogo as [$a, $b,$c]) {
+foreach ($catalogo as [$a, $b, $c]) {
     var_dump($a);
     echo "A: $a; B: $b\n C: $c <br>";
+}
+
+echo "<br>";
+$stack = array('first', 'second', 'third', 'fourth', 'fifth');
+
+foreach ($stack as $v) {
+
+    if ($v == 'second') continue;
+
+    if ($v == 'fourth') break;
+
+    echo $v . '<br>';
 }
