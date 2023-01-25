@@ -1,7 +1,11 @@
 <?php
 
-//array con una serie di numeri 67, -3, 0, "pietro", 11
-
+/**
+ * checkNumber
+ *
+ * @param  mixed $numero
+ * @return void
+ */
 function checkNumber($numero)
 {
     if (is_numeric($numero)) {
@@ -17,7 +21,7 @@ function checkNumber($numero)
     }
 }
 
-$myNum = array(67, -3, 0, "Pietro", 11);
+$myNum = array(67, -3, 0, "Pietro", 11,22.4, -13.2, "Guido", 0, 81);
 
 foreach ($myNum as $key => $numero) {
     echo "Analizzo " . $numero . ": ";
