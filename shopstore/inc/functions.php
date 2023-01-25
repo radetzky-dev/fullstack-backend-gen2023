@@ -1,4 +1,5 @@
 <?php
+
 /**
  * showCategory
  *
@@ -26,7 +27,7 @@ function showCategory(array $catalogo, string $catName): void
                 $qta = "<span class='text-danger'>ESAURITO</span>";
                 $buttonStatus = "disabled";
             }
-       
+
             echo "<tr><td>" . $qta . "</td><td>" . $prodotti['nome'] . "</td><td>" . $price . " €" . "</td><td class='table-primary'>" . strtoupper($catName) . "</td>
             <td><button class='btn btn-primary' " . $buttonStatus . " >Compra</button></td>
             </tr>";
@@ -48,6 +49,12 @@ function calculateDiscount($price, $percentDiscount): float
     return round($price - $sconto, 2);
 }
 
+/**
+ * checkIfLast
+ *
+ * @param  mixed $qta
+ * @return void
+ */
 function checkIfLast($qta)
 {
     if ($qta == 0) {
@@ -56,4 +63,34 @@ function checkIfLast($qta)
         return "ULTIMO";
     }
     return $qta;
+}
+
+/**
+ * showProductTable
+ *
+ * @param  mixed $catalogo
+ * @return void
+ */
+function showProductTable($catalogo)
+{
+?>
+    <table class="table table-bordered">
+        <thead thead class="thead-dark">
+            <tr>
+                <th>Qta</th>
+                <th>Descrizione</th>
+                <th>Prezzo</th>
+                <th>Categoria</th>
+                <th>Buy</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        <?php
+        foreach ($catalogo as $key => $categorie) {
+            showCategory($catalogo, $key);
+        }
+        ?>
+        </tbody>
+    </table>
+<?php
 }
