@@ -1,6 +1,6 @@
 <?php
 
-//array con una serie di numeri 67, 3, 0, "pietro", 11
+//array con una serie di numeri 67, -3, 0, "pietro", 11
 
 //ciclo da esercizio ieri
 
