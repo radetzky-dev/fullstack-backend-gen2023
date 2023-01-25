@@ -86,3 +86,99 @@ for ($i = count($people) - 1; $i >= 0; --$i) {
 }
 echo "<hr>";
 var_dump($people);
+
+for ($i = 0; round($i, 1) <= 2; $i += 0.1)
+    echo $i . ",";
+echo "<hr>";
+
+$array = array(
+    'pop0',
+    'pop1',
+    'pop2',
+    'pop3',
+    'pop4',
+    'pop5',
+    'pop6',
+    'pop7',
+    'pop8'
+);
+echo "Tot Before: " . count($array) . "<br><br>";
+for ($i = 0; $i < count($array); $i++) {
+    if ($i === 3) {
+        unset($array[$i]);
+    }
+    echo "Count: " . count($array) . " - Position: " . $i . "<br>";
+}
+echo "<br> Tot After: " . count($array) . "<br>";
+print_r($array);
+
+echo "<hr>";
+$array = array(0 => "a", 1 => "b", 2 => "c", 3 => "d");
+
+for ($i = 0; $i < count($array); $i++) {
+    echo $array[$i];
+    unset($array[$i]);
+}
+
+print_r($array);
+
+echo "<hr>";
+$arr = array(1, 2, 3, 4);
+foreach ($arr as &$value) {  //modifica e chiama la referenza diretta ai valori
+    $value = $value * 2;
+}
+unset ($value);
+print_r($arr);
+
+echo "<hr>";
+$arr = array(1, "g", 3, 4);
+foreach ($arr as $value) {  //solo il valore
+    echo $value . '<br>';
+}
+
+foreach ($arr as $chiave => $valore) {  //la chiave e il valore
+    echo $chiave . ') ' . $valore . '<br>';
+}
+
+echo "<hr>";
+$a = array(
+    "one" => 1,
+    "two" => 2,
+    "three" => 3,
+    "seventeen" => 17
+);
+
+foreach ($a as $k => $v) {
+    echo "\$a[$k] => $v.\n";
+}
+
+echo "<hr>";
+$array = [
+    [1, 2],
+    [3, 4],
+];
+
+foreach ($array as list($a, $b)) {
+    // $a contains the first element of the nested array,
+    // and $b contains the second element.
+    echo "A: $a; B: $b\n";
+}
+
+echo "<br>";
+$catalogo = [
+    ["pesce", 22.55,"OCEANO"],
+    ["carne", 43.5,"FATTORIA"],
+    ["olio", 12.5,"CARLI"]
+];
+
+foreach ($catalogo as list($prodotto, $prezzo,$marca)) {
+    // $a contains the first element of the nested array,
+    // and $b contains the second element.
+    echo $prodotto . " ". $prezzo . " ".$marca ."<br>";
+}
+
+echo "<br>";
+foreach ($catalogo as [$a, $b,$c]) {
+    var_dump($a);
+    echo "A: $a; B: $b\n C: $c <br>";
+}
