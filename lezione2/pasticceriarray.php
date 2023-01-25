@@ -33,10 +33,6 @@ $catalogo["casalinghi"][] = array("nome" => "pentola", "prezzo" => 45.99, "qta" 
 $catalogo["giardinaggio"][] = array("nome" => "vaso", "prezzo" => 9.99, "qta" => 0);
 $catalogo["giardinaggio"][] = array("nome" => "zappa", "prezzo" => 12.99, "qta" => 1);
 
-var_dump($catalogo);
-echo '<hr>';
-print_r($catalogo);
-echo '<hr>';
 
 /**
  * showCategory
@@ -65,8 +61,8 @@ function showCategory(array $catalogo, string $catName): void
                 $qta = "<span class='text-danger'>ESAURITO</span>";
                 $buttonStatus = "disabled";
             }
-
-            echo "<tr><td>" . $qta . "</td><td>" . $prodotti['nome'] . "</td><td>" . $price . " €" . "</td><td>" . $catName . "</td>
+       
+            echo "<tr><td>" . $qta . "</td><td>" . $prodotti['nome'] . "</td><td>" . $price . " €" . "</td><td class='table-primary'>" . strtoupper($catName) . "</td>
             <td><button class='btn btn-primary' " . $buttonStatus . " >Compra</button></td>
             </tr>";
         }
@@ -90,7 +86,6 @@ function calculateDiscount($price, $percentDiscount): float
 function checkIfLast($qta)
 {
     if ($qta == 0) {
-        //TODO in ROSSO
         return "ESAURITO";
     } elseif ($qta == 1) {
         return "ULTIMO";
@@ -101,10 +96,6 @@ function checkIfLast($qta)
 //to do manca un header GENERAL STORE
 //assegnare un colore ad ogni categoria
 //visualizzare immagine prodotto
-
-//quantità mostra solo quantità > 0
-//se = 1 scrive ULTIMO PEZZO (scotno del 10% calcoliamo)
-//esaurito e disabilita bottone compra
 
 ?>
 
@@ -123,6 +114,7 @@ function checkIfLast($qta)
     <container>
         <div class="container">
             <h3>General store</h3>
+            <button class='btn btn-primary'>Aggiungi prodotto</button>
             <table class="table table-bordered">
                 <thead thead class="thead-dark">
                     <tr>
