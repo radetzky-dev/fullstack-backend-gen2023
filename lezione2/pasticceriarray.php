@@ -33,6 +33,11 @@ $catalogo["casalinghi"][] = array("nome" => "pentola", "prezzo" => 45.99, "qta" 
 $catalogo["giardinaggio"][] = array("nome" => "vaso", "prezzo" => 9.99, "qta" => 0);
 $catalogo["giardinaggio"][] = array("nome" => "zappa", "prezzo" => 12.99, "qta" => 1);
 
+var_dump($catalogo);
+echo '<hr>';
+print_r($catalogo);
+echo '<hr>';
+
 /**
  * showCategory
  *
