@@ -1,2 +1,6 @@
 <?php
-echo "Hello world!";
+echo "Hello world!<br>";
+$hello ="Hello world";
+?>
+Seconda scritta<br>
+<?=$hello;?>
