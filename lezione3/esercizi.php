@@ -1,30 +1,28 @@
 <?php
 
 /**
- * checkNumber
+ * checkPosNeg
  *
  * @param  mixed $numero
  * @return void
  */
-function checkNumber($numero)
+function checkPosNeg($numero)
 {
-    if (is_numeric($numero)) {
-        if ($numero > 0) {
-            echo "il numero è positivo";
-        } elseif ($numero < 0) {
-            echo "il numero è negativo";
-        } else {
-            echo "il numero è uguale a 0";
-        }
+    if ($numero > 0) {
+        echo "il numero è positivo";
+    } elseif ($numero < 0) {
+        echo "il numero è negativo";
     } else {
-        echo "Non è un numero!";
+        echo "il numero è uguale a 0";
     }
 }
 
-$myNum = array(67, -3, 0, "Pietro", 11,22.4, -13.2, "Guido", 0, 81);
+$myNum = array(67, -3, 0, "Pietro", 11, 22.4, -13.2, "Guido", 0, 81);
 
 foreach ($myNum as $key => $numero) {
     echo "Analizzo " . $numero . ": ";
-    checkNumber($numero);
+    if (is_numeric($numero)) {
+        checkPosNeg($numero);
+    }
     echo "<br>";
 }
