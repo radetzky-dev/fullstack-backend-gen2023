@@ -2,7 +2,8 @@
 $a = 8;
 $b = 7;
 
-function bar() {
+function bar()
+{
     echo 'hello bar!<br>';
 }
 
@@ -16,10 +17,10 @@ echo '<hr>';
 
 if ($a > $b) {
     echo "$a is greater than $b";
-  } else {
+} else {
     echo "$a is NOT greater than $b";
-  }
-  echo '<hr>';
+}
+echo '<hr>';
 
 if ($b == 3) bar();
 
@@ -36,10 +37,16 @@ echo '<hr>';
 
 $t = date("H");
 
-if ($t < "20") {
-  echo "Have a good day!";
+if ($t < "10") {
+    echo "Buon giorno";
+} elseif ($t < "11") {
+    echo "è l'ora del caffè<br>";
+} elseif ($t > "12" && $t < "14") {
+    echo "Buon pranzo<br>";
+} elseif ($t < "19") {
+    echo "Pomeriggio<br>";
 } else {
-  echo "Have a good night!";
+    echo "Buona serata!";
 }
 
 echo '<hr>';
