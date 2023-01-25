@@ -69,7 +69,10 @@ $people = array(
     array('name' => 'Paul', 'salt' => 11112)
 );
 
+echo "<pre>";
 print_r($people);
+echo "</pre>";
+
 echo "<br>";
 for ($i = 0; $i < count($people); ++$i) {
     echo $i . '<br>';
