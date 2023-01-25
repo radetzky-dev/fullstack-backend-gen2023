@@ -34,9 +34,7 @@ function checkPatente($numero)
     }
 }
 
-$myNum = array(67, -3, 0, "Pietro", 11, 22.4, -13.2, "Guido", 0, 81);
-
-//TODO se il numero è > 18 ed è un intero scrivi anche Puoi prendere la patente
+$myNum = array(67, -3, 0, "Pietro", 11, 22.4, -13.2, "Guido", 0, 81,17.5,18, "gianni", "maria", -16.6);
 
 foreach ($myNum as $key => $numero) {
     echo "Analizzo " . $numero . ": ";
