@@ -10,6 +10,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="products.php">Prodotti</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Carrello</a>
+                </li>
             </ul>
         </div>
     </div>
