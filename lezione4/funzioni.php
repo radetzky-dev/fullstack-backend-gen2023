@@ -118,3 +118,13 @@ list($drink, $color, $power, $newValue, $newArray) = getMoreVars(4);
 echo "$drink is $color and $power and $newValue makes it special!<br>";
 
 var_dump($newArray);
+
+//MODI STRANI PER CHIAMARE UNA FUNZIONE
+function test(string $name="sconosciuto")
+{
+    echo "hello $name <br>";
+}
+
+$callTest = "test";
+$callTest();  //call function
+$callTest("Paolo");  //call function
