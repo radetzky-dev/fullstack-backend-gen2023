@@ -102,6 +102,12 @@ echo "<hr>";
 
 echo "<br>** xxxx xxx ***<br>";
 
+/**
+ * getMoreVars
+ *
+ * @param  mixed $value
+ * @return array
+ */
 function getMoreVars(int $value): array
 {
     $value++;
