@@ -12,7 +12,7 @@ foreach ($catalogo as $catName => $categorie) {
     foreach ($catalogo[$catName] as $key => $prodotti) {
         if (is_array($prodotti)) {
             if ($prodotti['qta'] == 1) {
-                //TODO visualizzare immagine, shuffle, visualizzare bene
+                //TODO visualizzare immagine, shuffle e slice per i primi 2, visualizzare bene
                 echo "In " . strtoupper($catName) . " " . $prodotti['nome'] . '<br>';
             }
         }
