@@ -1,4 +1,5 @@
 <?php
+require_once "inc/vars.php";
 
 /**
  * showCategory
