@@ -8,4 +8,8 @@ ciclo :
 La capitale di Netherlands è Amsterdam 
 The capital of Greece is Athens 
 The capital of Germany is Berlin
+
+2° ciclo
+La capitale Beligio è Brussels.
+
 */
