@@ -128,3 +128,22 @@ function test(string $name="sconosciuto")
 $callTest = "test";
 $callTest();  //call function
 $callTest("Paolo");  //call function
+
+//FUNZIONI ANONIME
+
+$greet = function($name) {
+    printf("Hello %s\r\n", $name);
+};
+
+$greet('World');
+$greet('PHP');
+
+echo "<hr>";
+$message = 'hello';
+$name = 'paolo';
+
+// Inherit $message
+$example = function () use ($message, $name) {
+    echo "$message, $name <br>";
+};
+$example();
