@@ -49,3 +49,42 @@ echo "Stand " . $myVarStandard . "<br>";
 echo "<hr>";
 echo multipleMyMuber($myVarStandard) . '<br>';
 echo multipleMyMuber($myVarStandard, 3) . '<br>';
+
+
+echo "<hr>";
+
+function readFileTest()
+{
+    $numargs = func_num_args();
+    echo "Number of arguments: $numargs<br>";
+    $arglist = func_get_args();
+    for ($i = 0; $i < $numargs; $i++) {
+        echo "Argument $i is: " . $arglist[$i] . "<br>";
+    }
+
+    echo "<hr>";
+    if ($numargs == 0) {
+        echo "Nessuna operazione eseguita<br>";
+    } else {
+        if ($numargs >= 1) {
+            echo "First argument is  " . func_get_arg(0) . "  Read and save file<br>";
+        }
+        if ($numargs >= 2) {
+            echo "Second argument is: " . func_get_arg(1) . " Mostro lista parametri di aiuto<br>";
+        }
+        if ($numargs >= 3) {
+            echo "Terzo argomento is: " . func_get_arg(2) . " Invio una mail<br>";
+        }
+    }
+}
+
+readFileTest("nomefile.txt", "help", "pippo@mail.com");
+echo "<hr>";
+readFileTest("nomefile.txt", "help");
+echo "<hr>";
+readFileTest("nomefile.txt");
+echo "<hr>";
+readFileTest();
+echo "<hr>";
+readFileTest("nomefile.txt", "help", "pippo@mail.com","xxx", "yyy");
+echo "<hr>";
