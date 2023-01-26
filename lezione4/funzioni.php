@@ -15,6 +15,18 @@ function doubleValueStandard(int $value): int
 }
 
 
+/**
+ * multipleMyMuber
+ * Moltiplica un valore per un altro
+ * @param  mixed $value
+ * @param  mixed $motiplicator
+ * @return int
+ */
+function multipleMyMuber(int $value, int $motiplicator = 2): int
+{
+    echo "$value moltiplicato per $motiplicator <br>";
+    return $value * $motiplicator;
+}
 
 /**
  * doubleValue by reference
@@ -33,3 +45,7 @@ doubleValue($myVar);
 echo "Ref " . $myVar . "<br>";
 $myVarStandard = doubleValueStandard($myVarStandard);
 echo "Stand " . $myVarStandard . "<br>";
+
+echo "<hr>";
+echo multipleMyMuber($myVarStandard) . '<br>';
+echo multipleMyMuber($myVarStandard, 3) . '<br>';
