@@ -78,6 +78,18 @@ function readFileTest()
     }
 }
 
+function callAnotherFunc (callable $myFunc, string $firstParam)
+{
+    if ($myFunc !== null)
+    {
+        $myFunc($firstParam);
+    }
+}
+
+echo "<br>*****<br>";
+callAnotherFunc("readFileTest","primo parametro");
+echo "<br>*****<br>";
+
 readFileTest("nomefile.txt", "help", "pippo@mail.com");
 echo "<hr>";
 readFileTest("nomefile.txt", "help");
