@@ -78,16 +78,15 @@ function readFileTest()
     }
 }
 
-function callAnotherFunc (callable $myFunc, string $firstParam)
+function callAnotherFunc(callable $myFunc, string $firstParam)
 {
-    if ($myFunc !== null)
-    {
+    if ($myFunc !== null) {
         $myFunc($firstParam);
     }
 }
 
 echo "<br>*****<br>";
-callAnotherFunc("readFileTest","primo parametro");
+callAnotherFunc("readFileTest", "primo parametro");
 echo "<br>*****<br>";
 
 readFileTest("nomefile.txt", "help", "pippo@mail.com");
@@ -98,5 +97,18 @@ readFileTest("nomefile.txt");
 echo "<hr>";
 readFileTest();
 echo "<hr>";
-readFileTest("nomefile.txt", "help", "pippo@mail.com","xxx", "yyy");
+readFileTest("nomefile.txt", "help", "pippo@mail.com", "xxx", "yyy");
 echo "<hr>";
+
+echo "<br>** xxxx xxx ***<br>";
+
+function getMoreVars(int $value): array
+{
+    $value++;
+    return array('coffee', 'brown', 'caffeine', $value, array("a",$value));
+}
+
+list($drink, $color, $power, $newValue, $newArray) = getMoreVars(4);
+echo "$drink is $color and $power and $newValue makes it special!<br>";
+
+var_dump($newArray);
