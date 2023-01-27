@@ -13,4 +13,4 @@ echo "<pre>";
 print_r($today);
 echo "</pre>";
 
-echo "Oggi è ".$dayWeek[$today['wday']-1]. " ". $today['mday']. " ".$month[$today['mon']-1]." ". $today['year'].  ". Sono le <br>";
+echo "Oggi è ".$dayWeek[$today['wday']-1]. " ". $today['mday']. " ".$month[$today['mon']-1]." ". $today['year']. " .<br>" . "Sono le ". $today['hours'] . " : ". $today['minutes'] . " : " . $today['seconds'] ;
