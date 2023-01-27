@@ -1,9 +1,6 @@
 <?php
-
 if (isset($_GET["name"])) {
     echo 'Hello ' . htmlspecialchars($_GET["name"]) . '!';
-
-    //db
 }
 
 if (isset($_GET["surname"])) {
@@ -12,7 +9,7 @@ if (isset($_GET["surname"])) {
 
 ?>
 <p>Test</p>
-<form>
+<form method="GET" action="ricevechiamate.php">
     <input type="text" id="name" name="name" />
     <input type="text" id="surname" name="surname" />
     <input type="submit" value="Invia" />
