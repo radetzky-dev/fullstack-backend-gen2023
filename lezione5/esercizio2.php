@@ -81,3 +81,15 @@ $today = date("y.m.d");
 echo $today . '<br>';
 $today = date("d-m-y");
 echo $today . '<br>';
+
+//Quanto manca a capodanno e a Natale
+
+$Now = new DateTime('now', new DateTimeZone('Europe/Rome'));
+echo  "A Roma è il :" . $Now->format('Y-m-d');
+$origin = date_create($Now->format('Y-m-d'));
+$target = date_create($Now->format('Y').'-12-31');
+$interval = date_diff($origin, $target);
+echo "A capodanno mancano ".$interval->format('%R%a giorni').'<br>';
+$target = date_create($Now->format('Y').'-12-25');
+$interval = date_diff($origin, $target);
+echo "A Natale mancano ".$interval->format('%R%a giorni').'<br>';
