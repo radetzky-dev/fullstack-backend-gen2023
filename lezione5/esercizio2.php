@@ -67,3 +67,17 @@ foreach ($dates as $date) {
         echo 'al tuo compleanno manca' . $prefix . ' ' . $interval->days . ' giorn' . $suffix . '<br>';
     }
 }
+
+/*
+2013/09/01
+ - 13.09.01
+ - 01-09-13
+ */
+echo '<hr>';
+echo "ESERCIZIO 3<br>";
+$today = date("Y/m/d");
+echo $today . '<br>';
+$today = date("y.m.d");
+echo $today . '<br>';
+$today = date("d-m-y");
+echo $today . '<br>';
