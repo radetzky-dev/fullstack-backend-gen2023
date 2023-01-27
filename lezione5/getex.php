@@ -2,6 +2,8 @@
 
 if (isset($_GET["name"])) {
     echo 'Hello ' . htmlspecialchars($_GET["name"]) . '!';
+
+    //db
 }
 
 if (isset($_GET["surname"])) {
