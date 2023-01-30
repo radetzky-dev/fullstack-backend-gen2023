@@ -16,6 +16,7 @@
 
 */
 
+//metodo get
 $name = $surname = $company = $email = $phone = "";
 $dummyPhoto = "https://dummyimage.com/300";
 
