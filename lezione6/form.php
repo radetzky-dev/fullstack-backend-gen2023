@@ -12,6 +12,9 @@
 /*
 1 fare in modo che non azzeri il form non caricato (se carico img non svuota l'altro e viceversa) (form della foto deve salvarsi i dati del form delle info)
 
+2 attivare il bottone registrami che tramite Javascript esegue un post con tutti i dati a una nuova pagina dove evrranno regustrati in un file json
+es https://reqbin.com/code/javascript/wzp2hxwh/javascript-post-request-example
+
 */
 
 $name = $surname = $company = $email = $phone = "";
