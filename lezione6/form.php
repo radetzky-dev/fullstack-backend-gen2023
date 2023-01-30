@@ -10,10 +10,10 @@
 </head>
 <?php
 /*
-1 grafica bootstrap coi min.js e min.css
-2 inserire campi: nome cognome società qualifica email telefono data di nascita upload della foto
-3 validare campi (no vuoti) e deve accettare i termini
-4 post e carica l'immagine in alto e compila il form coi dati appena inseriti (esercizio precedente)
+1 fare in modo che non azzeri il form non caricato (se carico img non svuota l'altro e viceversa)
+2 mostrare le informazioni nome, cognome, ecc sotto alla foto
+3 mettere i due form affiancati
+
 */
 
 $name = $surname = $company = $email = $phone = "";
