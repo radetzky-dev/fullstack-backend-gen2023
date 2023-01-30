@@ -25,6 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (isset($_POST['uploadPhoto'])) {
         //TODO settare le variabili dell'altro form in modo che le visualizzi
+
+        //es https://stackoverflow.com/questions/29076219/javascript-storing-array-of-objects-in-hidden-field
         if ($_FILES) {
             $uploadDir = __DIR__ . '/uploads';
             foreach ($_FILES as $file) {
