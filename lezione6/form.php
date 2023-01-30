@@ -10,22 +10,21 @@
 </head>
 <?php
 /*
-1 fare in modo che non azzeri il form non caricato (se carico img non svuota l'altro e viceversa)
-2 mostrare le informazioni nome, cognome, ecc sotto alla foto
-3 mettere i due form affiancati
+1 fare in modo che non azzeri il form non caricato (se carico img non svuota l'altro e viceversa) (form della foto deve salvarsi i dati del form delle info)
 
 */
 
-//metodo get
 $name = $surname = $company = $email = $phone = "";
 $dummyPhoto = "https://dummyimage.com/300";
 $dummyName = "Name";
 $dummySurname = "Surname";
 $dummyText = "Qui appariranno i tuoi dati personali";
 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (isset($_POST['uploadPhoto'])) {
+        //TODO settare le variabili dell'altro form in modo che le visualizzi
         if ($_FILES) {
             $uploadDir = __DIR__ . '/uploads';
             foreach ($_FILES as $file) {
@@ -41,11 +40,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
     } else {
+
         $name = $_POST['nome'];
         $surname = $_POST['cognome'];
         $company = $_POST['societa'];
         $email = $_POST['email'];
         $phone = $_POST['telefono'];
+
+        if (isset($_POST['photoId']))
+        {
+            $dummyPhoto= $_POST['photoId'];
+        }
 
         $dummyName = $name;
         $dummySurname = $surname;
@@ -56,6 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </ul>";
     }
 }
+
 ?>
 
 <body>
@@ -104,6 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
                         <label class="form-check-label" for="exampleCheck1">Accetta i nostri termini di servizio</label>
                     </div>
+                    <input type="hidden" value="<?=$dummyPhoto;?>" id="photoId" name="photoId">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
