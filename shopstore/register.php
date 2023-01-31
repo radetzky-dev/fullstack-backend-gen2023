@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
     <script>
+        //TODO quando finito tutto in un js
         function verifyPassword() {
             var pw = document.getElementById("password").value;
             var confirm_pw = document.getElementById("confirmpassword").value;
