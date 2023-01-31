@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $username = $fields[5];
             $password = $fields[6];
             $confirmpassword = $fields[7];
-            setDataSession([$name,$surname,$username,$password]);
+            setDataSession([$name,$surname,$username,$password, $dummyPhoto]);
         }
 
         if ($_FILES) {
@@ -133,11 +133,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $anagraficaArray = $name . "#" . $surname . "#" . $company . "#" . $email . "#" . $phone . "#" . $username . "#" . $password . "#" . $confirmpassword;
         //popolare delle info $_SESSION ($name) ecc...
 
-        setDataSession([$name,$surname,$username,$password]);
+        
 
         if (isset($_POST['photoId'])) {
             $dummyPhoto = $_POST['photoId'];
         }
+
+        setDataSession([$name,$surname,$username,$password,$dummyPhoto]);
     }
 }
 
