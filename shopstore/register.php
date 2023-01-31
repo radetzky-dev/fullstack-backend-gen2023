@@ -18,6 +18,14 @@
             alert("Attenzione le password non coincidono");
             return false;
         }
+
+        function sendData()
+        {
+            //se tutti campi corretti mando
+
+            //altrimenti mostro un alert (carica una foto di profilo)
+
+        }
     </script>
 
 </head>
@@ -108,7 +116,7 @@ if ($company) {
                     <div class="card-body">
                         <h5 class="card-title" id="namesurname"><?= $dummyName . ' ' . $dummySurname; ?></h5>
                         <p class="card-text"><?= $dummyText; ?></p>
-                        <button class="btn btn-primary">Registrami</button>
+                        <button class="btn btn-primary" onclick="sendData();">Registrami</button>
                     </div>
                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" id="FormProfilePhoto">
                         <input type="file" name="file">
