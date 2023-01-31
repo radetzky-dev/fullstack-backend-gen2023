@@ -19,6 +19,19 @@
 
     <script>
         //TODO quando finito tutto in un js
+
+        function verifyImage()
+        {
+            var file = document.getElementById("file").value;
+             console.log (file);
+            if (file =="")
+            {
+                alert ("Seleziona un file da caricare!");
+                return false;
+            }
+            return true;
+        }
+
         function verifyPassword() {
             var pw = document.getElementById("password").value;
             var confirm_pw = document.getElementById("confirmpassword").value;
@@ -29,10 +42,30 @@
             return false;
         }
 
+
         function sendData() {
-            var dummyPhotoValue = "<?=$dummyPhoto;?>";
-            
+            var dummyPhotoValue = "<?= $dummyPhoto; ?>";
+
+            var name = document.getElementById("nome").value;
+            var surname = document.getElementById("cognome").value;
+            var username = document.getElementById("user_name").value;
+            var password = document.getElementById("password").value;
+            var photoId = document.getElementById("photoId").value;
+
+            console.log(name + " " + password + " F:" + photoId);
+
+            if (name != "" &&
+                surname != "" &&
+                username != "" &&
+                password != "" &&
+                dummyPhotoValue != photoId
+            ) {
+                window.location.href = "savedata.php"
+            } else {
+                alert('Carica una foto di profilo e completa il form!');
+            }
             //se tutti campi corretti mando
+            //window.location.href = "savedata.php";
 
             //altrimenti mostro un alert (carica una foto di profilo)
 
@@ -55,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (isset($_POST['uploadPhoto'])) {
 
-        if (isset($_POST['otherFormInfo'])) {
+        if (isset($_POST['otherFormInfo']) && str_contains($_POST['otherFormInfo'], '#')) {
             $fields = explode("#", $_POST['otherFormInfo']);
             $name = $dummyName = $fields[0];
             $surname = $dummySurname = $fields[1];
@@ -125,10 +158,10 @@ if ($company) {
                         <button class="btn btn-primary" onclick="sendData();">Registrami</button>
                     </div>
                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" id="FormProfilePhoto">
-                        <input type="file" name="file">
+                        <input type="file" name="file" id="file">
                         <input type="hidden" name="uploadPhoto" value="uploadPhoto" />
                         <input type="hidden" name="otherFormInfo" value="<?= $anagraficaArray; ?>" />
-                        <input type="submit" name="upload" value="Carica foto profilo">
+                        <input type="submit" class="btn btn-primary" name="upload" value="Carica foto profilo" onclick="return verifyImage();">
                     </form>
                 </div>
             </div>
