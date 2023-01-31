@@ -7,16 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script>
+        function verifyPassword() {
+            var pw = document.getElementById("password").value;
+            var confirm_pw = document.getElementById("confirmpassword").value;
+            if (pw === confirm_pw) {
+                return true;
+            }
+            alert("Attenzione le password non coincidono");
+            return false;
+        }
+    </script>
+
 </head>
 <?php
 /*
 1 - salvare le informazioni in variabile session
-1 bis - aggiungere i campi username e password al form di destra
 2 - creare un javascript che controlla che tutti i campi dei form + la foto siano stato completati
 3 - se i campi sono ok carica la pagina seguente savedata.php
 */
 
-$name = $surname = $company = $email = $phone = "";
+$name = $surname = $company = $email = $phone = $username = $password = $confirmpassword = "";
 $dummyPhoto = "https://dummyimage.com/300";
 $dummyName = "Name";
 $dummySurname = "Surname";
@@ -25,6 +37,7 @@ $anagraficaArray = "";
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    print_r($_REQUEST);
 
     if (isset($_POST['uploadPhoto'])) {
 
@@ -35,6 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $company = $fields[2];
             $email = $fields[3];
             $phone = $fields[4];
+            $username = $fields[5];
+            $password = $fields[6];
+            $confirmpassword = $fields[7];
         }
 
         if ($_FILES) {
@@ -58,8 +74,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $company = $_POST['societa'];
         $email = $_POST['email'];
         $phone = $_POST['telefono'];
+        $username = $_POST['user_name'];
+        $password = $_POST['password'];
+        $confirmpassword = $_POST['confirmpassword'];
 
-        $anagraficaArray = $name . "#" . $surname . "#" . $company . "#" . $email . "#" . $phone;
+        $anagraficaArray = $name . "#" . $surname . "#" . $company . "#" . $email . "#" . $phone . "#" . $username . "#" . $password . "#" . $confirmpassword;
         //popolare delle info $_SESSION ($name) ecc...
 
         if (isset($_POST['photoId'])) {
@@ -89,7 +108,7 @@ if ($company) {
                     <div class="card-body">
                         <h5 class="card-title" id="namesurname"><?= $dummyName . ' ' . $dummySurname; ?></h5>
                         <p class="card-text"><?= $dummyText; ?></p>
-                        <button class="btn btn-primary">Dati corretti: registrami</button>
+                        <button class="btn btn-primary">Registrami</button>
                     </div>
                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" id="FormProfilePhoto">
                         <input type="file" name="file">
@@ -100,7 +119,7 @@ if ($company) {
                 </div>
             </div>
             <div class="col">
-                <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
+                <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data" onsubmit="return verifyPassword();">
                     <div class="form-group">
                         <label for="nome">Nome</label>
                         <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" value="<?= $name ?>" required>
@@ -121,10 +140,19 @@ if ($company) {
                         <label for="exampleInputTelephone">Telefono</label>
                         <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Telefono" value="<?= $phone ?>" required>
                     </div>
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-                        <label class="form-check-label" for="exampleCheck1">Accetta i nostri termini di servizio</label>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Enter username" value="<?= $username ?>" required>
                     </div>
+                    <div class="form-group">
+                        <label for="Password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp" placeholder="Enter password" value="<?= $password ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Password">Confirm PassWord</label>
+                        <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" aria-describedby="passwordHelp" placeholder="Confirm password" value="<?= $confirmpassword ?>" required>
+                    </div>
+
                     <input type="hidden" value="<?= $dummyPhoto; ?>" id="photoId" name="photoId">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
