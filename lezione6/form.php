@@ -10,11 +10,8 @@
 </head>
 <?php
 /*
-1 fare in modo che non azzeri il form non caricato (se carico img non svuota l'altro e viceversa) (form della foto deve salvarsi i dati del form delle info)
-
 2 attivare il bottone registrami che tramite Javascript esegue un post con tutti i dati a una nuova pagina dove evrranno regustrati in un file json
 es https://reqbin.com/code/javascript/wzp2hxwh/javascript-post-request-example
-
 */
 
 $name = $surname = $company = $email = $phone = "";
@@ -22,14 +19,22 @@ $dummyPhoto = "https://dummyimage.com/300";
 $dummyName = "Name";
 $dummySurname = "Surname";
 $dummyText = "Qui appariranno i tuoi dati personali";
+$anagraficaArray = "";
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (isset($_POST['uploadPhoto'])) {
-        //TODO settare le variabili dell'altro form in modo che le visualizzi
 
-        //es https://stackoverflow.com/questions/29076219/javascript-storing-array-of-objects-in-hidden-field
+        if (isset($_POST['otherFormInfo'])) {
+            $fields = explode("#", $_POST['otherFormInfo']);
+            $name = $dummyName = $fields[0];
+            $surname = $dummySurname = $fields[1];
+            $company = $fields[2];
+            $email = $fields[3];
+            $phone = $fields[4];
+        }
+
         if ($_FILES) {
             $uploadDir = __DIR__ . '/uploads';
             foreach ($_FILES as $file) {
@@ -46,31 +51,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     } else {
 
-        $name = $_POST['nome'];
-        $surname = $_POST['cognome'];
+        $name = $dummyName = $_POST['nome'];
+        $surname = $dummySurname = $_POST['cognome'];
         $company = $_POST['societa'];
         $email = $_POST['email'];
         $phone = $_POST['telefono'];
 
-        if (isset($_POST['photoId']))
-        {
-            $dummyPhoto= $_POST['photoId'];
-        }
+        $anagraficaArray = $name . "#" . $surname . "#" . $company . "#" . $email . "#" . $phone;
 
-        $dummyName = $name;
-        $dummySurname = $surname;
-        $dummyText = "<ul>
-            <li>$company</li>
-            <li>$email</li>
-            <li>$phone</li>
-        </ul>";
+        if (isset($_POST['photoId'])) {
+            $dummyPhoto = $_POST['photoId'];
+        }
     }
 }
+
+$dummyText = "<ul>
+<li>$company</li>
+<li>$email</li>
+<li>$phone</li>
+</ul>";
 
 ?>
 
 <body>
-
     <div class="container">
         <h3>Registration form</h3>
         <div class="row">
@@ -85,6 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" id="FormProfilePhoto">
                         <input type="file" name="file">
                         <input type="hidden" name="uploadPhoto" value="uploadPhoto" />
+                        <input type="hidden" name="otherFormInfo" value="<?= $anagraficaArray; ?>" />
                         <input type="submit" name="upload" value="Carica foto profilo">
                     </form>
                 </div>
@@ -115,13 +119,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
                         <label class="form-check-label" for="exampleCheck1">Accetta i nostri termini di servizio</label>
                     </div>
-                    <input type="hidden" value="<?=$dummyPhoto;?>" id="photoId" name="photoId">
+                    <input type="hidden" value="<?= $dummyPhoto; ?>" id="photoId" name="photoId">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
-
     </div>
 </body>
-
 </html>
