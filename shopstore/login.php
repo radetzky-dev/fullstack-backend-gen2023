@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>App name</title>
+    <title>Login</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -11,7 +11,7 @@
                 <?php
                 if (isset($_SESSION["errorMessage"])) {
                 ?>
-                    <div class="error-message"><?php echo $_SESSION["errorMessage"]; ?></div>
+                    <div class="text-danger"><?php echo $_SESSION["errorMessage"]; ?></div>
                 <?php
                     unset($_SESSION["errorMessage"]);
                 }
@@ -26,7 +26,6 @@
                 unset($_COOKIE['MusaCookie']);
                 setcookie("MusaCookie", "", time() - 3600);
                 ?>
-
 
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label><span id="user_info" class="error-info"></span>
@@ -43,12 +42,9 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <a href="#">Password smarrita?</a>|<a href="#">Registrati</a>
+                    <a href="register.php">Registrati</a>
                 </div>
-
             </form>
-
-
         </div>
     </container>
     <?php include "inc/footer.php"; ?>

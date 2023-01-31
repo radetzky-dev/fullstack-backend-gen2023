@@ -10,8 +10,10 @@
 </head>
 <?php
 /*
-2 attivare il bottone registrami che tramite Javascript esegue un post con tutti i dati a una nuova pagina dove evrranno regustrati in un file json
-es https://reqbin.com/code/javascript/wzp2hxwh/javascript-post-request-example
+1 - salvare le informazioni in variabile session
+1 bis - aggiungere i campi username e password al form di destra
+2 - creare un javascript che controlla che tutti i campi dei form + la foto siano stato completati
+3 - se i campi sono ok carica la pagina seguente savedata.php
 */
 
 $name = $surname = $company = $email = $phone = "";
@@ -58,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $phone = $_POST['telefono'];
 
         $anagraficaArray = $name . "#" . $surname . "#" . $company . "#" . $email . "#" . $phone;
+        //popolare delle info $_SESSION ($name) ecc...
 
         if (isset($_POST['photoId'])) {
             $dummyPhoto = $_POST['photoId'];
@@ -65,11 +68,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-$dummyText = "<ul>
-<li>$company</li>
-<li>$email</li>
-<li>$phone</li>
-</ul>";
+if ($company) {
+    $dummyText = "<ul>
+    <li>$company</li>
+    <li>$email</li>
+    <li>$phone</li>
+    </ul>";
+}
+
 
 ?>
 
@@ -126,4 +132,5 @@ $dummyText = "<ul>
         </div>
     </div>
 </body>
+
 </html>

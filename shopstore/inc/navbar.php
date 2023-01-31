@@ -16,6 +16,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Carrello</a>
                 </li>
+                <?php if (!empty($_SESSION["userId"])) { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.php">Logout</a>
+                </li>
+                <?php } ?>
             </ul>
         </div>
     </div>
