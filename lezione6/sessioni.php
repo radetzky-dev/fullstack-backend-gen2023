@@ -16,6 +16,7 @@ if (!isset($_SESSION['count'])) {
 }
 
 echo "Ti chiami " . $_SESSION['name'] . " e hai visitato questa pagina " . $_SESSION['count'] . ' volte';
+echo "<br>Il tuo session id è ".session_id() ." e il tuo session name è ".session_name() . " il tuo stato è ".session_status();
 
 if (($_SESSION['count'] > 2) && ($_SESSION['name'] == 'Mario')) {
     echo "Hai visitato questa pagina troppe volte. Cancello il conteggio";
