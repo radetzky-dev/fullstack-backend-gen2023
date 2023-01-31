@@ -8,6 +8,15 @@
     <title>Form</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
+    <?php
+    $name = $surname = $company = $email = $phone = $username = $password = $confirmpassword = "";
+    $dummyPhoto = "https://dummyimage.com/300";
+    $dummyName = "Name";
+    $dummySurname = "Surname";
+    $dummyText = "Qui appariranno i tuoi dati personali";
+    $anagraficaArray = "";
+    ?>
+
     <script>
         //TODO quando finito tutto in un js
         function verifyPassword() {
@@ -20,8 +29,9 @@
             return false;
         }
 
-        function sendData()
-        {
+        function sendData() {
+            var dummyPhotoValue = "<?=$dummyPhoto;?>";
+            
             //se tutti campi corretti mando
 
             //altrimenti mostro un alert (carica una foto di profilo)
@@ -37,12 +47,7 @@
 3 - se i campi sono ok carica la pagina seguente savedata.php
 */
 
-$name = $surname = $company = $email = $phone = $username = $password = $confirmpassword = "";
-$dummyPhoto = "https://dummyimage.com/300";
-$dummyName = "Name";
-$dummySurname = "Surname";
-$dummyText = "Qui appariranno i tuoi dati personali";
-$anagraficaArray = "";
+
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
