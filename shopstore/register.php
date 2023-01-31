@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $username = $fields[5];
             $password = $fields[6];
             $confirmpassword = $fields[7];
-            setDataSession([$name,$surname,$username,$password, $dummyPhoto]);
+            setDataSession(["nome" => $name,"cognome" =>$surname, "username" =>$username, "pwd" =>$password, "photo" =>$dummyPhoto]);
         }
 
         if ($_FILES) {
@@ -139,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $dummyPhoto = $_POST['photoId'];
         }
 
-        setDataSession([$name,$surname,$username,$password,$dummyPhoto]);
+        setDataSession(["nome" => $name, "cognome" =>$surname, "username" =>$username,"pwd" =>$password,"photo" =>$dummyPhoto]);
     }
 }
 

@@ -1,3 +1,4 @@
+<?php include "inc/vars.php"; ?>
 <html>
 <head>
     <title>Login</title>

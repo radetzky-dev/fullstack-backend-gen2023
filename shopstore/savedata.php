@@ -1,7 +1,5 @@
 <?php
 session_start();
-echo "Save data...<br>";
-
 
 function updateFileJson(array $stocksArray, string $path): bool
 {
@@ -21,28 +19,24 @@ function updateFileJson(array $stocksArray, string $path): bool
  */
 function readFileJson(string $path): array | null
 {
-    $jsonString = file_get_contents($path);
-    return json_decode($jsonString, true);
+    try {
+        $jsonString = file_get_contents($path);
+        return json_decode($jsonString, true);
+    } catch (Exception $e) {
+        echo "Il file non esiste.";
+        return null;
+    }
 }
 
-echo "<pre>";
-print_r($_SESSION['userData']);
-echo "</pre>";
-
 //leggo il file
+$myAnagr = readFileJson("data/anagrafica.json");
 
+if ($myAnagr == null) {
+    $myAnagr = array();
+}
 //add anar
+$myAnagr[] = $_SESSION['userData'];
 
-//salvo
-
-$result = updateFileJson($_SESSION['userData'], "data/anagrafica.json");
-
-echo "Risultato scrittura file ".$result;
-
-$myAnagr= readFileJson("data/anagrafica.json");
-
-echo "<pre>";
-print_r($myAnagr);
-echo "</pre>";
-
-//echo dei dati rispecare $_SESSION Name ecc per poi salvarli un file json 
+$result = updateFileJson($myAnagr, "data/anagrafica.json");
+$myAnagr = readFileJson("data/anagrafica.json");
+require_once 'login.php';
