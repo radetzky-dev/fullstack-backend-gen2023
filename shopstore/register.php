@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,10 +78,12 @@
 <?php
 /*
 1 - salvare le informazioni in variabile session
-2 - creare un javascript che controlla che tutti i campi dei form + la foto siano stato completati
-3 - se i campi sono ok carica la pagina seguente savedata.php
 */
 
+function setDataSession(array $userData)
+{
+    $_SESSION['userData'] = $userData;
+}
 
 
 
@@ -98,6 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $username = $fields[5];
             $password = $fields[6];
             $confirmpassword = $fields[7];
+            setDataSession([$name,$surname,$username,$password]);
         }
 
         if ($_FILES) {
@@ -127,6 +132,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $anagraficaArray = $name . "#" . $surname . "#" . $company . "#" . $email . "#" . $phone . "#" . $username . "#" . $password . "#" . $confirmpassword;
         //popolare delle info $_SESSION ($name) ecc...
+
+        setDataSession([$name,$surname,$username,$password]);
 
         if (isset($_POST['photoId'])) {
             $dummyPhoto = $_POST['photoId'];
