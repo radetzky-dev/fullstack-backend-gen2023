@@ -22,13 +22,11 @@
     <script>
         //TODO quando finito tutto in un js
 
-        function verifyImage()
-        {
+        function verifyImage() {
             var file = document.getElementById("file").value;
-             console.log (file);
-            if (file =="")
-            {
-                alert ("Seleziona un file da caricare!");
+            console.log(file);
+            if (file == "") {
+                alert("Seleziona un file da caricare!");
                 return false;
             }
             return true;
@@ -88,7 +86,6 @@ function setDataSession(array $userData)
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    print_r($_REQUEST);
 
     if (isset($_POST['uploadPhoto'])) {
 
@@ -102,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $username = $fields[5];
             $password = $fields[6];
             $confirmpassword = $fields[7];
-            setDataSession(["nome" => $name,"cognome" =>$surname, "username" =>$username, "pwd" =>$password, "photo" =>$dummyPhoto]);
+            setDataSession(["nome" => $name, "cognome" => $surname, "username" => $username, "pwd" => $password, "photo" => $dummyPhoto]);
         }
 
         if ($_FILES) {
@@ -133,13 +130,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $anagraficaArray = $name . "#" . $surname . "#" . $company . "#" . $email . "#" . $phone . "#" . $username . "#" . $password . "#" . $confirmpassword;
         //popolare delle info $_SESSION ($name) ecc...
 
-        
+
 
         if (isset($_POST['photoId'])) {
             $dummyPhoto = $_POST['photoId'];
         }
 
-        setDataSession(["nome" => $name, "cognome" =>$surname, "username" =>$username,"pwd" =>$password,"photo" =>$dummyPhoto]);
+        setDataSession(["nome" => $name, "cognome" => $surname, "username" => $username, "pwd" => $password, "photo" => $dummyPhoto]);
     }
 }
 

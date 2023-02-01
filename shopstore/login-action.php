@@ -6,31 +6,17 @@ if (!empty($_POST["login"])) {
     $password = $_POST["password"];
 
     $isLoggedIn = false;
-    //TODO andare a eseguire leggere dal file JSON user e password e confrontarle con quelle inserie
-
     $myAnagr = readFileJson("data/anagrafica.json");
 
-    echo "<pre>";
-    print_r($_REQUEST);
-    echo "</pre>";
-
-    echo "<pre>";
-    print_r($myAnagr);
-    echo "</pre>";
-
-    die();
-
-    //scorrere anagrafica e cercare user e pwd se quali a quelle inserite
-    if ($username === "test" && $password === "test") {
-        $isLoggedIn = true;
-        //Inserire qui nome e id
-        $_SESSION["userId"] = "1";
-        $_SESSION["userInfo"] = "Mario Rossi";
+    foreach ($myAnagr as $key => $userArray) {
+        if ($userArray['username'] == $username && $userArray['pwd'] == $password) {
+            $isLoggedIn = true;
+            $_SESSION["userId"] = $key;
+            $_SESSION["userInfo"] = $userArray['nome'] . ' ' . $userArray['cognome'];
+        }
     }
-
     if (!$isLoggedIn) {
         $_SESSION["errorMessage"] = "Username o password non valide!";
     }
-
-   header("Location: index.php");
+    header("Location: index.php");
 }
