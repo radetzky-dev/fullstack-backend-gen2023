@@ -8,7 +8,18 @@ if (!empty($_POST["login"])) {
     $isLoggedIn = false;
     //TODO andare a eseguire leggere dal file JSON user e password e confrontarle con quelle inserie
 
-    // $myAnagr = readFileJson("data/anagrafica.json");
+    $myAnagr = readFileJson("data/anagrafica.json");
+
+    echo "<pre>";
+    print_r($_REQUEST);
+    echo "</pre>";
+
+    echo "<pre>";
+    print_r($myAnagr);
+    echo "</pre>";
+
+    die();
+
     //scorrere anagrafica e cercare user e pwd se quali a quelle inserite
     if ($username === "test" && $password === "test") {
         $isLoggedIn = true;
