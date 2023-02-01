@@ -10,6 +10,7 @@ require_once "inc/navbar.php";
 
     <p>TODO 1)creare un utente admin che possa inserire \modifcare il catalogo 
        <br> 2)il catalogo va portato in json e non come ora.
+       <br> 3) sakavre tutti i dati inseriti nell'anagrafica (ora solo 4)
     </p>
     <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
         <div class="col">
