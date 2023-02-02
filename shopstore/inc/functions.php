@@ -1,5 +1,7 @@
 <?php
-require_once "inc/vars.php";
+
+//Variables
+$shopName ="MusaShop";
 
 /**
  * showCategory

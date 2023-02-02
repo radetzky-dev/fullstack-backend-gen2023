@@ -13,14 +13,22 @@
                 <li class="nav-item">
                     <a class="nav-link" href="products.php">Prodotti</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Carrello</a>
-                </li>
-                <?php if (!empty($_SESSION["userId"])) { ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="logout.php">Logout</a>
-                </li>
+                <?php if (!empty($_SESSION["isAdmin"])) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gestione_prodotti.php">Gestisci prodotti</a>
+                    </li>
+                <?php } else { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Carrello</a>
+                    </li>
                 <?php } ?>
+                <?php if (!empty($_SESSION["userInfo"])) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php">Logout</a>
+                    </li>
+                <?php } ?>
+
+
             </ul>
         </div>
     </div>

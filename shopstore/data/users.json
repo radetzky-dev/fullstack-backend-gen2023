@@ -1,0 +1,14 @@
+[
+  {
+    "nome": "admin",
+    "cognome": "admin",
+    "username": "admin",
+    "pwd": "admin"
+  },
+  {
+    "nome": "admin1",
+    "cognome": "admin1",
+    "username": "admin1",
+    "pwd": "admin1"
+  }
+]
