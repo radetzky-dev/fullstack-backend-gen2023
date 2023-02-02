@@ -1,7 +1,7 @@
 DB  : musadbshop
 
        users (per gli amministratori)
-            id (tinyint 3)
+            id (tinyint)
             name (varchar 45)
             surname
             email
@@ -11,33 +11,32 @@ DB  : musadbshop
             creadtion date timestamp
             
        products (prodotti)
-            id  
+            id  (MEDIUMINT UNSIGNED)
             name 
             description
-            price 
-            quantity
-            image
-            id_category -> categories id
+            price  DECIMAL(10,2)
+            quantity SMALLINT UNSIGNED
+            image blob
+            id_category -> categories id SMALLINT UNSIGNED
 
         categories
-            id 
+            id SMALLINT UNSIGNED
             name
             description
 
        orders
-            id 1
-            order_num 1-2feb
-            importo tot
+            id 1 (MEDIUMINT UNSIGNED)
+            order_num (es 1-musa2023) (non solo numerico)
             id_customer -> customers _ id
             creation date
             last modif
 
         order_details
-            id
-            id_prodcuts -> chiave su product -> id
-            id_ order -> chiave orders -> id
-            quantity
-            actual_single_price
+            id (INT UNSIGNED)
+            id_products -> chiave su product -> id  (MEDIUMINT UNSIGNED)
+            id_ order -> chiave orders -> id (MEDIUMINT UNSIGNED)
+            quantity SMALLINT UNSIGNED
+            actual_single_price  DECIMAL(10,2)
 
                 +++ ESEMPIO +++
                 3 - banana - 3 - 1,5
@@ -46,21 +45,21 @@ DB  : musadbshop
                 +++++
 
        customers (acquirenti)
-            id
+            id (MEDIUMINT UNSIGNED)
             name
             surname
             email
             photo
             society
             phone
-            id_adresses -> adresses
+            id_adresses -> adresses (MEDIUMINT UNSIGNED)
             user 
             password 
             last update
             creadtion date
 
         adresses
-            id
+            id (MEDIUMINT UNSIGNED)
             address 
             city 
             state
