@@ -1,14 +1,14 @@
 DB  : musadbshop
 
        users (per gli amministratori)
-            id
-            name
+            id (tinyint 3)
+            name (varchar 45)
             surname
             email
             user 
             password 
-            last update
-            creadtion date
+            last update timestamp
+            creadtion date timestamp
             
        products (prodotti)
             id  
