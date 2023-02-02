@@ -5,20 +5,28 @@ require_once "inc/header.php";
 require_once "inc/navbar.php";
 ?>
 <div class="container px-4 py-5" id="custom-cards">
-    <p>Ciao, <?php echo $_SESSION["userInfo"]; ?> </p>
+    <p>
+        <?php if ($_SESSION["isAdmin"]) {
+            echo "<span class='text-danger'>ADMIN: </span>";
+        } else {
+            echo "Ciao, ";
+        }
+        echo $_SESSION["userInfo"]; ?>
+    </p>
     <h2 class="pb-2 border-bottom">Le nostre offerte </h2>
 
-    <p>TODO<br> 1)creare un utente admin che possa inserire \modifcare il catalogo 
-       <br> 2)il catalogo va portato in json e non come ora.
-       <br> 3) salvare tutti i dati inseriti nell'anagrafica (ora solo 4)
-       <br> 4) un login e un anagrafica per gli amministratori che possono modifcare\insirire prodotti e vedere anagrfiche dei customers e creare altri utenti admin
-       <br> 5) una login e una procedura d'iscrizione per customers che vogliono acquistare.
-       / backend / login possono fare 
-       <br> 6) Cosa può vedere utente non loggato? Lista prodotti ecc...
-       <br> 7) Admin può gestire le categorie e i prodotti
-       <br> 8) Admin vede la lista degli ordini
-       <br> 9) Admin vede le anagrifche degli utenti
-      
+    <p>TODO<br> 1)creare un utente admin che possa inserire \modifcare il catalogo
+        <br> 2)il catalogo va portato in json e non come ora.
+        <br> 3) salvare tutti i dati inseriti nell'anagrafica (ora solo 4)
+        <br> 4) un login e un anagrafica per gli amministratori che possono modifcare\insirire prodotti e vedere anagrfiche dei customers e creare altri utenti admin
+        <br> 5) una login e una procedura d'iscrizione per customers che vogliono acquistare.
+        / backend / login possono fare
+        <br> 6) Cosa può vedere utente non loggato? Lista prodotti ecc...
+        <br> 7) Admin può gestire le categorie e i prodotti
+        <br> 8) Admin vede la lista degli ordini
+        <br> 9) Admin vede le anagrifche degli utenti
+        <br> 9) Registrati lo vede solo utente che deve comprare
+
     </p>
     <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
         <div class="col">
