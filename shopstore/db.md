@@ -17,7 +17,7 @@ DB  : musadbshop
             price  DECIMAL(10,2)
             quantity SMALLINT UNSIGNED
             image blob (TINYBLOB)
-            id_category -> categories id SMALLINT UNSIGNED
+            category_id -> categories id SMALLINT UNSIGNED
 
         categories
             id SMALLINT UNSIGNED
@@ -27,13 +27,13 @@ DB  : musadbshop
        orders
             id (MEDIUMINT UNSIGNED)
             order_num (es 1-musa2023) (non solo numerico)
-            id_customer -> customers _ id (MEDIUMINT UNSIGNED)
+            customer_id -> customers _ id (MEDIUMINT UNSIGNED)
             creation_date datetime
             last_update     timestamp
 
         order_details
             id (INT UNSIGNED)
-            id_products -> chiave su product -> id  (MEDIUMINT UNSIGNED)
+            id_product -> chiave su product -> id  (MEDIUMINT UNSIGNED)
             id_ order -> chiave orders -> id (MEDIUMINT UNSIGNED)
             quantity SMALLINT UNSIGNED
             actual_single_price  DECIMAL(10,2)
@@ -52,13 +52,13 @@ DB  : musadbshop
             photo (TINYBLOB)
             society (varchar 50)
             phone (varchar 15)
-            id_adresses -> adresses (MEDIUMINT UNSIGNED)
+            address_id -> adresses (MEDIUMINT UNSIGNED)
             user (varchar 16)
             password (varchar 16)
             last_update timestamp
             creation_date datetime
 
-        adresses
+        addresses
             id (MEDIUMINT UNSIGNED)
             address (varchar 80)
             city (varchar 30)
@@ -81,5 +81,22 @@ Script per creare FK:
 
     ALTER TABLE order_details ADD CONSTRAINT `fk_orderdetails_products_id`
     FOREIGN KEY (product_id) REFERENCES products (id)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT;
+
+    ALTER TABLE products ADD CONSTRAINT `fk_products_categories_id`
+    FOREIGN KEY (category_id) REFERENCES categories (id)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT;
+
+    ALTER TABLE orders ADD CONSTRAINT `fk_orders_costumer_id`
+    FOREIGN KEY (costumer_id) REFERENCES costumers (id)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT;
+
+ALTER TABLE adresses RENAME TO `addresses`;
+
+    ALTER TABLE costumers ADD CONSTRAINT `fk_costumers_addresses_id`
+    FOREIGN KEY (address_id) REFERENCES addresses (id)
     ON DELETE CASCADE
     ON UPDATE RESTRICT;
