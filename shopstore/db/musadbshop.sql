@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Feb 03, 2023 alle 10:34
+-- Creato il: Feb 03, 2023 alle 11:22
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.1.12
 
@@ -79,7 +79,7 @@ CREATE TABLE `costumers` (
 CREATE TABLE `orders` (
   `id` mediumint(8) UNSIGNED NOT NULL,
   `order_num` varchar(30) NOT NULL,
-  `id_costumers` mediumint(8) UNSIGNED NOT NULL,
+  `costumer_id` mediumint(8) UNSIGNED NOT NULL,
   `creation_date` datetime NOT NULL,
   `last_update` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -92,8 +92,8 @@ CREATE TABLE `orders` (
 
 CREATE TABLE `order_details` (
   `id` int(10) UNSIGNED NOT NULL,
-  `id_products` mediumint(8) UNSIGNED NOT NULL,
-  `id_order` mediumint(8) UNSIGNED NOT NULL,
+  `product_id` mediumint(8) UNSIGNED NOT NULL,
+  `order_id` mediumint(8) UNSIGNED NOT NULL,
   `quantity` smallint(5) UNSIGNED NOT NULL,
   `actual_single_price` decimal(10,2) NOT NULL,
   `last_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -113,9 +113,10 @@ CREATE TABLE `products` (
   `price` decimal(10,2) NOT NULL,
   `quantity` smallint(5) UNSIGNED NOT NULL,
   `image blob` tinyblob NOT NULL,
-  `id_category` smallint(5) UNSIGNED NOT NULL,
+  `category_id` smallint(5) UNSIGNED NOT NULL,
   `last_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `creation_date` datetime NOT NULL
+  `creation_date` datetime NOT NULL,
+  `available` bit(1) NOT NULL DEFAULT b'1' COMMENT '1 per defualt è disponibile 0 se non lo è'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -167,7 +168,8 @@ ALTER TABLE `orders`
 -- Indici per le tabelle `order_details`
 --
 ALTER TABLE `order_details`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_orderdetails_order_id` (`order_id`);
 
 --
 -- Indici per le tabelle `products`
@@ -226,6 +228,16 @@ ALTER TABLE `products`
 --
 ALTER TABLE `users`
   MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT;
+
+--
+-- Limiti per le tabelle scaricate
+--
+
+--
+-- Limiti per la tabella `order_details`
+--
+ALTER TABLE `order_details`
+  ADD CONSTRAINT `fk_orderdetails_order_id` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

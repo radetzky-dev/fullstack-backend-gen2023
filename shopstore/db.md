@@ -66,3 +66,11 @@ DB  : musadbshop
             zip (varchar 6)
             last_update timestamp
             creation_date datetime
+
+
+FK
+Script per creare FK:
+    ALTER TABLE order_details ADD CONSTRAINT `fk_orderdetails_order_id`
+    FOREIGN KEY (order_id) REFERENCES orders (id)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT;
