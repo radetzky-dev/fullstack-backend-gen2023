@@ -10,7 +10,12 @@ require_once "inc/navbar.php";  //NAV BAR DA SISTEMARE
 <?php if (empty($_SESSION["isAdmin"])) {
     echo "Torna alla home.";
     die();
-} ?>
+} 
+var_dump($_REQUEST);
+
+?>
+
+
 
 <h3>INSERISCI UN NUOVO PRODOTTO</h3>
 

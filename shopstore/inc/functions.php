@@ -15,6 +15,7 @@ function showCategory(array $catalogo, string $catName): void
     foreach ($catalogo[$catName] as $key => $prodotti) {
         if (is_array($prodotti)) {
 
+
             $qta = checkIfLast($prodotti['qta']);
             $price = $prodotti['prezzo'];
 
@@ -32,7 +33,7 @@ function showCategory(array $catalogo, string $catName): void
             }
 
             echo "<tr><td>" . $qta . "</td><td>" . $prodotti['nome'] . "</td><td>" . $price . " €" . "</td><td class='table-primary'>" . strtoupper($catName) . "</td>
-            <td><button class='btn btn-primary' " . $buttonStatus . " >Gestisci</button></td>
+            <td><a class='btn btn-primary' " . $buttonStatus . " href='manage_products.php?id=".$prodotti['nome']."'>Gestisci</a></td>
             </tr>";
         }
     }
