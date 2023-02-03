@@ -32,7 +32,7 @@ function showCategory(array $catalogo, string $catName): void
             }
 
             echo "<tr><td>" . $qta . "</td><td>" . $prodotti['nome'] . "</td><td>" . $price . " €" . "</td><td class='table-primary'>" . strtoupper($catName) . "</td>
-            <td><button class='btn btn-primary' " . $buttonStatus . " >Compra</button></td>
+            <td><button class='btn btn-primary' " . $buttonStatus . " >Gestisci</button></td>
             </tr>";
         }
     }

@@ -11,7 +11,5 @@ if (function_exists('showProductTable')) {
 }
 
 ?>
-<p>loren ipsum </p>
 <?php
-
 require_once "inc/footer.php";

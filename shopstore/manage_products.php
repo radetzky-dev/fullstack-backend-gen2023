@@ -16,14 +16,14 @@ require_once "inc/navbar.php";  //NAV BAR DA SISTEMARE
 
 
 <div class="col-sm-6">
-    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data" onsubmit="return verifyPassword();">
+    <form method="POST" action="save_product.php" enctype="multipart/form-data" onsubmit="return verifyPassword();">
         <div class="form-group">
             <label for="nome">Nome</label>
             <input type="text" class="form-control" id="nome" name="nome" required>
         </div>
         <div class="form-group">
             <label for="quantita">Quantità</label>
-            <input type="number" class="form-control" id="quantita" name="quantita" required>
+            <input type="number" class="form-control" id="qta" name="qta" required>
         </div>
         <div class="form-group">
             <label for="descrizione">Descrizione</label>
