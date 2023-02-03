@@ -1,10 +1,10 @@
 <?php
 require_once "inc/functions.php";
-require_once "data/data.php";
 require_once "inc/header.php";
 require_once "inc/navbar.php";  //NAV BAR DA SISTEMARE
 
-if (function_exists('showProductTable') && isset($catalogo)) {
+if (function_exists('showProductTable')) {
+    $catalogo = readFileJson("data/products.json");
     showProductTable($catalogo);
 } else {
     echo "Qualcosa è andato storto :/<br>";

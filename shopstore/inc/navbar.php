@@ -15,7 +15,7 @@
                 </li>
                 <?php if (!empty($_SESSION["isAdmin"])) { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="gestione_prodotti.php">Gestisci prodotti</a>
+                        <a class="nav-link" href="manage_products.php">Gestisci prodotti</a>
                     </li>
                 <?php } else { ?>
                     <li class="nav-item">
