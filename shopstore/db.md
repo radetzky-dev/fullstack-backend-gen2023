@@ -100,3 +100,5 @@ ALTER TABLE adresses RENAME TO `addresses`;
     FOREIGN KEY (address_id) REFERENCES addresses (id)
     ON DELETE CASCADE
     ON UPDATE RESTRICT;
+
+ALTER TABLE `costumers` ADD KEY `idx_costumers_surname` (`surname`);
