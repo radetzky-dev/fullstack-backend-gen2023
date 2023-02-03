@@ -7,8 +7,8 @@ DB  : musadbshop
             email (varchar 50)
             user (varchar 16)
             password (varchar 16)
-            last update timestamp
-            creadtion date timestamp
+            last_update timestamp
+            creation_date datetime
             
        products (prodotti)
             id  (MEDIUMINT UNSIGNED)
@@ -25,11 +25,11 @@ DB  : musadbshop
             description (VARCHAR)
 
        orders
-            id 1 (MEDIUMINT UNSIGNED)
+            id (MEDIUMINT UNSIGNED)
             order_num (es 1-musa2023) (non solo numerico)
             id_customer -> customers _ id (MEDIUMINT UNSIGNED)
-            creation date timestamp
-            last modif timestamp
+            creation_date datetime
+            last_update     timestamp
 
         order_details
             id (INT UNSIGNED)
@@ -55,8 +55,8 @@ DB  : musadbshop
             id_adresses -> adresses (MEDIUMINT UNSIGNED)
             user (varchar 16)
             password (varchar 16)
-            last update timestamp
-            creadtion date timestamp
+            last_update timestamp
+            creation_date datetime
 
         adresses
             id (MEDIUMINT UNSIGNED)
@@ -64,5 +64,5 @@ DB  : musadbshop
             city (varchar 30)
             state (varchar 15)
             zip (varchar 6)
-            last update timestamp
-            creadtion date timestamp
+            last_update timestamp
+            creation_date datetime
