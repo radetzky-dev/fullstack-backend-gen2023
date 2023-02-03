@@ -102,3 +102,4 @@ ALTER TABLE adresses RENAME TO `addresses`;
     ON UPDATE RESTRICT;
 
 ALTER TABLE `costumers` ADD KEY `idx_costumers_surname` (`surname`);
+ALTER TABLE `products` ADD KEY `idx_products_name` (`name`);

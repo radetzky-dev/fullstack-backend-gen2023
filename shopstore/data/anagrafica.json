@@ -1,1 +1,16 @@
-[{"nome":"sdsd","cognome":"dsds","username":"aaaa","pwd":"aaa","photo":"uploads\/idcard.jpeg"},{"nome":"sdsd","cognome":"dsds","username":"aaaa","pwd":"aaa","photo":"uploads\/idcard.jpeg"},{"nome":"sdsd","cognome":"dsds","username":"aaaa","pwd":"aaa","photo":"uploads\/idcard.jpeg"},{"nome":"sdsd","cognome":"dsds","username":"aaaa","pwd":"aaa","photo":"uploads\/idcard.jpeg"},{"nome":"sdsd","cognome":"dsds","username":"aaaa","pwd":"aaa","photo":"uploads\/idcard.jpeg"},{"nome":"giorgio","cognome":"verdi","username":"test","pwd":"test","photo":"uploads\/idcard.jpeg"}]
+[
+  {
+    "nome": "guest",
+    "cognome": "guest",
+    "username": "guest",
+    "pwd": "guest",
+    "photo": "uploads/idcard.jpeg"
+  },
+  {
+    "nome": "guestb",
+    "cognome": "guestb",
+    "username": "guestb",
+    "pwd": "guestb",
+    "photo": "uploads/idcard.jpeg"
+  }
+]
