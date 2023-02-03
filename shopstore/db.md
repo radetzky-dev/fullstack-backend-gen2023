@@ -74,3 +74,12 @@ Script per creare FK:
     FOREIGN KEY (order_id) REFERENCES orders (id)
     ON DELETE CASCADE
     ON UPDATE RESTRICT;
+
+    ` accento grave backtik = option + \
+    ~ tilde  = option + 5
+
+
+    ALTER TABLE order_details ADD CONSTRAINT `fk_orderdetails_products_id`
+    FOREIGN KEY (product_id) REFERENCES products (id)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT;
