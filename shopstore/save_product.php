@@ -10,6 +10,8 @@ if ($catalogo == null) {
     $catalogo = array();
 }
 
+//TODO gestire update
+
 $catalogo[strtolower($_REQUEST['category'])][] = $_REQUEST;
 
 $result = updateFileJson($catalogo, "data/products.json");

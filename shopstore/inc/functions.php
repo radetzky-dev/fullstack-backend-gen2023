@@ -1,7 +1,7 @@
 <?php
 
 //Variables
-$shopName ="MusaShop";
+$shopName = "MusaShop";
 
 /**
  * showCategory
@@ -14,7 +14,6 @@ function showCategory(array $catalogo, string $catName): void
 {
     foreach ($catalogo[$catName] as $key => $prodotti) {
         if (is_array($prodotti)) {
-
 
             $qta = checkIfLast($prodotti['qta']);
             $price = $prodotti['prezzo'];
@@ -32,8 +31,18 @@ function showCategory(array $catalogo, string $catName): void
                 $buttonStatus = "disabled";
             }
 
-            echo "<tr><td>" . $qta . "</td><td>" . $prodotti['nome'] . "</td><td>" . $price . " €" . "</td><td class='table-primary'>" . strtoupper($catName) . "</td>
-            <td><a class='btn btn-primary' " . $buttonStatus . " href='manage_products.php?id=".$prodotti['nome']."'>Gestisci</a></td>
+            $id = "0";
+            if (isset($prodotti['id_product'])) {
+                $id = $prodotti['id_product'];
+            }
+
+            $descrizione = "-";
+            if (isset($prodotti['descrizione'])) {
+                $descrizione = $prodotti['descrizione'];
+            }
+
+            echo "<tr><td>" . $id . "</td><td>" . $qta . "</td><td>" . $prodotti['nome'] . "</td><td>" . $descrizione . "</td><td>" . $price . " €" . "</td><td class='table-primary'>" . strtoupper($catName) . "</td>
+            <td><a class='btn btn-primary' " . $buttonStatus . " href='manage_products.php?id=" . $id . "'>Gestisci</a></td>
             </tr>";
         }
     }
@@ -81,9 +90,11 @@ function showProductTable($catalogo)
     <table class="table table-bordered">
         <thead thead class="thead-dark">
             <tr>
+                <th>Id</th>
                 <th>Qta</th>
+                <th>Nome</th>
                 <th>Descrizione</th>
-                <th>Prezzo</th>
+                <th>€</th>
                 <th>Categoria</th>
                 <th>Buy</th>
             </tr>

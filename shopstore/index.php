@@ -99,15 +99,13 @@ require_once "inc/navbar.php";
     </div>
 </div>
 <?php
-
+$catalogo = readFileJson("data/products.json");
 foreach ($catalogo as $catName => $categorie) {
     foreach ($catalogo[$catName] as $key => $prodotti) {
-        if (is_array($prodotti)) {
-            if ($prodotti['qta'] == 1) {
-                //TODO visualizzare immagine, shuffle e slice per i primi 2, visualizzare bene
-                echo "In " . strtoupper($catName) . " " . $prodotti['nome'] . " <img src='assets/" .
-                    $prodotti['image'] . "'><br>";
-            }
+        if (is_array($prodotti) && ($prodotti['qta'] == 1)) {
+            //TODO visualizzare immagine, shuffle e slice per i primi 2, visualizzare bene
+            echo "In " . strtoupper($catName) . " " . $prodotti['nome'] . " <img src='assets/" .
+                $prodotti['image'] . "'><br>";
         }
     }
 }
