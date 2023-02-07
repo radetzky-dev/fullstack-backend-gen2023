@@ -55,3 +55,10 @@ left join `sakila`.`film_category` `fc` on(`fa`.`film_id` = `fc`.`film_id`)) lef
 select actorTbl.actor_id, count(filmActorTbl.film_id) as numFilm from actor as actorTbl
 INNER join film_actor As filmActorTbl on(actorTbl.actor_id = filmActorTbl.actor_id) 
 where actorTbl.actor_id = 1;
+
+
+SELECT `actor`.`actor_id`, `film_actor`.`actor_id`, `film`.`title`, `actor`.`first_name`, `actor`.`last_name`, `category`.`name`
+FROM `actor` 
+	LEFT JOIN `film_actor` ON `film_actor`.`actor_id` = `actor`.`actor_id` 
+	LEFT JOIN `film` ON `film_actor`.`film_id` = `film`.`film_id`
+	, `category`;
