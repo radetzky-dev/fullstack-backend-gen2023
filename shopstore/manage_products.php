@@ -3,10 +3,8 @@ require_once "inc/functions.php";
 require_once "inc/header.php";
 require_once "inc/navbar.php";  //NAV BAR DA SISTEMARE
 ?>
-<!--
-    TO DO
-    - creare la pagina save_product.php che inserisce nel file json il nuovo prodotto
--->
+
+
 <?php if (empty($_SESSION["isAdmin"])) {
     echo "Torna alla home.";
     die();
@@ -14,20 +12,20 @@ require_once "inc/navbar.php";  //NAV BAR DA SISTEMARE
 
 $page_info_title = "INSERISCI UN NUOVO PRODOTTO";
 
-$id =1;
 $nome = $qta = $prezzo = $descrizione = "";
 
 $catalogo = readFileJson("data/products.json");
 
+$id = 0;
+
 if (isset($_REQUEST["id"])) {
-    $id= $_REQUEST["id"];
+    $id = $_REQUEST["id"];
     $page_info_title = "MODIFICA DI UN PRODOTTO";
 
     foreach ($catalogo as $catName => $categorie) {
         foreach ($catalogo[$catName] as $key => $prodotto) {
 
-            if (isset ($prodotto['id_product']))
-            {
+            if (isset($prodotto['id_product'])) {
                 if ($_REQUEST["id"] == $prodotto['id_product']) {
                     if (isset($prodotto['id'])) {
                         $id = $prodotto['id_product'];
@@ -40,39 +38,36 @@ if (isset($_REQUEST["id"])) {
                     }
                 }
             }
-
         }
     }
+} else {
+    $id = getNewIdToInsert($catalogo);
 }
-
 ?>
 
-
-
 <h3><?= $page_info_title; ?></h3>
-
 
 <div class="col-sm-6">
     <form method="POST" action="save_product.php" enctype="multipart/form-data" onsubmit="return verifyPassword();">
         <div class="form-group">
             <label for="nome">Id prodotto</label>
-            <input type="number" class="form-control" id="id_product" name="id_product" value="<?=$id;?>" readonly>
+            <input type="number" class="form-control" id="id_product" name="id_product" value="<?= $id; ?>" readonly>
         </div>
         <div class="form-group">
             <label for="nome">Nome</label>
-            <input type="text" class="form-control" id="nome" name="nome" value="<?=$nome;?>" required>
+            <input type="text" class="form-control" id="nome" name="nome" value="<?= $nome; ?>" required>
         </div>
         <div class="form-group">
             <label for="quantita">Quantità</label>
-            <input type="number" class="form-control" id="qta" name="qta"  value="<?=$qta;?>"required>
+            <input type="number" class="form-control" id="qta" name="qta" value="<?= $qta; ?>" required>
         </div>
         <div class="form-group">
             <label for="descrizione">Descrizione</label>
-            <input type="text" class="form-control" id="descrizione" name="descrizione" value="<?=$descrizione;?>" required>
+            <input type="text" class="form-control" id="descrizione" name="descrizione" value="<?= $descrizione; ?>" required>
         </div>
         <div class="form-group">
             <label for="prezzo">Prezzo</label>
-            <input type="number" class="form-control" step="0.1" id="prezzo" name="prezzo" value="<?=$prezzo;?>" required>
+            <input type="number" class="form-control" step="0.1" id="prezzo" name="prezzo" value="<?= $prezzo; ?>" required>
         </div>
         <div class="form-group">
             <label for="categoria">Categoria</label>
