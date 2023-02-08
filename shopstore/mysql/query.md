@@ -62,3 +62,21 @@ FROM `actor`
 	LEFT JOIN `film_actor` ON `film_actor`.`actor_id` = `actor`.`actor_id` 
 	LEFT JOIN `film` ON `film_actor`.`film_id` = `film`.`film_id`
 	, `category`;
+
+ESEMPI per INSERT
+ INSERT INTO actor (first_name, last_name) VALUES ("Stefano", "Accorsi");
+
+INSERT INTO actor (first_name, last_name) VALUES ("Pierfrancesco", "Favino"), ("Sophia", "Loren"), ("Alessandro", "Borghi");
+
+
+film
+2 italiano
+INSERT INTO film (title,description,language_id) VALUES ("L'ulitmo bacio","L'ultimo bacio è un film del 2001 scritto e diretto da Gabriele Muccino, con Stefano Accorsi, Giovanna Mezzogiorno, Stefania Sandrelli e Martina Stella nella sua prima apparizione cinematografica.", 2);
+
+ insert into film_actor (actor_id,film_id) VALUES (201,1001);
+
+ insert into film_category (film_id,category_id) VALUES (1001,5);
+
+ select * from actor_info where last_name like "%accorsi%";
+
+//Mettere tracciato degli INSERT per il database e-commerce

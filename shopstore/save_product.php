@@ -12,6 +12,8 @@ if ($catalogo == null) {
 
 //TODO gestire update
 
+//check se id esiste già -> update -> $_REQUEST
+
 $catalogo[strtolower($_REQUEST['category'])][] = $_REQUEST;
 
 $result = updateFileJson($catalogo, "data/products.json");
