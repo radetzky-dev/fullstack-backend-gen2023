@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Feb 08, 2023 alle 13:28
+-- Creato il: Feb 08, 2023 alle 14:14
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.1.12
 
@@ -111,6 +111,13 @@ CREATE TABLE `orders` (
   `last_update` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `orders`
+--
+
+INSERT INTO `orders` (`id`, `order_num`, `costumer_id`, `creation_date`, `last_update`) VALUES
+(1, 'FAT-1', 1, '2023-02-08 13:45:17', '2023-02-08 12:45:17');
+
 -- --------------------------------------------------------
 
 --
@@ -126,6 +133,31 @@ CREATE TABLE `order_details` (
   `last_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `creation_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `order_details`
+--
+
+INSERT INTO `order_details` (`id`, `product_id`, `order_id`, `quantity`, `actual_single_price`, `last_update`, `creation_date`) VALUES
+(1, 9, 1, 1, '65.90', '2023-02-08 12:49:26', '2023-02-08 13:49:26'),
+(2, 4, 1, 2, '7.49', '2023-02-08 12:49:59', '2023-02-08 13:49:59'),
+(3, 7, 1, 3, '66.00', '2023-02-08 12:50:27', '2023-02-08 13:50:27');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura stand-in per le viste `ordini_clienti`
+-- (Vedi sotto per la vista effettiva)
+--
+CREATE TABLE `ordini_clienti` (
+`NUM.ORD` varchar(30)
+,`DATA` datetime
+,`NOME` varchar(45)
+,`COGNOME` varchar(45)
+,`PRODOTTO` varchar(45)
+,`QTA` smallint(5) unsigned
+,`PREZZO` decimal(10,2)
+);
 
 -- --------------------------------------------------------
 
@@ -153,7 +185,11 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`id`, `name`, `description`, `price`, `quantity`, `image`, `category_id`, `last_update`, `creation_date`, `available`) VALUES
 (3, 'martello', 'per piantare i chiodi', '3.99', 5, NULL, 2, '2023-02-08 12:24:06', '2023-02-08 13:24:06', b'1'),
 (4, 'rastrello', 'per raccogliere le foglie', '7.49', 3, NULL, 3, '2023-02-08 12:26:04', '2023-02-08 13:26:04', b'1'),
-(5, 'laptop', 'computer con UBUNTU', '299.49', 7, NULL, 4, '2023-02-08 12:27:06', '2023-02-08 13:27:06', b'1');
+(5, 'laptop', 'computer con UBUNTU', '299.49', 7, NULL, 4, '2023-02-08 12:27:06', '2023-02-08 13:27:06', b'1'),
+(7, 'forbice potatura', 'forbice da giardino', '8.90', 9, NULL, 3, '2023-02-08 12:42:29', '2023-02-08 13:42:29', b'1'),
+(8, 'carriola', 'carriola per agricoltura', '59.90', 5, NULL, 3, '2023-02-08 12:42:29', '2023-02-08 13:42:29', b'1'),
+(9, 'tavoletta grafica', 'Tavoletta grafica con schermo touch', '149.50', 3, NULL, 4, '2023-02-08 12:42:29', '2023-02-08 13:42:29', b'1'),
+(10, 'scopa elettrica', 'Scopa Elettrica Ricaricabile 2in1', '70.00', 7, NULL, 4, '2023-02-08 12:42:29', '2023-02-08 13:42:29', b'1');
 
 -- --------------------------------------------------------
 
@@ -178,6 +214,15 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `surname`, `email`, `user`, `password`, `last_update`, `creation_date`) VALUES
 (1, 'Paolo', 'Rossi', 'admin@admin.it', 'admin', 'admin', '2023-02-08 12:04:05', '2023-02-08 13:03:17');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura per vista `ordini_clienti`
+--
+DROP TABLE IF EXISTS `ordini_clienti`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `ordini_clienti`  AS SELECT `orders`.`order_num` AS `NUM.ORD`, `orders`.`creation_date` AS `DATA`, `costumers`.`name` AS `NOME`, `costumers`.`surname` AS `COGNOME`, `products`.`name` AS `PRODOTTO`, `order_details`.`quantity` AS `QTA`, `order_details`.`actual_single_price` AS `PREZZO` FROM (((`orders` join `costumers` on(`costumers`.`id` = `orders`.`costumer_id`)) left join `order_details` on(`order_details`.`order_id` = `orders`.`id`)) left join `products` on(`order_details`.`product_id` = `products`.`id`))  ;
 
 --
 -- Indici per le tabelle scaricate
@@ -258,19 +303,19 @@ ALTER TABLE `costumers`
 -- AUTO_INCREMENT per la tabella `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT per la tabella `users`
