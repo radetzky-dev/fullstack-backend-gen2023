@@ -122,6 +122,5 @@ INSERT INTO costumers (name, surname, email, society, phone, address_id, user, p
  insert into products (name, description, price, quantity,category_id,creation_date) VALUE ("laptop", "computer con UBUNTU","299.49",7,4,NOW());
 
 
-insert 5 costumers (user e pwd guest1 guest1 -> guest2 guest2)
-
+TODO
 //creare una vista per ordini con dettagli e totale
