@@ -137,13 +137,10 @@ insert into order_details (product_id, order_id, quantity, actual_single_price, 
 
 insert into order_details (product_id, order_id, quantity, actual_single_price, creation_date) VALUES (7,1,3,"66",NOW());
 
-TODO
-//creare una vista per ordini con dettagli e totale
 
-DATE_FORMAT('2009-10-04 22:23:00', '%W %M %Y');
 
-CREATE VIEW ordini_clienti AS
-SELECT orders.order_num as "NUM.ORD", orders.creation_date AS "DATA", costumers.name as "NOME", costumers.surname As "COGNOME", products.name AS "PRODOTTO",
+ALTER VIEW ordini_clienti AS
+SELECT orders.order_num as "NUM.ORD", DATE_FORMAT(orders.creation_date, '%d %m %Y') AS "DATA", costumers.name as "NOME", costumers.surname As "COGNOME", products.name AS "PRODOTTO",
 order_details.quantity as "QTA", order_details.actual_single_price AS "PREZZO"
 FROM orders 
 INNER JOIN costumers ON costumers.id = orders.costumer_id
