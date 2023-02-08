@@ -88,5 +88,10 @@ UPDATE
  UPDATE  actor SET last_name = UPPER('cruz') WHERE actor_id = 1;
  UPDATE  actor SET first_name = UPPER('Russell') WHERE actor_id = 105;
 
+INSERT INTO film (title,release_year,description, language_id, rental_duration,rental_rate, length, replacement_cost, rating,special_features) VALUES ("Top Gun",1986,"As students at the United States Navy's elite fighterweapons school compete to be best in the class",1,6,4.99,110,20.99, "G","Trailers,Commentaries");
+
+insert into film_category (film_id,category_id) VALUES (1002,1),(1002,7);
+
+insert into film_text (film_id,title,description) VALUES (1002,"Top Gun","As students at the United States Navy's elite fighterweapons school compete to be best in the class");
 
 //Mettere tracciato degli INSERT per il database e-commerce
