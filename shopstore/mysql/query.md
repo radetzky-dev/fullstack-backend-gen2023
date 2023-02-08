@@ -94,4 +94,26 @@ insert into film_category (film_id,category_id) VALUES (1002,1),(1002,7);
 
 insert into film_text (film_id,title,description) VALUES (1002,"Top Gun","As students at the United States Navy's elite fighterweapons school compete to be best in the class");
 
+SELECT MAX(Price) AS HighertPrice, MIN(Price) AS SmallestPrice, AVG(Price) AS Media , COUNT(Price) AS quanti, 
+sum(Price) as Totale
+
+FROM Products;
+
 //Mettere tracciato degli INSERT per il database e-commerce
+
+
+INSERT INTO users (name, surname, email, user, password, creation_date) VALUES ("Mario", "Rossi", "admin@admin.it", "admin", "admin", NOW());
+
+INSERIRE INDIRIZZO
+insert into addresses (address,city,state,zip,creation_date) VALUES ("piazza Duomo","Milano","Italia","20100", NOW());
+insert into addresses (address,city,state,zip,creation_date) VALUES ("piazza Mazzini","Roma","Italia","00144", NOW());
+insert into addresses (address,city,state,zip,creation_date) VALUES ("via Indipendenza","Napoli","Italia","80016", NOW());
+
+INSERT INTO costumers (name, surname, email, society, phone, address_id, user, password, creation_date) VALUES ("Federico", "Verdi", "guest1@guest.it", "society1", "3772711234", 1, "guest1", "guest1", NOW());
+ INSERT INTO costumers (name, surname, email, society, phone, address_id, user, password, creation_date) VALUES ("Mario", "Bianchi", "guest2@guest.it", "society2", "3772733334", 2, "guest2", "guest2", NOW());
+ INSERT INTO costumers (name, surname, email, society, phone, address_id, user, password, creation_date) VALUES ("Patrizia", "Rossi", "guest3@guest.it", "society3", "36672733334", 3, "guest3", "guest3", NOW());
+
+
+insert 5 costumers (user e pwd guest1 guest1 -> guest2 guest2)
+
+//creare una vista per ordini con dettagli e totale
