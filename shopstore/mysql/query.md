@@ -79,4 +79,14 @@ INSERT INTO film (title,description,language_id) VALUES ("L'ulitmo bacio","L'ult
 
  select * from actor_info where last_name like "%accorsi%";
 
+ INSERT INTO actor (first_name, last_name) VALUES ("Paolo", "Rossi");
+
+ delete from actor where actor_id=LAST_INSERT_ID();	
+
+
+UPDATE
+ UPDATE  actor SET last_name = UPPER('cruz') WHERE actor_id = 1;
+ UPDATE  actor SET first_name = UPPER('Russell') WHERE actor_id = 105;
+
+
 //Mettere tracciato degli INSERT per il database e-commerce
