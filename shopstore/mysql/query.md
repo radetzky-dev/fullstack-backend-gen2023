@@ -113,6 +113,14 @@ INSERT INTO costumers (name, surname, email, society, phone, address_id, user, p
  INSERT INTO costumers (name, surname, email, society, phone, address_id, user, password, creation_date) VALUES ("Mario", "Bianchi", "guest2@guest.it", "society2", "3772733334", 2, "guest2", "guest2", NOW());
  INSERT INTO costumers (name, surname, email, society, phone, address_id, user, password, creation_date) VALUES ("Patrizia", "Rossi", "guest3@guest.it", "society3", "36672733334", 3, "guest3", "guest3", NOW());
 
+ insert into categories (name,description) VALUES ("UTENSILI" ,"tutto per il bricolage");
+ insert into categories (name,description) VALUES ("GIARDINAGGIO" ,"cura orto e giardino");
+ insert into categories (name,description) VALUES ("ELETTRODOMESTICI" ,"dalla lavatrice al laptop");
+
+ insert into products (name, description, price, quantity,category_id,creation_date) VALUE ("martello", "per piantare i chiodi","3.99",5,2,NOW());
+ insert into products (name, description, price, quantity,category_id,creation_date) VALUE ("rastrello", "per raccogliere le foglie","7.49",3,3,NOW());
+ insert into products (name, description, price, quantity,category_id,creation_date) VALUE ("laptop", "computer con UBUNTU","299.49",7,4,NOW());
+
 
 insert 5 costumers (user e pwd guest1 guest1 -> guest2 guest2)
 
