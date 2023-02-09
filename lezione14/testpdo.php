@@ -22,15 +22,15 @@ function pdoConnect()
 function showResults($dbStatement): bool
 {
     try {
-        while ($row = $dbStatement->fetch()) {
-            foreach ($row as $key => $value) {
-                if (!is_numeric($key))
-                {
-                    echo "[$key] - $value <br>";
+        $catalogo = $dbStatement->fetchAll();
+        foreach ($catalogo as $index => $values) {
+            foreach ($catalogo[$index] as $key => $value) {
+                if (!is_numeric($key)) {
+                    echo "$key: $value ";
                 }
             }
+            echo '<hr>';
         }
-        echo "<hr>";
         return true;
     } catch (Exception $e) {
         echo "Errore nella visualizzazione dei dati " . $e->getMessage();
@@ -73,8 +73,38 @@ if ($db) {
     getQueryResults($query, $db, ['findSurname' => 'Bianchi']);
     getQueryResults($query, $db, ['findSurname' => 'Rossi']);
 
+    //ESEMPIO con LIKE
     $query = "SELECT name, surname, society FROM costumers WHERE society LIKE :paramSociety";
     getQueryResults($query, $db, ['paramSociety' => '%soc%']);
+
+    //ESEMPIO con paramentro ?
+    $query = "SELECT name, surname FROM costumers WHERE surname LIKE ?";
+    getQueryResults($query, $db, array("%Bi%"));
+
+    //INSERT
+
+    $names = ["gianni", "paola", "fulvio", "remo", "giulia"];
+    $surnames = ["Green", "Red", "Blue", "Pink", "Yellow"];
+
+    //FAKER
+    $name = ucfirst($names[random_int(0, 4)]);
+    $surname = ucfirst($surnames[random_int(0, 4)]);
+    $mail =  strtolower("$name.$surname@$surname.com");
+    $number= random_int(1000, 100000);
+    $society= "society".$number;
+    $user=$pwd = "guest".$number;
+    $phone = "333-".$number;
+    $id_address = random_int(1, 3);
+
+    echo "$name $surname $mail $society $user $pwd $phone";
+
+    $insertQuery ="INSERT INTO costumers (name, surname, email, society, phone, address_id, user, password, creation_date) VALUES ('$name', '$surname', '$mail', '$society', '$phone', $id_address, '$user', '$pwd', '');";
+
+
+    /*
+ INSERT INTO costumers (name, surname, email, society, phone, address_id, user, password, creation_date) VALUES (Giulia, Green, giulia.green@green.com, society87466, 333-87466, 3, guest87466, guest87466, NOW())
+    */
+    getQueryResults($insertQuery, $db);
 
     //Disconnect
     if ($db) {
