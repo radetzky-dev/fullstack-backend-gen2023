@@ -1,5 +1,4 @@
 <?php
-
 putenv("DB_HOSTNAME=localhost");
 putenv("DB_NAME=musadbshop");
 putenv("DB_USER=root");
@@ -14,19 +13,41 @@ function pdoConnect()
     }
 }
 
+/**
+ * getResults
+ *
+ * @param  mixed $query
+ * @param  mixed $db
+ * @return PDOStatement
+ */
+function getQueryResults(string $query, PDO $db, array $execParams = null): PDOStatement | bool
+{
+    try {
+        $dbStatement = $db->prepare($query, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+        if (!is_null($execParams)) {
+            return $dbStatement->execute($execParams);
+        } else {
+            return $dbStatement->execute();
+        }
+    } catch (PDOException $e) {
+        echo "Si è verificato un errore nella query $query " . $e->getMessage();
+        return false;
+    }
+}
+
 $db = pdoConnect();
 
 if ($db) {
     try {
-        //DA ESTRAPOLARE
         $query = 'SELECT * from costumers';
-        $dbStatement = $db->prepare($query, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
-        $dbStatement->execute();
 
-        while ($row = $dbStatement->fetch()) {
-            echo "<pre>";
-            print_r($row);
-            echo "</pre>";
+        $dbStatement = getQueryResults($query, $db);
+        if ($dbStatement instanceof PDOStatement) {
+            while ($row = $dbStatement->fetch()) {
+                echo "<pre>";
+                print_r($row);
+                echo "</pre>";
+            }
         }
 
         $query = "SELECT name, surname FROM costumers WHERE surname = :findSurname";
@@ -51,15 +72,9 @@ if ($db) {
         echo "<pre>";
         print_r($dbStatement->fetchAll());
         echo "</pre>";
-        
-
     } catch (PDOException $e) {
         echo "Si è verificato un errore. Impossibile procedere " . $e->getMessage();
     }
-
-
-    // $sth->execute(['calories' => 150, 'colour' => 'red']);
-    // $red = $sth->fetchAll();
 
     //Disconnect
     if ($db) {
