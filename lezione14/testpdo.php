@@ -31,6 +31,7 @@ if ($db) {
 
         $query = "SELECT name, surname FROM costumers WHERE surname = :findSurname";
         $dbStatement = $db->prepare($query, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+
         $dbStatement->execute(['findSurname' => 'Bianchi']);
         echo "Cerco Bianchi<br>";
         echo "<pre>";
@@ -39,6 +40,14 @@ if ($db) {
 
         $dbStatement->execute(['findSurname' => 'Rossi']);
         echo "Cerco Rossi<br>";
+        echo "<pre>";
+        print_r($dbStatement->fetchAll());
+        echo "</pre>";
+
+        $query = "SELECT name, surname, society FROM costumers WHERE society LIKE :paramSociety";
+        $dbStatement = $db->prepare($query, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+        $dbStatement->execute(['paramSociety' => '%soc%']);
+        echo "LIKE esempio<br>";
         echo "<pre>";
         print_r($dbStatement->fetchAll());
         echo "</pre>";
