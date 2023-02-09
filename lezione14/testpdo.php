@@ -14,21 +14,49 @@ function pdoConnect()
 }
 
 /**
- * getResults
+ * showResults
+ *
+ * @param  mixed $dbStatement
+ * @return bool
+ */
+function showResults($dbStatement): bool
+{
+    try {
+        while ($row = $dbStatement->fetch()) {
+            foreach ($row as $key => $value) {
+                if (!is_numeric($key))
+                {
+                    echo "[$key] - $value <br>";
+                }
+            }
+        }
+        echo "<hr>";
+        return true;
+    } catch (Exception $e) {
+        echo "Errore nella visualizzazione dei dati " . $e->getMessage();
+        return false;
+    }
+}
+
+
+/**
+ * getQueryResults
  *
  * @param  mixed $query
  * @param  mixed $db
+ * @param  mixed $execParams
  * @return PDOStatement
  */
-function getQueryResults(string $query, PDO $db, array $execParams = null): PDOStatement | bool
+function getQueryResults(string $query, PDO $db, array $execParams = null): bool
 {
     try {
         $dbStatement = $db->prepare($query, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
         if (!is_null($execParams)) {
-            return $dbStatement->execute($execParams);
+            $dbStatement->execute($execParams);
         } else {
-            return $dbStatement->execute();
+            $dbStatement->execute();
         }
+        return showResults($dbStatement);
     } catch (PDOException $e) {
         echo "Si è verificato un errore nella query $query " . $e->getMessage();
         return false;
@@ -38,43 +66,15 @@ function getQueryResults(string $query, PDO $db, array $execParams = null): PDOS
 $db = pdoConnect();
 
 if ($db) {
-    try {
-        $query = 'SELECT * from costumers';
+    $query = 'SELECT * from costumers';
+    getQueryResults($query, $db);
 
-        $dbStatement = getQueryResults($query, $db);
-        if ($dbStatement instanceof PDOStatement) {
-            while ($row = $dbStatement->fetch()) {
-                echo "<pre>";
-                print_r($row);
-                echo "</pre>";
-            }
-        }
+    $query = "SELECT name, surname FROM costumers WHERE surname = :findSurname";
+    getQueryResults($query, $db, ['findSurname' => 'Bianchi']);
+    getQueryResults($query, $db, ['findSurname' => 'Rossi']);
 
-        $query = "SELECT name, surname FROM costumers WHERE surname = :findSurname";
-        $dbStatement = $db->prepare($query, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
-
-        $dbStatement->execute(['findSurname' => 'Bianchi']);
-        echo "Cerco Bianchi<br>";
-        echo "<pre>";
-        print_r($dbStatement->fetchAll());
-        echo "</pre>";
-
-        $dbStatement->execute(['findSurname' => 'Rossi']);
-        echo "Cerco Rossi<br>";
-        echo "<pre>";
-        print_r($dbStatement->fetchAll());
-        echo "</pre>";
-
-        $query = "SELECT name, surname, society FROM costumers WHERE society LIKE :paramSociety";
-        $dbStatement = $db->prepare($query, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
-        $dbStatement->execute(['paramSociety' => '%soc%']);
-        echo "LIKE esempio<br>";
-        echo "<pre>";
-        print_r($dbStatement->fetchAll());
-        echo "</pre>";
-    } catch (PDOException $e) {
-        echo "Si è verificato un errore. Impossibile procedere " . $e->getMessage();
-    }
+    $query = "SELECT name, surname, society FROM costumers WHERE society LIKE :paramSociety";
+    getQueryResults($query, $db, ['paramSociety' => '%soc%']);
 
     //Disconnect
     if ($db) {
