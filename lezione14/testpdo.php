@@ -95,15 +95,13 @@ if ($db) {
     $user=$pwd = "guest".$number;
     $phone = "333-".$number;
     $id_address = random_int(1, 3);
+    $date = date('Y-m-d H:i:s');
 
-    echo "$name $surname $mail $society $user $pwd $phone";
+    echo "$name $surname $mail $society $user $pwd $phone $date";
 
-    $insertQuery ="INSERT INTO costumers (name, surname, email, society, phone, address_id, user, password, creation_date) VALUES ('$name', '$surname', '$mail', '$society', '$phone', $id_address, '$user', '$pwd', '');";
+    
+    $insertQuery ="INSERT INTO costumers (name, surname, email, society, phone, address_id, user, password, creation_date) VALUES (\"$name\", \"$surname\", \"$mail\", \"$society\", \"$phone\", $id_address, \"$user\", \"$pwd\",\"$date\")";
 
-
-    /*
- INSERT INTO costumers (name, surname, email, society, phone, address_id, user, password, creation_date) VALUES (Giulia, Green, giulia.green@green.com, society87466, 333-87466, 3, guest87466, guest87466, NOW())
-    */
     getQueryResults($insertQuery, $db);
 
     //Disconnect
