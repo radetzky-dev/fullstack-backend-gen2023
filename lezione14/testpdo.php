@@ -56,6 +56,9 @@ function getQueryResults(string $query, PDO $db, array $execParams = null): bool
         } else {
             $dbStatement->execute();
         }
+        //debug
+        $dbStatement->debugDumpParams();
+
         return showResults($dbStatement);
     } catch (PDOException $e) {
         echo "Si è verificato un errore nella query $query " . $e->getMessage();
@@ -99,10 +102,15 @@ if ($db) {
 
     echo "$name $surname $mail $society $user $pwd $phone $date";
 
-    
     $insertQuery ="INSERT INTO costumers (name, surname, email, society, phone, address_id, user, password, creation_date) VALUES (\"$name\", \"$surname\", \"$mail\", \"$society\", \"$phone\", $id_address, \"$user\", \"$pwd\",\"$date\")";
 
     getQueryResults($insertQuery, $db);
+
+
+    //DELETE inf id > 8
+
+    $deleteQuery ="DELETE FROM costumers WHERE phone LIKE \"%333-%\" LIMIT 1";
+    getQueryResults($deleteQuery, $db);
 
     //Disconnect
     if ($db) {
