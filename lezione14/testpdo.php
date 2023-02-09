@@ -100,10 +100,9 @@ if ($db) {
     $id_address = random_int(1, 3);
     $date = date('Y-m-d H:i:s');
 
-    echo "$name $surname $mail $society $user $pwd $phone $date";
+    //echo "$name $surname $mail $society $user $pwd $phone $date";
 
     $insertQuery ="INSERT INTO costumers (name, surname, email, society, phone, address_id, user, password, creation_date) VALUES (\"$name\", \"$surname\", \"$mail\", \"$society\", \"$phone\", $id_address, \"$user\", \"$pwd\",\"$date\")";
-
     getQueryResults($insertQuery, $db);
 
 
