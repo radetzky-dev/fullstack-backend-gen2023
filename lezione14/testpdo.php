@@ -22,7 +22,27 @@ if ($db) {
         $query = 'SELECT * from costumers';
         $dbStatement = $db->prepare($query, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
         $dbStatement->execute();
-        echo "Query lanciata con successo";
+
+        while ($row = $dbStatement->fetch()) {
+            echo "<pre>";
+            print_r($row);
+            echo "</pre>";
+        }
+
+        $query = "SELECT name, surname FROM costumers WHERE surname = :findSurname";
+        $dbStatement = $db->prepare($query, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+        $dbStatement->execute(['findSurname' => 'Bianchi']);
+        echo "Cerco Bianchi<br>";
+        echo "<pre>";
+        print_r($dbStatement->fetchAll());
+        echo "</pre>";
+
+        $dbStatement->execute(['findSurname' => 'Rossi']);
+        echo "Cerco Rossi<br>";
+        echo "<pre>";
+        print_r($dbStatement->fetchAll());
+        echo "</pre>";
+        
 
     } catch (PDOException $e) {
         echo "Si è verificato un errore. Impossibile procedere " . $e->getMessage();
