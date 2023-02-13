@@ -7,12 +7,24 @@ class Vegetable
     public $edible;
     public $color;
     public $name;
+    public int $pimentLevel=0;
 
     public function __construct($name, $edible, $color = "green")
     {
         $this->edible = $edible;
         $this->color = $color;
         $this->name = $name;
+    }
+
+    public function aggiungiPiccante()
+    {
+        $this->pimentLevel+=1;
+        $this->showPiccante();
+    }
+
+    private function showPiccante()
+    {
+        echo "Il livello di piccantezza è ".$this->pimentLevel.'<br>';
     }
 
     public function isEdible()
@@ -56,6 +68,8 @@ class Spinach extends Vegetable
 $vegGreen = new Vegetable("asparago", true);
 echo "Veg: ".$vegGreen->getName()." :";
 
+$vegGreen->aggiungiPiccante();
+
 if ($vegGreen->isEdible()) {
     echo "<br>Si può mangiare";
 } else {
@@ -63,6 +77,9 @@ if ($vegGreen->isEdible()) {
 }
 
 echo "<br>Che colore ?" . $vegGreen->getColor();
+
+$vegGreen->aggiungiPiccante();
+
 
 echo "<hr>";
 $vegBlue = new Vegetable("mango blu", false, "blue");
