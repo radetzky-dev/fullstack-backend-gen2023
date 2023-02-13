@@ -35,24 +35,45 @@ function dbDisconnection(mysqli $db): bool
     }
 }
 
-
-
 /**
  * showResult
  *
  * @param  mixed $query
  * @param  mixed $dbConnection
  * @param  mixed $fields
+ * @param  mixed $extraClause
  * @return void
  */
-function showResult($query, $dbConnection, $fields)
+function showResult($query, $dbConnection, $fields, $extraClause="")
+{
+        $query = $query . ' '.$extraClause;
+        $result = $dbConnection->query($query);
+        printf("Risultati ottenuti: %d <br>", $result->num_rows);
+
+        while ($row = $result->fetch_assoc()) {
+            foreach ($fields as $fieldName) {
+                echo $row[$fieldName].' ';
+            }
+            echo '<br>';
+        }
+}
+
+/**
+ * showResultObj
+ *
+ * @param  mixed $query
+ * @param  mixed $dbConnection
+ * @param  mixed $fields
+ * @return void
+ */
+function showResultObj($query, $dbConnection, $fields)
 {
         $result = $dbConnection->query($query);
         printf("Risultati ottenuti: %d <br>", $result->num_rows);
     
-        while ($row = $result->fetch_assoc()) {
+        while ($obj = $result->fetch_object()) {
             foreach ($fields as $fieldName) {
-                echo $row[$fieldName].' ';
+                echo $obj->$fieldName.' ';
             }
             echo '<br>';
         }
@@ -68,7 +89,10 @@ if ($dbConnection) {
     echo "<hr>";
 
     $fields = ['name','surname','society', 'email','user'];
-    showResult("SELECT * FROM costumers", $dbConnection, $fields);
+    $whereClause = "WHERE surname like '%White%'";
+    showResult("SELECT * FROM costumers", $dbConnection, $fields, $whereClause);
+    echo "<hr>";
+    showResultObj("SELECT * FROM costumers", $dbConnection, $fields);
 
     echo "Disconnessione dal db..." . dbDisconnection($dbConnection);
 }
