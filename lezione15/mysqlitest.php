@@ -87,7 +87,7 @@ function showResultObj($query, $dbConnection, $fields)
  * @param  mixed $fields
  * @return bool
  */
-function insertProducts($dbConnection, $fields) : bool
+function insertProducts($dbConnection, $fields): bool
 {
     $stmt = $dbConnection->prepare("insert into products (name, description, price, quantity,category_id,creation_date) VALUES (?,?,?,?,?,?)");
     if ($stmt->execute($fields)) {
@@ -95,6 +95,44 @@ function insertProducts($dbConnection, $fields) : bool
         return true;
     }
     return false;
+}
+
+/**
+ * updateProducts
+ *
+ * @param  mixed $dbConnection
+ * @param  mixed $fields
+ * @param  mixed $id
+ * @return bool
+ */
+function updateProducts($dbConnection, $fields, $id): bool
+{
+    $stmt = $dbConnection->prepare("update products SET name = ?, description = ?, price = ?, quantity = ?,category_id = ? where id=$id");
+    if ($stmt->execute($fields)) {
+        echo "Aggiornamento record con id = $id avvenuto con successo!<br>";
+        return true;
+    }
+    return false;
+}
+
+/**
+ * deleteProducts
+ *
+ * @param  mixed $dbConnection
+ * @param  mixed $id
+ * @return bool
+ */
+function deleteProducts($dbConnection, $tableName, $id): bool
+{
+    $sql = "DELETE FROM $tableName WHERE id=$id";
+
+    if ($dbConnection->query($sql) === true) {
+        echo "Record con id $id deleted successfully";
+        return true;
+    } else {
+        echo "Error deleting record: " . $dbConnection->error;
+        return false;
+    }
 }
 
 $dbConnection = getDbConnection();
@@ -111,15 +149,29 @@ if ($dbConnection) {
     echo '<hr>';
 
     $name = "Vanga";
-    $description = "scava";
-    $price = 18.5;
-    $qt = 4;
+    $description = "scava bene";
+    $price = 19.5;
+    $qt = 5;
     $category_id = 3;
     $date = date('Y-m-d H:i:s');
     $fields = [$name, $description, $price, $qt, $category_id, $date];
     insertProducts($dbConnection, $fields);
 
-    $fields = ['name', 'quantity', 'price'];
+    //Last insert id
+    $last_id = $dbConnection->insert_id;
+    printf("Nuovo record ha ID %d.<br>", $last_id);
+
+    $name = "Vanga XXL";
+    $fields = [$name, $description, $price, $qt, $category_id];
+    updateProducts($dbConnection, $fields, $last_id);
+
+    $fields = ['id', 'name', 'quantity', 'price'];
+    showResult("SELECT * FROM products", $dbConnection, $fields);
+    echo "<hr>";
+
+    deleteProducts($dbConnection, "products",$last_id);
+
+    $fields = ['id', 'name', 'quantity', 'price'];
     showResult("SELECT * FROM products", $dbConnection, $fields);
     echo "<hr>";
 
