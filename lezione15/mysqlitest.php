@@ -36,12 +36,35 @@ function dbDisconnection(mysqli $db): bool
 }
 
 
+/**
+ * showResult
+ *
+ * @param  mixed $query
+ * @param  mixed $dbConnection
+ * @return void
+ */
+function showResult($query, $dbConnection, $fields) //TODO array campi da visualizzare
+{
+        $result = $dbConnection->query($query);
+        printf("Risultati ottenuti: %d <br>", $result->num_rows);
+    
+        while ($row = $result->fetch_assoc()) {
+
+            
+
+            echo $row['name'].' qt:'.$row['quantity'].'  €.'.$row['price'].'<br>';
+        }
+}
+
 $dbConnection = getDbConnection();
 
 if ($dbConnection) {
     echo "Connessione avvenuta con successo!<br>";
 
-    //query ecc
+    $fields = ['name','quantity','price'];
+    showResult("SELECT name,quantity,price FROM products", $dbConnection, $fields);
+
+    //showResult("SELECT name,surname,price FROM costumers", $dbConnection);
 
     echo "Disconnessione dal db..." . dbDisconnection($dbConnection);
 }
