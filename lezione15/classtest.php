@@ -2,6 +2,8 @@
 
 //Doc: https://www.php.net/manual/en/classobj.examples.php
 
+//Esempi: https://howto.webarea.it/php/classi-metodi-proprieta-in-php_174
+
 class Vegetable
 {
     public $edible;
@@ -47,11 +49,18 @@ class Vegetable
 class Spinach extends Vegetable
 {
     public $cooked = true;
+    public static $consitency ="Very good";
+    public static $cooktime = 10;
 
     public function __construct()
     {
         parent::__construct("spinacio", true, "green");
         
+    }
+
+    public static function cookDuration()
+    {
+        return self::$cooktime;
     }
 
     public function cook()
@@ -93,8 +102,13 @@ echo "<br>Che colore ?" . $vegBlue->getColor();
 
 
 echo "<hr>";
+
+echo "<br>Test: " .Spinach::$consitency;
+echo "<br>Duration: " .Spinach::cookDuration();
+
 $vegSpinacio = new Spinach();
-echo "Veg: ".$vegSpinacio->getName()." :";
+echo "<br>Veg: ".$vegSpinacio->getName()." :";
+echo "Consistenza ". $vegSpinacio::$consitency.'<br>';
 if ($vegSpinacio->isEdible()) {
     echo "<br>Si può mangiare";
 } else {
