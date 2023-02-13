@@ -44,18 +44,18 @@ function dbDisconnection(mysqli $db): bool
  * @param  mixed $extraClause
  * @return void
  */
-function showResult($query, $dbConnection, $fields, $extraClause="")
+function showResult($query, $dbConnection, $fields, $extraClause = "")
 {
-        $query = $query . ' '.$extraClause;
-        $result = $dbConnection->query($query);
-        printf("Risultati ottenuti: %d <br>", $result->num_rows);
+    $query = $query . ' ' . $extraClause;
+    $result = $dbConnection->query($query);
+    printf("Risultati ottenuti: %d <br>", $result->num_rows);
 
-        while ($row = $result->fetch_assoc()) {
-            foreach ($fields as $fieldName) {
-                echo $row[$fieldName].' ';
-            }
-            echo '<br>';
+    while ($row = $result->fetch_assoc()) {
+        foreach ($fields as $fieldName) {
+            echo $row[$fieldName] . ' ';
         }
+        echo '<br>';
+    }
 }
 
 /**
@@ -68,15 +68,15 @@ function showResult($query, $dbConnection, $fields, $extraClause="")
  */
 function showResultObj($query, $dbConnection, $fields)
 {
-        $result = $dbConnection->query($query);
-        printf("Risultati ottenuti: %d <br>", $result->num_rows);
-    
-        while ($obj = $result->fetch_object()) {
-            foreach ($fields as $fieldName) {
-                echo $obj->$fieldName.' ';
-            }
-            echo '<br>';
+    $result = $dbConnection->query($query);
+    printf("Risultati ottenuti: %d <br>", $result->num_rows);
+
+    while ($obj = $result->fetch_object()) {
+        foreach ($fields as $fieldName) {
+            echo $obj->$fieldName . ' ';
         }
+        echo '<br>';
+    }
 }
 
 $dbConnection = getDbConnection();
@@ -84,15 +84,35 @@ $dbConnection = getDbConnection();
 if ($dbConnection) {
     echo "Connessione avvenuta con successo!<br>";
 
-    $fields = ['name','quantity','price'];
-    showResult("SELECT * FROM products", $dbConnection, $fields);
-    echo "<hr>";
 
-    $fields = ['name','surname','society', 'email','user'];
+
+    $fields = ['name', 'surname', 'society', 'email', 'user'];
     $whereClause = "WHERE surname like '%White%'";
     showResult("SELECT * FROM costumers", $dbConnection, $fields, $whereClause);
     echo "<hr>";
     showResultObj("SELECT * FROM costumers", $dbConnection, $fields);
+
+    echo '<hr>';
+
+    // insert into products (name, description, price, quantity,category_id,creation_date) VALUE ("laptop", "computer con UBUNTU","299.49",7,4,NOW());
+
+    $stmt = $dbConnection->prepare("insert into products (name, description, price, quantity,category_id,creation_date) VALUES ( ?,?,?,?,?,?)");
+
+    $name = "Biscotti";
+    $description = "buoni per la colazione";
+    $price = 2.5;
+    $qt = 3;
+    $category_id = 3;
+    $date = date('Y-m-d H:i:s');
+
+    if ($stmt->execute([$name, $description, $price, $qt, $category_id, $date])) {
+        echo "Inserimento avvenuto con successo!<br>";
+    }
+
+
+    $fields = ['name', 'quantity', 'price'];
+    showResult("SELECT * FROM products", $dbConnection, $fields);
+    echo "<hr>";
 
     echo "Disconnessione dal db..." . dbDisconnection($dbConnection);
 }
