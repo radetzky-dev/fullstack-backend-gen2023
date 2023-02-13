@@ -79,12 +79,28 @@ function showResultObj($query, $dbConnection, $fields)
     }
 }
 
+
+/**
+ * insertProducts
+ *
+ * @param  mixed $dbConnection
+ * @param  mixed $fields
+ * @return bool
+ */
+function insertProducts($dbConnection, $fields) : bool
+{
+    $stmt = $dbConnection->prepare("insert into products (name, description, price, quantity,category_id,creation_date) VALUES (?,?,?,?,?,?)");
+    if ($stmt->execute($fields)) {
+        echo "Inserimento avvenuto con successo!<br>";
+        return true;
+    }
+    return false;
+}
+
 $dbConnection = getDbConnection();
 
 if ($dbConnection) {
     echo "Connessione avvenuta con successo!<br>";
-
-
 
     $fields = ['name', 'surname', 'society', 'email', 'user'];
     $whereClause = "WHERE surname like '%White%'";
@@ -94,21 +110,14 @@ if ($dbConnection) {
 
     echo '<hr>';
 
-    // insert into products (name, description, price, quantity,category_id,creation_date) VALUE ("laptop", "computer con UBUNTU","299.49",7,4,NOW());
-
-    $stmt = $dbConnection->prepare("insert into products (name, description, price, quantity,category_id,creation_date) VALUES ( ?,?,?,?,?,?)");
-
-    $name = "Biscotti";
-    $description = "buoni per la colazione";
-    $price = 2.5;
-    $qt = 3;
+    $name = "Vanga";
+    $description = "scava";
+    $price = 18.5;
+    $qt = 4;
     $category_id = 3;
     $date = date('Y-m-d H:i:s');
-
-    if ($stmt->execute([$name, $description, $price, $qt, $category_id, $date])) {
-        echo "Inserimento avvenuto con successo!<br>";
-    }
-
+    $fields = [$name, $description, $price, $qt, $category_id, $date];
+    insertProducts($dbConnection, $fields);
 
     $fields = ['name', 'quantity', 'price'];
     showResult("SELECT * FROM products", $dbConnection, $fields);
