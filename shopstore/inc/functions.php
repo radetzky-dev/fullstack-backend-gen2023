@@ -10,7 +10,7 @@ $shopName = "MusaShop";
  * @param  mixed $catName
  * @return void
  */
-function showCategory(array $catalogo, string $catName): void
+function showProductsJson(array $catalogo, string $catName): void
 {
     foreach ($catalogo[$catName] as $key => $prodotti) {
         if (is_array($prodotti)) {
@@ -79,37 +79,6 @@ function checkIfLast($qta)
     return $qta;
 }
 
-/**
- * showProductTable
- *
- * @param  mixed $catalogo
- * @return void
- */
-function showProductTable($catalogo)
-{
-?>
-    <table class="table table-bordered">
-        <thead thead class="thead-dark">
-            <tr>
-                <th>Id</th>
-                <th>Qta</th>
-                <th>Nome</th>
-                <th>Descrizione</th>
-                <th>€</th>
-                <th>Categoria</th>
-                <th>Operazioni</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            foreach ($catalogo as $key => $categorie) {
-                showCategory($catalogo, $key);
-            }
-            ?>
-        </tbody>
-    </table>
-<?php
-}
 
 /**
  * showTodayDate
