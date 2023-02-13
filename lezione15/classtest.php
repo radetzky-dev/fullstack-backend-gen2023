@@ -32,6 +32,27 @@ class Vegetable
     }
 }
 
+class Spinach extends Vegetable
+{
+    public $cooked = true;
+
+    public function __construct()
+    {
+        parent::__construct("spinacio", true, "green");
+        
+    }
+
+    public function cook()
+    {
+        $this->cooked = true;
+    }
+
+    public function isCooked()
+    {
+        return $this->cooked;
+    }
+}
+
 $vegGreen = new Vegetable("asparago", true);
 echo "Veg: ".$vegGreen->getName()." :";
 
@@ -52,3 +73,21 @@ if ($vegBlue->isEdible()) {
     echo "<br>NON può mangiare";
 }
 echo "<br>Che colore ?" . $vegBlue->getColor();
+
+
+echo "<hr>";
+$vegSpinacio = new Spinach();
+echo "Veg: ".$vegSpinacio->getName()." :";
+if ($vegSpinacio->isEdible()) {
+    echo "<br>Si può mangiare";
+} else {
+    echo "<br>NON può mangiare";
+}
+echo "<br>Che colore ?" . $vegSpinacio->getColor();
+
+echo "<br>";
+if ($vegSpinacio->isCooked()) {
+    echo "<br>Si, è cotto";
+} else {
+    echo "<br>NON è cotto";
+}
