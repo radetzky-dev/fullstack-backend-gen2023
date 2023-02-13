@@ -1,4 +1,7 @@
 <?php
+
+//Doc: https://www.php.net/manual/en/classobj.examples.php
+
 class Vegetable
 {
     public $edible;
