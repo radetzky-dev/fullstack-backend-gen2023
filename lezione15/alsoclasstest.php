@@ -147,7 +147,6 @@ abstract class Salary
 class Employee extends Salary implements Ciao
 {
     private $salary;
-
     private $name;
     private $surname;
 
@@ -174,6 +173,24 @@ class Employee extends Salary implements Ciao
     }
 }
 
+class Commesso extends Employee
+{
+    private $mansione;
+    private $age;
+
+    public function __construct($name, $surname, $mansione, $age, $salary = 0)
+    {
+        parent::__construct($name, $surname, $salary);
+        $this->mansione = $mansione;
+        $this->age = $age;
+    }
+
+    public function getMansione()
+    {
+        return $this->mansione;
+    }
+}
+
 echo "<hr>IMPIEGATO<BR>";
 $impiegato = new Employee("Mario", "Rossi", 57);
 echo $impiegato->saluta();
@@ -181,3 +198,8 @@ echo "<br>" . $impiegato->getSalary() . '<br>';
 $impiegato->setSalary(400);
 echo "<br>" . $impiegato->getSalary() . '<br>';
 echo $impiegato->printOut();
+
+$commesso = new Commesso("Giulio", "Verdi", "magazzinere", 21, 250);
+echo $commesso->saluta();
+echo $commesso->getMansione();
+echo $commesso->printOut();
