@@ -18,7 +18,7 @@ if (!empty($_POST["login"])) {
     }
     if (!$isLoggedIn) {
         $_SESSION["errorMessage"] = "Username o password non valide!";
-        header("Location: loginback.php");
+        header("Location: login.php");
     } else {
         header("Location: ../index.php");
     }
