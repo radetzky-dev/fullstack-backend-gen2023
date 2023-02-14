@@ -3,6 +3,10 @@ require_once "inc/functions.php";
 require_once "inc/header.php";
 require_once "inc/navbar.php";  //NAV BAR DA SISTEMARE
 require_once "db/dbconn.php";
+
+$page_info_title ="AGGIUNGI PRODOTTO";
+
+$nome=$descrizione = "";
 ?>
 
 
