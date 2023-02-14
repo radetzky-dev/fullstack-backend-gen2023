@@ -157,6 +157,12 @@ class Employee extends Salary implements Ciao
         $this->surname = $surname;
     }
 
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+
     public function setSalary(int $money): void
     {
         $this->salary = $money;
@@ -169,7 +175,7 @@ class Employee extends Salary implements Ciao
 
     public function saluta()
     {
-        return "<br>HELLO " . $this->name . " " . $this->surname . "<br>";
+        return "<br>HELLO " . $this->name . " <br>";
     }
 }
 
@@ -203,3 +209,8 @@ $commesso = new Commesso("Giulio", "Verdi", "magazzinere", 21, 250);
 echo $commesso->saluta();
 echo $commesso->getMansione();
 echo $commesso->printOut();
+
+$altrocommesso = clone $commesso;
+$altrocommesso->setName("silvia");
+echo $altrocommesso->saluta();
+echo $commesso->saluta();
