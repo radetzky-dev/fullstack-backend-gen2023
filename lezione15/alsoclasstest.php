@@ -132,6 +132,19 @@ $a->sayCiao();
 $a->calcolaCodiceFiscale("ksdfhgs73");
 echo "<br>" . $a->saluta();
 
+echo "<hr>REFLECTION<br>";
+$sample = new ReflectionClass("TheWorldIsNotEnough");
+// restituisce il nome della classe genitore di un oggetto o di una classe
+$parent = $sample->getParentClass();
+echo $sample->getName() . " è una sottoclasse di " . $parent->getName() . "<br />";
+$interfaceNames = $sample->getInterfaceNames();
+var_dump($interfaceNames);
+$methods = $sample->getMethods();
+echo "<br />Sono disponibili i seguenti metodi:<br />";
+print_r($methods);
+
+echo "<hr>";
+
 
 abstract class Salary
 {
@@ -190,6 +203,11 @@ class Commesso extends Employee
         $this->mansione = $mansione;
         $this->age = $age;
     }
+    public function note()
+    {
+        echo "Classe: " . get_class($this), "<br />";
+        echo "Classe di derivazione: " . get_parent_class($this), "<br />";
+    }
 
     public function getMansione()
     {
@@ -209,8 +227,13 @@ $commesso = new Commesso("Giulio", "Verdi", "magazzinere", 21, 250);
 echo $commesso->saluta();
 echo $commesso->getMansione();
 echo $commesso->printOut();
+echo $commesso->note();
 
 $altrocommesso = clone $commesso;
 $altrocommesso->setName("silvia");
 echo $altrocommesso->saluta();
 echo $commesso->saluta();
+
+$vars = get_class_vars(get_class($commesso));
+echo "<br /><br />Disponibili le seguenti propriet /à:";
+print_r($vars);
