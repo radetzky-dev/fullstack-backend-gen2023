@@ -146,7 +146,17 @@ abstract class Salary
 
 class Employee extends Salary implements Ciao
 {
-    private $salary = 0;
+    private $salary;
+
+    private $name;
+    private $surname;
+
+    public function __construct($name, $surname, $salary = 0)
+    {
+        $this->salary = $salary;
+        $this->name = $name;
+        $this->surname = $surname;
+    }
 
     public function setSalary(int $money): void
     {
@@ -160,12 +170,14 @@ class Employee extends Salary implements Ciao
 
     public function saluta()
     {
-        return "Ciao<br>";
+        return "<br>HELLO " . $this->name . " " . $this->surname . "<br>";
     }
 }
 
-$impiegato = new Employee();
-$impiegato->saluta();
-$impiegato->setSalary(355);
-echo $impiegato->getSalary() . '<br>';
+echo "<hr>IMPIEGATO<BR>";
+$impiegato = new Employee("Mario", "Rossi", 57);
+echo $impiegato->saluta();
+echo "<br>" . $impiegato->getSalary() . '<br>';
+$impiegato->setSalary(400);
+echo "<br>" . $impiegato->getSalary() . '<br>';
 echo $impiegato->printOut();
