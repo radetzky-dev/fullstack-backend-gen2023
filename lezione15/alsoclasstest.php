@@ -2,7 +2,7 @@
 
 interface Salario
 {
-    public function setSalary($money);
+    public function setSalary(int $money) : void;
     public function getSalary();
 }
 
@@ -17,19 +17,30 @@ class Person implements PersonTemplate
     private $vars = [];
     private $salary = 0;
 
-    public function setAnag($name, $surname, $address)
+    public function setAnag($name, $surname, $address) : void
     {
         $this->vars["address"] = $address;
         $this->vars["name"] = $name;
         $this->vars["surname"] = $surname;
     }
-
-    public function setSalary($money)
+    
+    /**
+     * setSalary
+     *
+     * @param  mixed $money
+     * @return void
+     */
+    public function setSalary(int $money) : void
     {
         $this->salary = $money;
     }
-
-    public function getSalary()
+    
+    /**
+     * getSalary
+     *
+     * @return int
+     */
+    public function getSalary() : int
     {
         return $this->salary;
     }
