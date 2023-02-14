@@ -163,6 +163,12 @@ class Employee extends Salary implements Ciao
     private $name;
     private $surname;
 
+    public function tellAboutMe() //Utile per log e debug
+    {
+        echo get_class($this).'<br>';
+        var_dump(get_object_vars($this));
+    }
+
     public function __construct($name, $surname, $salary = 0)
     {
         $this->salary = $salary;
@@ -205,7 +211,7 @@ class Commesso extends Employee
     }
     public function note()
     {
-        echo "Classe: " . get_class($this), "<br />";
+        echo "Classe: " . get_class($this), " <br/>";
         echo "Classe di derivazione: " . get_parent_class($this), "<br />";
     }
 
@@ -222,6 +228,10 @@ echo "<br>" . $impiegato->getSalary() . '<br>';
 $impiegato->setSalary(400);
 echo "<br>" . $impiegato->getSalary() . '<br>';
 echo $impiegato->printOut();
+
+echo "<hr>TELL ME <br>";
+$impiegato->tellAboutMe();
+echo "<hr>";
 
 $commesso = new Commesso("Giulio", "Verdi", "magazzinere", 21, 250);
 echo $commesso->saluta();
