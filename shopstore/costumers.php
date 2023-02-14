@@ -4,7 +4,6 @@ require_once "inc/header.php";
 require_once "inc/navbar.php";
 require_once "db/dbconn.php";
 
-
 if (empty($_SESSION["isAdmin"])) {
     echo "Torna alla home.";
     die();
@@ -20,11 +19,9 @@ if (empty($_SESSION["isAdmin"])) {
             <th>email</th>
             <th>Società</th>
             <th>Telefono</th>
-            <!-- <th>Indirizzo</th> -->
             <th>Username</th>
             <th>Password</th>
             <th>Gestisci</th>
-
         </tr>
     </thead>
     <tbody>
