@@ -9,7 +9,7 @@ class Vegetable
     public $edible;
     public $color;
     public $name;
-    public int $pimentLevel=0;
+    public int $pimentLevel = 0;
 
     public function __construct($name, $edible, $color = "green")
     {
@@ -18,20 +18,20 @@ class Vegetable
         $this->name = $name;
     }
 
-    public function sayHello() 
+    public function sayHello()
     {
         echo "Hello!";
     }
 
     public function aggiungiPiccante()
     {
-        $this->pimentLevel+=1;
+        $this->pimentLevel += 1;
         $this->showPiccante();
     }
 
     private function showPiccante()
     {
-        echo "Il livello di piccantezza è ".$this->pimentLevel.'<br>';
+        echo "Il livello di piccantezza è " . $this->pimentLevel . '<br>';
     }
 
     public function isEdible()
@@ -55,13 +55,12 @@ class Spinach extends Vegetable
 {
     public const FLAVOUR = "good";
     public $cooked = true;
-    public static $consitency ="Very good";
+    public static $consitency = "Very good";
     public static $cooktime = 10;
 
     public function __construct()
     {
         parent::__construct("spinacio", true, "green");
-        
     }
 
     public function sayHello() //override perché non è final
@@ -85,7 +84,7 @@ class Spinach extends Vegetable
 }
 
 $vegGreen = new Vegetable("asparago", true);
-echo "Veg: ".$vegGreen->getName()." :";
+echo "Veg: " . $vegGreen->getName() . " :";
 
 $vegGreen->aggiungiPiccante();
 
@@ -102,7 +101,7 @@ $vegGreen->sayHello();
 
 echo "<hr>";
 $vegBlue = new Vegetable("mango blu", false, "blue");
-echo "Veg: ".$vegBlue->getName()." :";
+echo "Veg: " . $vegBlue->getName() . " :";
 if ($vegBlue->isEdible()) {
     echo "<br>Si può mangiare";
 } else {
@@ -113,13 +112,13 @@ echo "<br>Che colore ?" . $vegBlue->getColor();
 
 echo "<hr>";
 
-echo "<br>Test: " .Spinach::$consitency;
-echo "<br>Duration: " .Spinach::cookDuration();
-echo "<br>Flavour: " .Spinach::FLAVOUR;
+echo "<br>Test: " . Spinach::$consitency;
+echo "<br>Duration: " . Spinach::cookDuration();
+echo "<br>Flavour: " . Spinach::FLAVOUR;
 
 $vegSpinacio = new Spinach();
-echo "<br>Veg: ".$vegSpinacio->getName()." :";
-echo "Consistenza ". $vegSpinacio::$consitency.'<br>';
+echo "<br>Veg: " . $vegSpinacio->getName() . " :";
+echo "Consistenza " . $vegSpinacio::$consitency . '<br>';
 if ($vegSpinacio->isEdible()) {
     echo "<br>Si può mangiare";
 } else {
@@ -135,3 +134,13 @@ if ($vegSpinacio->isCooked()) {
 }
 echo "<hr>";
 $vegSpinacio->sayHello();
+
+
+if ($vegSpinacio instanceof Spinach) {
+    echo "The object is Spinach<br>";
+}
+
+// The object is also an instance of the class it is derived from
+if ($vegSpinacio instanceof Vegetable) {
+    echo "The object is vegSpinacio<br>";
+}
