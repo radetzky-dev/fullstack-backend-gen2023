@@ -131,3 +131,41 @@ $a->sayHi();
 $a->sayCiao();
 $a->calcolaCodiceFiscale("ksdfhgs73");
 echo "<br>" . $a->saluta();
+
+
+abstract class Salary
+{
+    abstract protected function setSalary(int $money);
+    abstract protected function getSalary();
+    // Common method
+    public function printOut()
+    {
+        print "Metodo astratto " . $this->getSalary() . "<br>";
+    }
+}
+
+class Employee extends Salary implements Ciao
+{
+    private $salary = 0;
+
+    public function setSalary(int $money): void
+    {
+        $this->salary = $money;
+    }
+
+    public function getSalary(): int
+    {
+        return $this->salary;
+    }
+
+    public function saluta()
+    {
+        return "Ciao<br>";
+    }
+}
+
+$impiegato = new Employee();
+$impiegato->saluta();
+$impiegato->setSalary(355);
+echo $impiegato->getSalary() . '<br>';
+echo $impiegato->printOut();
