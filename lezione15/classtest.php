@@ -18,6 +18,11 @@ class Vegetable
         $this->name = $name;
     }
 
+    public function sayHello() 
+    {
+        echo "Hello!";
+    }
+
     public function aggiungiPiccante()
     {
         $this->pimentLevel+=1;
@@ -40,7 +45,7 @@ class Vegetable
     }
 
 
-    public function getName()
+    final public function getName()  //non si può fare override
     {
         return $this->name;
     }
@@ -48,6 +53,7 @@ class Vegetable
 
 class Spinach extends Vegetable
 {
+    public const FLAVOUR = "good";
     public $cooked = true;
     public static $consitency ="Very good";
     public static $cooktime = 10;
@@ -58,6 +64,10 @@ class Spinach extends Vegetable
         
     }
 
+    public function sayHello() //override perché non è final
+    {
+        echo "Hi potato!";
+    }
     public static function cookDuration()
     {
         return self::$cooktime;
@@ -88,7 +98,7 @@ if ($vegGreen->isEdible()) {
 echo "<br>Che colore ?" . $vegGreen->getColor();
 
 $vegGreen->aggiungiPiccante();
-
+$vegGreen->sayHello();
 
 echo "<hr>";
 $vegBlue = new Vegetable("mango blu", false, "blue");
@@ -105,6 +115,7 @@ echo "<hr>";
 
 echo "<br>Test: " .Spinach::$consitency;
 echo "<br>Duration: " .Spinach::cookDuration();
+echo "<br>Flavour: " .Spinach::FLAVOUR;
 
 $vegSpinacio = new Spinach();
 echo "<br>Veg: ".$vegSpinacio->getName()." :";
@@ -122,3 +133,5 @@ if ($vegSpinacio->isCooked()) {
 } else {
     echo "<br>NON è cotto";
 }
+echo "<hr>";
+$vegSpinacio->sayHello();
