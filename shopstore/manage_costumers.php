@@ -2,7 +2,7 @@
 require_once "inc/functions.php";
 require_once "inc/header.php";
 require_once "inc/navbar.php";
-require_once "db/dbconn.php";  //TO DO cambaire in use
+require_once "db/dbconn.php"; 
 ?>
 
 <?php if (empty($_SESSION["isAdmin"])) {

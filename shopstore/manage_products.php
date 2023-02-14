@@ -4,13 +4,12 @@ require_once "inc/header.php";
 require_once "inc/navbar.php";  //NAV BAR DA SISTEMARE
 ?>
 
-
 <?php if (empty($_SESSION["isAdmin"])) {
     echo "Torna alla home.";
     die();
 }
 
-$page_info_title = "INSERISCI UN NUOVO PRODOTTO";
+$page_info_title = "INSERISCI PRODOTTO";
 
 $nome = $qta = $prezzo = $descrizione = "";
 
@@ -20,7 +19,7 @@ $id = 0;
 
 if (isset($_REQUEST["id"])) {
     $id = $_REQUEST["id"];
-    $page_info_title = "MODIFICA DI UN PRODOTTO";
+    $page_info_title = "MODIFICA PRODOTTO";
 
     foreach ($catalogo as $catName => $categorie) {
         foreach ($catalogo[$catName] as $key => $prodotto) {
@@ -78,7 +77,7 @@ if (isset($_REQUEST["id"])) {
             </select>
         </div>
 
-        <button type="submit" class="btn btn-primary">Aggiungi prodotto</button>
+        <button type="submit" class="btn btn-primary"><?php echo $page_info_title;?></button>
     </form>
 </div>
 <?php
