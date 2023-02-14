@@ -2,45 +2,34 @@
 require_once "inc/functions.php";
 require_once "inc/header.php";
 require_once "inc/navbar.php";  //NAV BAR DA SISTEMARE
+require_once "db/dbconn.php";
 ?>
+
 
 <?php if (empty($_SESSION["isAdmin"])) {
     echo "Torna alla home.";
     die();
 }
-
-$page_info_title = "INSERISCI PRODOTTO";
-
-$nome = $qta = $prezzo = $descrizione = "";
-
-$catalogo = readFileJson("data/products.json");
-
-$id = 0;
-
 if (isset($_REQUEST["id"])) {
     $id = $_REQUEST["id"];
     $page_info_title = "MODIFICA PRODOTTO";
 
-    foreach ($catalogo as $catName => $categorie) {
-        foreach ($catalogo[$catName] as $key => $prodotto) {
+    if (getenv('USE_DB') != "no") {
+        $dbConn = new Database();
+        $dbConnection = $dbConn->openConnection();
 
-            if (isset($prodotto['id_product'])) {
-                if ($_REQUEST["id"] == $prodotto['id_product']) {
-                    if (isset($prodotto['id'])) {
-                        $id = $prodotto['id_product'];
-                    }
-                    $nome = $prodotto['nome'];
-                    $qta = $prodotto['qta'];
-                    $prezzo = $prodotto['prezzo'];
-                    if (isset($prodotto['descrizione'])) {
-                        $descrizione = $prodotto['descrizione'];
-                    }
-                }
-            }
+        $query = "SELECT * from products";
+        $result = $dbConn->getResults($query, $dbConnection, "where id='" . $_REQUEST["id"] . "'");
+
+        while ($row = $result->fetch_assoc()) {
+            $id_prodotto = $row['id'];
+            $nome = $row['name'];
+            $qta = $row['quantity'];
+            $descrizione = $row['description'];
+            $prezzo = $row['price'];
         }
+        $dbConn->closeConnection($dbConnection);
     }
-} else {
-    $id = getNewIdToInsert($catalogo);
 }
 ?>
 
@@ -77,7 +66,7 @@ if (isset($_REQUEST["id"])) {
             </select>
         </div>
 
-        <button type="submit" class="btn btn-primary"><?php echo $page_info_title;?></button>
+        <button type="submit" class="btn btn-primary"><?php echo $page_info_title; ?></button>
     </form>
 </div>
 <?php
