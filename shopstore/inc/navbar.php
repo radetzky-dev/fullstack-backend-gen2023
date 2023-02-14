@@ -10,12 +10,17 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                 </li>
-                <li class="nav-item">
+               
+                <?php if (!empty($_SESSION["isAdmin"])) { ?>
+
+                    <li class="nav-item">
                     <a class="nav-link" href="products.php">Prodotti</a>
                 </li>
-                <?php if (!empty($_SESSION["isAdmin"])) { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="manage_products.php">Gestisci prodotti</a>
+                        <a class="nav-link" href="manage_products.php">Inserisci prodotto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="costumers.php">Clienti</a>
                     </li>
                 <?php } else { ?>
                     <li class="nav-item">
