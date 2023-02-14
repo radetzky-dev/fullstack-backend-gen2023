@@ -1,21 +1,32 @@
 <?php
 session_start();
-
 require_once "inc/functions.php";
+require_once "db/dbconn.php";
 
-//leggo il file
-$catalogo = readFileJson("data/products.json");
-
-if ($catalogo == null) {
-    $catalogo = array();
+if (empty($_SESSION["isAdmin"])) {
+    echo "Forbidden.";
+    die();
 }
 
-//TODO gestire update
+if (isset($_REQUEST["id_product"])) {
+    $id = $_REQUEST["id_product"];
+    $dbConn = new Database();
+    $dbConnection = $dbConn->openConnection();
 
-//check se id esiste già -> update -> $_REQUEST
+    $fields = [
+        $_REQUEST["nome"], $_REQUEST["descrizione"], $_REQUEST["prezzo"], $_REQUEST["qta"]
+    ];
 
-$catalogo[strtolower($_REQUEST['category'])][] = $_REQUEST;
-
-$result = updateFileJson($catalogo, "data/products.json");
+    $stmt = $dbConnection->prepare("update products SET  name = ?, description = ?, price = ?, quantity = ? where id=$id");
+    if ($stmt->execute($fields)) {
+        echo "Aggiornamento record con id = $id avvenuto con successo!<br>";
+    } else {
+        echo "Errore nell'update!";
+    }
+    $dbConn->closeConnection($dbConnection);
+} else {
+    echo "Nessuna modifica possibile. Torna alla home";
+    die();
+}
 
 header("Location: products.php");
