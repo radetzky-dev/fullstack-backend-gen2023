@@ -9,7 +9,7 @@ if (empty($_SESSION["isAdmin"])) {
 
 if (isset($_REQUEST["id"])) {
     $id = $_REQUEST["id"];
-    deleteUpdateProduct($catalogo,$id,true);
+    deleteUpdateProduct($catalogo, $id,true);
 }
 
 header("Location: products.php");
