@@ -2,7 +2,6 @@
 require 'vendor/autoload.php';
 
 use Carbon\Carbon;
-use GuzzleHttp;
 
 printf("Sono le %s", Carbon::now());
 
