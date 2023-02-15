@@ -17,8 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::view('/testmio', 'test');
+
+Route::get('/test', function () {
+    return view('test');
+});
+
 Route::get('/ciao', function () {
     return "Hello World questo è scritto a video";
 });
 
-Route::redirect("/ciaomondo","/ciao");
+Route::view('/provaparametro', 'prova', ['name' => 'Paolo']);
+
+Route::redirect("/ciaomondo", "/ciao");
