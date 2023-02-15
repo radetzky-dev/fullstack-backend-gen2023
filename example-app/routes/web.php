@@ -35,6 +35,14 @@ Route::get('/user/{id}', function (string $id) {
     return 'Il tuo id user è '.$id;
 });
 
+Route::get('/username/{name}', function (string $name) {
+    return 'Questo username è valido : '.$name;
+})->where('name', '[A-Za-z]+');
+
+Route::get('/users/{name}/{number}', function ($name, $number) {
+    return 'Questo username è valido : '.$name . " num ".$number;
+})->where(['name' => '[A-Za-z]+','number' => '[0-9]+']);
+
 
 Route::get('/posts/{post}/comments/{comment}', function (string $mario, string $commentId) {
     return 'Il tuo id post è '.$mario. " il commento id è ".$commentId;
