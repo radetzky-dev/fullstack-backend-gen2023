@@ -23,6 +23,10 @@ Route::get('/test', function () {
     return view('test');
 });
 
+Route::get('/user/profile', function () {
+    return "Utente";
+})->name('profile');
+
 Route::get('/ciao', function () {
     return "Hello World questo è scritto a video";
 });
