@@ -30,3 +30,12 @@ Route::get('/ciao', function () {
 Route::view('/provaparametro', 'prova', ['name' => 'Paolo']);
 
 Route::redirect("/ciaomondo", "/ciao");
+
+Route::get('/user/{id}', function (string $id) {
+    return 'Il tuo id user è '.$id;
+});
+
+
+Route::get('/posts/{post}/comments/{comment}', function (string $mario, string $commentId) {
+    return 'Il tuo id post è '.$mario. " il commento id è ".$commentId;
+});
