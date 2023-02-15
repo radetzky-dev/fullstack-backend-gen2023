@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MyTestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,7 +38,7 @@ Route::redirect("/ciaomondo", "/ciao");
 
 Route::get('/user/{id}', function (string $id) {
     return 'Il tuo id user è '.$id;
-});
+})->name("user");
 
 Route::get('/username/{name}', function (string $name) {
     return 'Questo username è valido : '.$name;
@@ -51,3 +52,5 @@ Route::get('/users/{name}/{number}', function ($name, $number) {
 Route::get('/posts/{post}/comments/{comment}', function (string $mario, string $commentId) {
     return 'Il tuo id post è '.$mario. " il commento id è ".$commentId;
 });
+
+Route::get('/hello-controller/', [MyTestController::class,'greeting']);
