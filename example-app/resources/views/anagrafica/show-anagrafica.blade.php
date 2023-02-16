@@ -18,7 +18,7 @@
     $url = route('show', ['name' => $name, 'surname' => $surname, 'address' => $address]);
     ?>
     <a href="<?php echo $url ?>">Modifica</a>
-    <button onclick="helloWorld()">Saluta</button>
+    <button onclick="ciao()">Saluta</button>
 
 
 </body>

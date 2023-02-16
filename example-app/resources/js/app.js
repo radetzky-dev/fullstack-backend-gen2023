@@ -1,7 +1,5 @@
-import './bootstrap';
-import '../css/app.css'; 
+import "./bootstrap";
+import "../css/app.css";
 
 
-function helloWorld() {
-    alert ("Hello World!");
-  }
+function ciao() {alert("Hello World!");}
