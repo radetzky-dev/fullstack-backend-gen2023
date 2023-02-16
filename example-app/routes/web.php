@@ -98,3 +98,7 @@ Route::get('/user/{id}', function (Request $request, string $id) {
     }
     return "Il mio $id";
 })->whereNumber('id')->name("user");
+
+Route::fallback(function () {
+    return "Nessun indirizzo corrispondente alla tua richiesta!";
+});
