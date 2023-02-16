@@ -59,9 +59,10 @@ Route::get('/hello-controller/', [MyTestController::class,'greeting']);
 Route::get('/show-query/', [MyTestController::class,'showquery']);
 
 //Anagrafica
-Route::get('/show-personal/{name}/{surname}/{address}', [MyTestController::class,'show'])->name("show");
-Route::post('/update-personal/', [MyTestController::class,'update']);
-
+Route::controller(MyTestController::class)->group(function () {
+    Route::get('/show-personal/{name}/{surname}/{address}', 'show')->name("show");
+    Route::post('/update-personal/', 'update');
+});
 //Fine anagrafica
 
 //OPTIONAL PARAMS
