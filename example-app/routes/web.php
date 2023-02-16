@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MyTestController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,17 +29,18 @@ Route::get('/user/profile', function () {
     return "Utente";
 })->name('profile');
 
-Route::get('/ciao', function () {
-    return "Hello World questo è scritto a video";
+Route::get('/ciao', function (Request $request) {
+    $myarray = $request->query();
+    //to do
+    return "ok";
+
 });
 
 Route::view('/provaparametro', 'prova', ['name' => 'Paolo']);
 
 Route::redirect("/ciaomondo", "/ciao");
 
-Route::get('/user/{id}', function (string $id) {
-    return 'Il tuo id user è '.$id;
-})->name("user");
+
 
 Route::get('/username/{name}', function (string $name) {
     return 'Questo username è valido : '.$name;
@@ -54,3 +56,29 @@ Route::get('/posts/{post}/comments/{comment}', function (string $mario, string $
 });
 
 Route::get('/hello-controller/', [MyTestController::class,'greeting']);
+
+//OPTIONAL PARAMS
+Route::get('/users/{name?}', function (string $name = null) {
+    return $name;
+});
+ 
+Route::get('/users/{name?}', function (string $name = 'John') {
+    return $name;
+});
+
+Route::get('/user/{id}/{name}', function (string $id, string $name) {
+    return "Il mio $id e il mio $name";
+})->whereNumber('id')->whereAlpha('name');
+ 
+Route::get('/usernames/{name}', function (string $name) {
+    return "Il mio $name";
+})->whereAlphaNumeric('name');
+ 
+//5ace9ab9-e9cf-4ec6-a19d-5881212a452c
+Route::get('/useruuid/{id}', function (string $id) {
+    return "Il mio $id";
+})->whereUuid('id');
+ 
+Route::get('/category/{category}', function (string $category) {
+    return "La categoria scelta fra le ammesse è $category";
+})->whereIn('category', ['movie', 'song', 'painting']);
