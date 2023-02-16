@@ -57,6 +57,8 @@ Route::get('/posts/{post}/comments/{comment}', function (string $mario, string $
 
 Route::get('/hello-controller/', [MyTestController::class,'greeting']);
 
+Route::get('/show-personal/{pippo}/{pluto}', [MyTestController::class,'show']);
+
 //OPTIONAL PARAMS
 Route::get('/users/{name?}', function (string $name = null) {
     return $name;

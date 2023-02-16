@@ -13,4 +13,15 @@ class MyTestController extends Controller
         $sum = $id+$num;
         return "Ti mando tanti saluti = ".$sum;
     }
+
+    public function show($param1, $param2)
+    {
+        $personalData = [
+            'name' => "Sig ".$param1,
+            'surname' => "Mr ". $param2,
+            'address' => "via roma 6"
+        ];
+        return view('show-personal', $personalData);
+    }
+
 }
