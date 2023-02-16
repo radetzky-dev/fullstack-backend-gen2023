@@ -17,7 +17,7 @@
         <input type="submit" value="Modifica">
     </form>
     <hr>
-    <h2>Test metodo PUT</h2>
+    <h2>Test metodo PUT inverte Nome/Cognome</h2>
     <form method="post" action="<?php echo url('update-personal'); ?>">
         @csrf
         @method('PUT')
