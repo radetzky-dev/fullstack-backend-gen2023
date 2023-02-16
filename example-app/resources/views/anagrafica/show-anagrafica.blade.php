@@ -4,6 +4,7 @@
     <title>Mostra angrafica</title>
 
     @vite('resources/js/app.js')
+
 </head>
 
 <body class="show">
