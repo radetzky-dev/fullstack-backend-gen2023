@@ -14,7 +14,7 @@ class MyTestController extends Controller
         return "Ti mando tanti saluti = " . $sum;
     }
 
-    
+
     public function show($param1, $param2,$param3)
     {
         $personalData = [
@@ -35,6 +35,17 @@ class MyTestController extends Controller
         $data = [
             'name' => $request['name'],
             'surname' => $request['surname'],
+            'address' => $request['address'],
+        ];
+
+        return view('anagrafica/show-anagrafica', $data);
+    }
+
+    public function updatewithput(Request $request)
+    {
+        $data = [
+            'name' => $request['surname'],
+            'surname' => $request['name'],
             'address' => $request['address'],
         ];
 

@@ -62,6 +62,7 @@ Route::get('/show-query/', [MyTestController::class,'showquery']);
 Route::controller(MyTestController::class)->group(function () {
     Route::get('/show-personal/{name}/{surname}/{address}', 'show')->name("show");
     Route::post('/update-personal/', 'update');
+    Route::put('/update-personal/', 'updatewithput');
 });
 //Fine anagrafica
 
