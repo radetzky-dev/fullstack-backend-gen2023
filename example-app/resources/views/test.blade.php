@@ -22,6 +22,11 @@
     <a href="<?php echo route('profile'); ?>">Vai a profile</a>
     <a href="<?php echo url('/user/profile'); ?>">Vai sempre al profile</a>
     <a href="<?php echo route('user', ['id'=> 81]); ?>">Vai a user con param</a>
+<?php
+$url = route('user', ['id' => 1, 'photos' => 'yes']);
+?>
+<a href="<?php echo $url ?>">Vai a user con doppio param</a>
+
 </body>
 
 </html>
