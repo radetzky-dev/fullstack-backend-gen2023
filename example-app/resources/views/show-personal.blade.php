@@ -8,12 +8,15 @@
 
     </head>
     <body class="antialiased">
-    <p>{{$name}}</p>
-    <p> {{$surname}}</p>
+ 
+    <form method="post" action="<?php echo url('update-personal'); ?>">
+        @csrf
+        <input type="text" id="name" name="name" value="{{$name}}" required>
+        <input type="text" id="surname" name="surname" value="{{$surname}}" required>
+        <input type="text" id="address" name="address" value="{{$address}}" required>
+        <input type="submit" value="Modifica">
+    </form>
 
-    <?php echo "Ciao ". $name;?>
-    <?php echo "Ciao ". $surname;?>
-    <?php echo "Abiti ". $address;?>
      
     </body>
 </html>

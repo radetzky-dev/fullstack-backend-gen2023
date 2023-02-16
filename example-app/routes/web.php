@@ -59,6 +59,10 @@ Route::get('/hello-controller/', [MyTestController::class,'greeting']);
 
 Route::get('/show-personal/{pippo}/{pluto}', [MyTestController::class,'show']);
 
+Route::post('/update-personal/', [MyTestController::class,'update']);
+
+Route::get('/show-query/', [MyTestController::class,'showquery']);
+
 //OPTIONAL PARAMS
 Route::get('/users/{name?}', function (string $name = null) {
     return $name;
