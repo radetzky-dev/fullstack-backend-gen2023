@@ -27,6 +27,13 @@
         <input type="submit" value="Modifica">
     </form>
 
+    <?php
+use Illuminate\Support\Facades\Route;
+ 
+echo "Log info: <br>". Route::currentRouteName(); // string
+echo "<br>". Route::currentRouteAction(); // string
+    ?>
+
 </body>
 
 </html>
