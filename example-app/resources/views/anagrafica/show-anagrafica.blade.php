@@ -14,7 +14,11 @@
     <p>{{$surname}}</p>
     <p>{{$address}}</p>
 
-    <a href="">Modifica</a>
+
+    <?php
+$url = route('show', ['name' => $name, 'surname' => $surname, 'address' => $address ]);
+?>
+    <a href="<?php echo $url ?>">Modifica</a>
 
      
     </body>

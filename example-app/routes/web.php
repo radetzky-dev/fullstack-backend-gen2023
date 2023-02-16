@@ -56,12 +56,13 @@ Route::get('/posts/{post}/comments/{comment}', function (string $mario, string $
 });
 
 Route::get('/hello-controller/', [MyTestController::class,'greeting']);
+Route::get('/show-query/', [MyTestController::class,'showquery']);
 
-Route::get('/show-personal/{pippo}/{pluto}', [MyTestController::class,'show']);
-
+//Anagrafica
+Route::get('/show-personal/{name}/{surname}/{address}', [MyTestController::class,'show'])->name("show");
 Route::post('/update-personal/', [MyTestController::class,'update']);
 
-Route::get('/show-query/', [MyTestController::class,'showquery']);
+//Fine anagrafica
 
 //OPTIONAL PARAMS
 Route::get('/users/{name?}', function (string $name = null) {
@@ -90,17 +91,9 @@ Route::get('/category/{category}', function (string $category) {
 })->whereIn('category', ['movie', 'song', 'painting']);
 
 Route::get('/user/{id}', function (Request $request, string $id) {
-
     if ($request->route()->named('user')) {
         echo "Path corretto!<br>";
         var_dump($request->query());  //TODO passare parametri al controller
     }
-
     return "Il mio $id";
 })->whereNumber('id')->name("user");
-
-
- 
-
- 
-// /user/1/profile?photos=yes

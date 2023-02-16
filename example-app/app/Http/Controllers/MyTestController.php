@@ -14,14 +14,14 @@ class MyTestController extends Controller
         return "Ti mando tanti saluti = " . $sum;
     }
 
-    public function show($param1, $param2)
+    public function show($param1, $param2,$param3)
     {
         $personalData = [
-            'name' => "Sig " . $param1,
-            'surname' => "Mr " . $param2,
-            'address' => "via roma 6"
+            'name' => $param1,
+            'surname' => $param2,
+            'address' => $param3
         ];
-        return view('show-personal', $personalData);
+        return view('anagrafica/update-anagrafica', $personalData);
     }
 
     public function showquery(Request $request)
@@ -31,9 +31,6 @@ class MyTestController extends Controller
 
     public function update(Request $request)
     {
-        $all = $request->all();
-        //TODO update nel model
-        //array(4) { ["_token"]=> string(40) "QErmVJL3xlUylHBycFHOqLacvQHJvnCywhhS0xeN" ["name"]=> string(9) "Sig paolo" ["surname"]=> string(8) "Mr verdi" ["address"]=> string(10) "via roma 6" }
         $data = [
             'name' => $request['name'],
             'surname' => $request['surname'],
