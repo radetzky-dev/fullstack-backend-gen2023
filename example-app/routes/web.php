@@ -84,7 +84,12 @@ Route::get('/category/{category}', function (string $category) {
 })->whereIn('category', ['movie', 'song', 'painting']);
 
 Route::get('/user/{id}', function (Request $request, string $id) {
-    var_dump($request->query());  //TODO passare parametri al controller
+
+    if ($request->route()->named('user')) {
+        echo "Path corretto!<br>";
+        var_dump($request->query());  //TODO passare parametri al controller
+    }
+
     return "Il mio $id";
 })->whereNumber('id')->name("user");
 
