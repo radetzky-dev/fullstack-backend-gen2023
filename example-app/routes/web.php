@@ -82,3 +82,7 @@ Route::get('/useruuid/{id}', function (string $id) {
 Route::get('/category/{category}', function (string $category) {
     return "La categoria scelta fra le ammesse è $category";
 })->whereIn('category', ['movie', 'song', 'painting']);
+
+Route::get('/user/{id}', function (string $id) {
+    return "Il mio $id";
+})->whereNumber('id')->name("user");
