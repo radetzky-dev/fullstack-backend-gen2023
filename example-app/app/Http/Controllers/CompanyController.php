@@ -6,6 +6,7 @@ use App\Services\TransistorService;
 use App\Models\Company;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class CompanyController extends Controller
 {
@@ -16,9 +17,14 @@ class CompanyController extends Controller
         $this->transistor = $transistor;
     } */
 
+
+
+
     public function transistor()
     {
-        $transistor = $this->app->make(Transistor::class);
+        //$transistor = App::make(App\Http\Services\TransistorService::class);
+ 
+        $transistor = app(TransistorService::class);
         echo $transistor->sayHello();
         die();
     }
