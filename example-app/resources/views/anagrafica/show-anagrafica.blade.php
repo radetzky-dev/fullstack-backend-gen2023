@@ -1,7 +1,7 @@
 <!doctype html>
 
 <head>
-    <title>Mostra angrafica</title>
+    <title>Mostra anagrafica</title>
 
     @vite('resources/js/app.js')
 
