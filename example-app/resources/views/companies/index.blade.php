@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Laravel 9 CRUD Tutorial Example</title>
+<title>Company Crud</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+@vite('resources/js/app.js')
 </head>
 <body>
 <div class="container mt-2">
@@ -13,11 +14,17 @@
 <h2>CRUD Company</h2>
 </div>
 <div class="pull-right mb-2">
-<a class="btn btn-success" href="{{ route('companies.create') }}"> Create Company</a>
+<a class="btn btn-success" href="{{ route('companies.create') }}"> Crea nuova compagnia</a>
 </div>
 </div>
 </div>
 @if ($message = Session::get('success'))
+<div class="alert alert-success">
+<p>{{ $message }}</p>
+</div>
+@endif
+
+@if ($message = Session::get('error'))
 <div class="alert alert-success">
 <p>{{ $message }}</p>
 </div>
@@ -37,11 +44,11 @@
 <td>{{ $company->email }}</td>
 <td>{{ $company->address }}</td>
 <td>
-<form action="{{ route('companies.destroy',$company->id) }}" method="Post">
+<form action="{{ route('companies.destroy',$company->id) }}" method="Post" onSubmit="return areyousure();">
 <a class="btn btn-primary" href="{{ route('companies.edit',$company->id) }}">Edit</a>
 @csrf
 @method('DELETE')
-<button type="submit" class="btn btn-danger">Delete</button>
+<button type="submit" class="btn btn-danger" >Delete</button>
 </form>
 </td>
 </tr>
