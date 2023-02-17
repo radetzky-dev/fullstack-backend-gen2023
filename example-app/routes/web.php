@@ -107,3 +107,5 @@ Route::fallback(function () {
 
 
 Route::resource('companies', CompanyController::class);
+
+Route::get('/transistor', [CompanyController::class,'transistor'])->name("transistor");

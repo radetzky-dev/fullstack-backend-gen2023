@@ -2,12 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\TransistorService;
 use App\Models\Company;
 use Exception;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
+   /* protected $transistor;
+
+    public function __construct(TransistorService $transistor)
+    {
+        $this->transistor = $transistor;
+    } */
+
+    public function transistor()
+    {
+        $transistor = $this->app->make(Transistor::class);
+        echo $transistor->sayHello();
+        die();
+    }
+
     public function index()
     {
         $data['companies'] = Company::orderBy('id', 'desc')->paginate(5);
