@@ -1,8 +1,13 @@
-<html>
-
 <?php
+use App\Services\HelloService;
+use App\Services\SendMailService;
+
+$mail = new SendMailService();
+
 $array = ['nome' => 'Mario', 'cognome' => 'Rossi'];
 ?>
+
+<html>
 
 <body>
     <p>{{ $francese }}</p>
@@ -10,6 +15,8 @@ $array = ['nome' => 'Mario', 'cognome' => 'Rossi'];
     <p>Solo le ore UNIX {{ time() }}</p>
     <p>Saluta {{ sayHi() }}</p>
     <p>Oggi {{ date('F j, Y, g:i a') }}</p>
+    {{ HelloService::sayHello()}}
+    {{ $mail->send()}}
 
     <script>
         var app = {{ Illuminate\Support\Js::from($array) }};
