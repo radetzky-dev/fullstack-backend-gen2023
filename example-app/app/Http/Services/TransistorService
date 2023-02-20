@@ -1,9 +1,0 @@
-namespace App\Http\Services;
-
-class TransistorService 
-{
-    public static void SayHello()
-    {
-    return "Hello World!";
-    }
-}
