@@ -13,7 +13,7 @@ export default function List() {
     },[])
 
     const fetchProducts = async () => {
-        await axios.get(`http://localhost:8000/api/products`).then(({data})=>{
+        await axios.get(`http://localhost/musa/fullstackbackgen2023/crud-react-laravel/public/api/products/`).then(({data})=>{
             setProducts(data)
         })
     }
@@ -35,7 +35,7 @@ export default function List() {
             return;
           }
 
-          await axios.delete(`http://localhost:8000/api/products/${id}`).then(({data})=>{
+          await axios.delete(`http://localhost/musa/fullstackbackgen2023/crud-react-laravel/public/api/products/${id}`).then(({data})=>{
             Swal.fire({
                 icon:"success",
                 text:data.message
@@ -77,7 +77,7 @@ export default function List() {
                                                 <td>{row.title}</td>
                                                 <td>{row.description}</td>
                                                 <td>
-                                                    <img width="50px" src={`http://localhost:8000/storage/product/image/${row.image}`} />
+                                                    <img width="50px" src={`http://localhost/musa/fullstackbackgen2023/crud-react-laravel/storage/product/image/${row.image}`} />
                                                 </td>
                                                 <td>
                                                     <Link to={`/product/edit/${row.id}`} className='btn btn-success me-2'>
