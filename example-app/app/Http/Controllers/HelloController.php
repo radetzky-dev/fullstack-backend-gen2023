@@ -26,7 +26,7 @@ class HelloController extends Controller
         $data['francese'] = $this->helloService->salutaInFrancese($name);
         $data ['italiano'] = $this->helloService->sayCiao();
 
-        return view('hello.saluta', $data);
+        return view('hello.salutap', $data);
     }
 
     public function saluta2($name)

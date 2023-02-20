@@ -10,25 +10,6 @@ use Illuminate\Support\Facades\App;
 
 class CompanyController extends Controller
 {
-   /* protected $transistor;
-
-    public function __construct(TransistorService $transistor)
-    {
-        $this->transistor = $transistor;
-    } */
-
-
-
-
-    public function transistor()
-    {
-        //$transistor = App::make(App\Http\Services\TransistorService::class);
- 
-        $transistor = app(TransistorService::class);
-        echo $transistor->sayHello();
-        die();
-    }
-
     public function index()
     {
         $data['companies'] = Company::orderBy('id', 'desc')->paginate(5);
