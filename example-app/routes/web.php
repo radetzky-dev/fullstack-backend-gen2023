@@ -109,4 +109,5 @@ Route::fallback(function () {
 Route::resource('companies', CompanyController::class);
 
 Route::get('/hellocontroller/', [HelloController::class, 'index']);
+Route::get('/hellocontroller/saluta/{name}', [HelloController::class, 'saluta']);
 

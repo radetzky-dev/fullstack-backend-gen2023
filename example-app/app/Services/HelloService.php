@@ -6,11 +6,22 @@ class HelloService
 {
     public static function sayHello()
     {
-        return "Hello world";
+        return "Hello STATIC world";
     }
 
     public function sayCiao()
     {
-        return "Ciao";
+        return "Ciao da HelloService";
+    }
+
+    /**
+     * salutaInFrancese
+     *
+     * @param  mixed $name
+     * @return string
+     */
+    public function salutaInFrancese($name) : string
+    {
+        return "Bonjour $name";
     }
 }

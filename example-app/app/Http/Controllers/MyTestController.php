@@ -15,7 +15,7 @@ class MyTestController extends Controller
     }
 
 
-    public function show($param1, $param2,$param3)
+    public function show($param1, $param2, $param3)
     {
         $personalData = [
             'name' => $param1,
