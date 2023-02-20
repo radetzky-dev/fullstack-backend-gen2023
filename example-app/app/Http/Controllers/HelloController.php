@@ -24,7 +24,7 @@ class HelloController extends Controller
     public function saluta($name)
     {
         $data['francese'] = $this->helloService->salutaInFrancese($name);
-        $data ['italiano'] = $this->helloService->sayCiao();
+        $data['italiano'] = $this->helloService->sayCiao();
 
         return view('hello.salutap', $data);
     }
@@ -55,7 +55,7 @@ class HelloController extends Controller
         $fields = $request->all();
 
         if (array_key_exists('dest', $fields)) {
-            echo "Il destinatario è ".$fields['dest'].'<br>';
+            echo "Il destinatario è " . $fields['dest'] . '<br>';
 
             App::bind('SendMailService', function () {
                 return new SendMailService();
@@ -68,11 +68,10 @@ class HelloController extends Controller
 
     public function sendMailCheck(Request $request)
     {
-            App::bind('SendMailService', function () {
-                return new SendMailService();
-            });
-            $sendMail = App::make("SendMailService");
-            return $sendMail->checkDest($request);
+        App::bind('SendMailService', function () {
+            return new SendMailService();
+        });
+        $sendMail = App::make("SendMailService");
+        return $sendMail->checkDest($request);
     }
-    
 }

@@ -1,22 +1,46 @@
 <html>
 
-    <body>
-        <p>{{ $francese }}</p>
-        <p>{{ $italiano }}</p>
-        <p>Solo le ore UNIX {{time()}}</p>
-        <p>Saluta {{SayHi();}}</p>
-        <p>Oggi {{date("F j, Y, g:i a")}}</p>
+<?php
+$array = ['nome' => 'Mario', 'cognome' => 'Rossi'];
+?>
 
-      
-        <?php echo "PHP francese ". $francese;?>
-        <?php echo "PHP italiano ". $italiano;?>
+<body>
+    <p>{{ $francese }}</p>
+    <p>{{ $italiano }}</p>
+    <p>Solo le ore UNIX {{ time() }}</p>
+    <p>Saluta {{ SayHi() }}</p>
+    <p>Oggi {{ date('F j, Y, g:i a') }}</p>
 
-        <?php
-        function SayHi()
-        {
-            return "Ciao mondo";
-        }
-        ?>
-        
-    </body>
+    <script>
+        var app = {{ Illuminate\Support\Js::from($array) }};
+        console.log(app);
+        var app2 = {{ Js::from($array) }};
+        console.log(app2);
+    </script>
+
+    {{-- commento in blade: quello dentro verbatim è ignorato --}}
+    @verbatim
+        <script>
+            function hello() {
+                alert("Ciao");
+            }
+        </script>
+        <div class="container">
+            <button onclick="hello()">Saluta</button>
+        </div>
+    @endverbatim
+
+
+    <?php echo 'PHP francese ' . $francese; ?>
+    <?php echo 'PHP italiano ' . $italiano; ?>
+
+    <?php
+    function SayHi()
+    {
+        return 'Ciao mondo';
+    }
+    ?>
+
+</body>
+
 </html>
