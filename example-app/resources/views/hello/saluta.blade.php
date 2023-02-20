@@ -8,7 +8,7 @@ $array = ['nome' => 'Mario', 'cognome' => 'Rossi'];
     <p>{{ $francese }}</p>
     <p>{{ $italiano }}</p>
     <p>Solo le ore UNIX {{ time() }}</p>
-    <p>Saluta {{ SayHi() }}</p>
+    <p>Saluta {{ sayHi() }}</p>
     <p>Oggi {{ date('F j, Y, g:i a') }}</p>
 
     <script>
@@ -35,7 +35,7 @@ $array = ['nome' => 'Mario', 'cognome' => 'Rossi'];
     <?php echo 'PHP italiano ' . $italiano; ?>
 
     <?php
-    function SayHi()
+    function sayHi()
     {
         return 'Ciao mondo';
     }
