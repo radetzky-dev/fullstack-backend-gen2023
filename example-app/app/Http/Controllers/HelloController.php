@@ -23,8 +23,10 @@ class HelloController extends Controller
 
     public function saluta($name)
     {
-        echo $this->helloService->salutaInFrancese($name) . '<br>';
-        return $this->helloService->sayCiao();
+        $data['francese'] = $this->helloService->salutaInFrancese($name);
+        $data ['italiano'] = $this->helloService->sayCiao();
+
+        return view('hello/saluta', $data);
     }
 
     public function sendSimpleMail()
