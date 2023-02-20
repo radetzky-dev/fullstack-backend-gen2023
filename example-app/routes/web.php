@@ -110,4 +110,7 @@ Route::resource('companies', CompanyController::class);
 
 Route::get('/hellocontroller/', [HelloController::class, 'index']);
 Route::get('/hellocontroller/saluta/{name}', [HelloController::class, 'saluta']);
+Route::get('/hellocontroller/sendmail', [HelloController::class, 'sendSimpleMail']);
+Route::get('/hellocontroller/sendmailto', [HelloController::class, 'sendMailTo']);
+Route::get('/hellocontroller/sendmailcheck', [HelloController::class, 'sendMailCheck']);
 
