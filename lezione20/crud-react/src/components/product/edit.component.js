@@ -22,7 +22,7 @@ export default function EditUser() {
   },[])
 
   const fetchProduct = async () => {
-    await axios.get(`http://localhost:8000/api/products/${id}`).then(({data})=>{
+    await axios.get(`http://localhost/musa/fullstackbackgen2023/crud-react-laravel/public/api/products/${id}`).then(({data})=>{
       const { title, description } = data.product
       setTitle(title)
       setDescription(description)
@@ -49,7 +49,7 @@ export default function EditUser() {
       formData.append('image', image)
     }
 
-    await axios.post(`http://localhost:8000/api/products/${id}`, formData).then(({data})=>{
+    await axios.post(`http://localhost/musa/fullstackbackgen2023/crud-react-laravel/public/api/products/${id}`, formData).then(({data})=>{
       Swal.fire({
         icon:"success",
         text:data.message
