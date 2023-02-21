@@ -76,11 +76,21 @@ $emptyArray = [];
     @endphp
 
     <span @class([
-        'p-4'  => $isActive,
+        'p-4' => $isActive,
         'font-bold',
         'text-gray-500' => !$isActive,
         'bg-red' => $hasError,
     ])>La mia stringa</span>
+
+    Qui sotto il mio componente<br>
+
+    @php
+        $message = 'Non funziona nulla!';
+        $type = 'ALERT';
+    @endphp
+
+    {{-- type glielo passo come variabile blade, message come variabile php --}}
+    <x-alert type="{{ $type }}" :message="$message" />
 
 
 
