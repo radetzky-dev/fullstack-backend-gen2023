@@ -14,6 +14,7 @@ class Alert extends Component
     public function __construct(
         public string $type,
         public string $message,
+        public string $alertType //in blade diventa alert-type
     ) {
     }
 

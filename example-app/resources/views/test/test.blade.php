@@ -86,11 +86,12 @@ $emptyArray = [];
 
     @php
         $message = 'Non funziona nulla!';
-        $type = 'ALERT';
+        $type = 'error';
+        $kebab = 'tanta salsa';
     @endphp
 
     {{-- type glielo passo come variabile blade, message come variabile php --}}
-    <x-alert type="{{ $type }}" :message="$message" />
+    <x-alert type="{{ $type }}" :message="$message" alert-type="{{ $kebab }}" />
 
 
 
