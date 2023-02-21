@@ -8,7 +8,7 @@ $emptyArray = [];
 <html>
 
 <body>
-    <p>{{ $nome }}</p>
+
     @if ($cognome != '')
         Il cognome è <p>{{ $cognome }}</p>
     @endif
@@ -47,6 +47,44 @@ $emptyArray = [];
     @if (env('APP_ENV') == 'local')
         <?php var_dump($record); ?>
     @endif
+
+    <?php
+    $i = 3;
+    ?>
+
+    @switch($i)
+        @case(1)
+            First case...
+        @break
+
+        @case(2)
+            Second case...
+        @break
+
+        @default
+            Default case...
+    @endswitch
+    <hr>
+    @for ($i = 0; $i < 10; $i++)
+        The current value is {{ $i }}<br>
+    @endfor
+
+    <hr>
+    @php
+        $isActive = false;
+        $hasError = true;
+    @endphp
+
+    <span @class([
+        'p-4'  => $isActive,
+        'font-bold',
+        'text-gray-500' => !$isActive,
+        'bg-red' => $hasError,
+    ])>La mia stringa</span>
+
+
+
+
 
 </body>
 

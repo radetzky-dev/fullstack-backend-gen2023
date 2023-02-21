@@ -58,6 +58,23 @@
             @endforeach
         </table>
         {!! $companies->links() !!}
+
+<hr>
+@foreach ($companies as $company)
+    @if ($loop->first)
+        This is the first iteration.
+    @endif
+ 
+    @if ($loop->last)
+        This is the last iteration.
+    @endif
+
+    Indice {{$loop->index}}<br>
+    Ne mancano {{$loop->remaining}}<br>
+ 
+    <p>This is company {{ $company->name }}</p>
+@endforeach
+
 </body>
 
 </html>
