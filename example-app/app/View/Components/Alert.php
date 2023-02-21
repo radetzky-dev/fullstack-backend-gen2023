@@ -8,14 +8,26 @@ use Illuminate\View\Component;
 
 class Alert extends Component
 {
+    protected $selected;
     /**
      * Create a new component instance.
      */
     public function __construct(
         public string $type,
         public string $message,
-        public string $alertType //in blade diventa alert-type
+        public string $alertType, //in blade diventa alert-type
+        public string $value,
+
     ) {
+    }
+
+    public function isSelected(string $value): bool
+    {
+        if ($value == "selected") {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

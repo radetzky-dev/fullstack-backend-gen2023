@@ -88,14 +88,22 @@ $emptyArray = [];
         $message = 'Non funziona nulla!';
         $type = 'error';
         $kebab = 'tanta salsa';
+        $value = "selected";
     @endphp
 
     {{-- type glielo passo come variabile blade, message come variabile php --}}
-    <x-alert type="{{ $type }}" :message="$message" alert-type="{{ $kebab }}" />
+    <x-alert type="{{ $type }}" :message="$message" alert-type="{{ $kebab }}" value="{{ $value }}" />
 
+
+    @php
+        $message = 'Funziona bene';
+        $type = 'Good';
+        $kebab = 'niente salsa';
+        $value = "";
+    @endphp
     {{-- Short attribute syntax se variabile si chiama come parametro --}}
-    <x-alert :$type :$message alert-type="{{ $kebab }}" />
- 
+    <x-alert :$type :$message alert-type="{{ $kebab }}" value="{{ $value }}" />
+
 
 
 
