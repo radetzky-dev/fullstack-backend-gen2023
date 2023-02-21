@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <title>App Name - @yield('title')</title>
     @if (env('APP_ENV') == 'local')
@@ -12,6 +13,9 @@
 
 <body>
     @yield('sidebar')
+
+    @include ('test.menu')
+    
     <div class="container">
         @yield('content')
     </div>
@@ -19,6 +23,14 @@
     <span class="footer">
         @yield('footer')
     </span>
+
+    @hasSection('navigation')
+        <div class="pull-right">
+            @yield('navigation')
+        </div>
+        <div class="clearfix"></div>
+    @endif
+
 
 </body>
 
