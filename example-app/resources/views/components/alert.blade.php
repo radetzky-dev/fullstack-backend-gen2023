@@ -4,6 +4,7 @@
     TIPO:{{ $type }}<br>
     Messaggio:{{ $message }}<br>
     Panino:{{ $alertType }}<br>
+    Paramentro che viene passato al metodo isSelected con davanti un $
     {{ $isSelected($value) ? 'selezionato' : 'NON selezionato' }}
 </div>
 

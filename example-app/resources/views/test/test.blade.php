@@ -104,7 +104,13 @@ $emptyArray = [];
     {{-- Short attribute syntax se variabile si chiama come parametro --}}
     <x-alert :$type :$message alert-type="{{ $kebab }}" value="{{ $value }}" />
 
-
+    <x-sidebar>
+        <ul>
+            <li>Home</li>
+            <li>Articles</li>
+            <li>About</li>
+        </ul>
+    </x-sidebar>
 
 
 
