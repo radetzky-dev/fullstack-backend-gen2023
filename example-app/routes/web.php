@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\HelloController;
+use App\Http\Controllers\BladeTesterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -114,4 +115,6 @@ Route::get('/saluta2/{name}', [HelloController::class, 'saluta2']);
 Route::get('/hellocontroller/sendmail', [HelloController::class, 'sendSimpleMail']);
 Route::get('/hellocontroller/sendmailto', [HelloController::class, 'sendMailTo']);
 Route::get('/hellocontroller/sendmailcheck', [HelloController::class, 'sendMailCheck']);
+
+Route::get('/testblade/', [BladeTesterController::class, 'index']);
 
