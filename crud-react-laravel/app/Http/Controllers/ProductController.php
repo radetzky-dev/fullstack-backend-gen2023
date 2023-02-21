@@ -29,6 +29,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        \Log::info("Richiesta di inserimento prodotto ricevuta");
         $request->validate([
             'title' => 'required',
             'description' => 'required',
@@ -39,6 +40,8 @@ class ProductController extends Controller
             $imageName = Str::random() . '.' . $request->image->getClientOriginalExtension();
             Storage::disk('public')->putFileAs('product/image', $request->image, $imageName);
             Product::create($request->post() + ['image' => $imageName]);
+
+            \Log::info("Prodotto ".$request->title." creato correttamente");
 
             return response()->json([
                 'message' => 'Product Created Successfully!!'
