@@ -5,6 +5,8 @@ $emptyArray = [];
 
 ?>
 
+
+
 <html>
 
 <body>
@@ -88,7 +90,7 @@ $emptyArray = [];
         $message = 'Non funziona nulla!';
         $type = 'error';
         $kebab = 'tanta salsa';
-        $value = "selected";
+        $value = 'selected';
     @endphp
 
     {{-- type glielo passo come variabile blade, message come variabile php --}}
@@ -99,7 +101,7 @@ $emptyArray = [];
         $message = 'Funziona bene';
         $type = 'Good';
         $kebab = 'niente salsa';
-        $value = "";
+        $value = '';
     @endphp
     {{-- Short attribute syntax se variabile si chiama come parametro --}}
     <x-alert :$type :$message alert-type="{{ $kebab }}" value="{{ $value }}" />
@@ -112,6 +114,12 @@ $emptyArray = [];
         </ul>
     </x-sidebar>
 
+
+    @inject('hello', 'App\Services\HelloService')
+
+    <div>
+        Saluta: {{ $hello->sayCiao() }}.
+    </div>
 
 
 
