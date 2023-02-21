@@ -93,6 +93,10 @@ $emptyArray = [];
     {{-- type glielo passo come variabile blade, message come variabile php --}}
     <x-alert type="{{ $type }}" :message="$message" alert-type="{{ $kebab }}" />
 
+    {{-- Short attribute syntax se variabile si chiama come parametro --}}
+    <x-alert :$type :$message alert-type="{{ $kebab }}" />
+ 
+
 
 
 
