@@ -117,4 +117,5 @@ Route::get('/hellocontroller/sendmailto', [HelloController::class, 'sendMailTo']
 Route::get('/hellocontroller/sendmailcheck', [HelloController::class, 'sendMailCheck']);
 
 Route::get('/testblade/', [BladeTesterController::class, 'index']);
+Route::get('/testbladechild/', [BladeTesterController::class, 'child']);
 

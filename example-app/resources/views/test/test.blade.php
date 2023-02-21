@@ -6,6 +6,7 @@ $emptyArray = [];
 ?>
 
 <html>
+
 <body>
     <p>{{ $nome }}</p>
     @if ($cognome != '')
@@ -32,6 +33,20 @@ $emptyArray = [];
     @empty($emptyArray)
         array è vuoto
     @endempty
+
+    <hr>
+
+    @auth
+        Se sei un admin vedi questo codice <br>
+    @endauth
+
+    @guest
+        Noi guest vediamo questo<br>
+    @endguest
+
+    @if (env('APP_ENV') == 'local')
+        <?php var_dump($record); ?>
+    @endif
 
 </body>
 

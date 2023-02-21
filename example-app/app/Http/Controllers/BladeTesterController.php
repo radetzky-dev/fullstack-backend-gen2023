@@ -11,4 +11,10 @@ class BladeTesterController extends Controller
         $data = ['nome' => 'Mario', 'cognome' => 'Rossi'];
         return view('test.test', $data);
     }
+
+    public function child(Request $request)
+    {
+        $data = ['nome' => 'Mario', 'cognome' => 'Rossi'];
+        return view('test.child', $data);
+    }
 }
