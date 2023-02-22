@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use App\Http\Requests\RegisterRequest;
 
@@ -16,6 +17,15 @@ class RegisterController extends Controller
     public function show()
     {
         \Log::channel('daily')->debug('Qualcuno si vuole registrare');
+
+        try {
+            throw new Exception('Il server non risponde!');
+
+        } catch (Exception $e) {
+            \Log::channel('daily')->error("ERRORE " . $e->getMessage());
+            return view("home.index");
+        }
+
         return view('auth.register');
     }
 
