@@ -12,6 +12,7 @@
                 e gestire la tua routine.</p>
         @endguest
 
+        <p class="lead">Loren ipsum loren ipsum...</p>
         @auth
             <h1>I nostri contatti (ONLY FOR LOGGED)</h1>
             <p class="lead">URP – Uffici Territoriali Regionali (UTR)
