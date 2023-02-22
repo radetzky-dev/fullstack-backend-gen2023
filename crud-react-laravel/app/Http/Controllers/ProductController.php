@@ -9,6 +9,9 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
+/**
+ * ProductController
+ */
 class ProductController extends Controller
 {
     /**
@@ -29,6 +32,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        \Log::debug("Test");
         \Log::info("Richiesta di inserimento prodotto ricevuta");
         $request->validate([
             'title' => 'required',
@@ -41,7 +45,7 @@ class ProductController extends Controller
             Storage::disk('public')->putFileAs('product/image', $request->image, $imageName);
             Product::create($request->post() + ['image' => $imageName]);
 
-            \Log::info("Prodotto ".$request->title." creato correttamente");
+            \Log::info("Prodotto " . $request->title . " creato correttamente");
 
             return response()->json([
                 'message' => 'Product Created Successfully!!'
