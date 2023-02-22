@@ -3,7 +3,6 @@
 @section('content')
     <div class="bg-light p-5 rounded">
 
-
         @guest
             <h1>Chi siamo</h1>
             <p class="lead">Crea un negozio online, qualunque sia il tuo settore
