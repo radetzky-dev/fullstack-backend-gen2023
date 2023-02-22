@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\BladeTesterController;
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -107,7 +108,9 @@ Route::fallback(function () {
 });
 
 
-Route::resource('companies', CompanyController::class);
+Route::resource('companies', CompanyController::class)->missing(function (Request $request) {
+    return Redirect::route('companies.index');
+});
 
 Route::get('/hellocontroller/', [HelloController::class, 'index']);
 Route::get('/saluta/{name}', [HelloController::class, 'saluta']);

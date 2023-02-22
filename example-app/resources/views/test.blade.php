@@ -19,7 +19,8 @@
     <p>Questa è la mia pagina di test</p>
     <a href="<?php echo url('/ciao'); ?>">Vai alla pagina ciao</a> |
     <a href="<?php echo url('/'); ?>">Vai alla home</a>
-    <a href="<?php echo route('profile'); ?>">Vai a profile</a>
+    <a href="<?php echo route('profile'); ?>">Vai a profile ROUTE (perché gli ho dato un name)</a>
+
     <a href="<?php echo url('/user/profile'); ?>">Vai sempre al profile</a>
     <a href="<?php echo route('user', ['id'=> 81]); ?>">Vai a user con param</a>
 <?php

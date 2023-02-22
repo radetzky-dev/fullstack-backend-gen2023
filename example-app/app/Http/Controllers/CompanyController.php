@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\App;
 
 class CompanyController extends Controller
 {
+    public function show()
+    {
+        return view('companies.welcome');
+    }
+
+
     public function index()
     {
         $data['companies'] = Company::orderBy('id', 'desc')->paginate(5);
