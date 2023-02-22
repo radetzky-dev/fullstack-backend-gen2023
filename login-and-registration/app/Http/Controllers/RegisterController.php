@@ -15,6 +15,7 @@ class RegisterController extends Controller
      */
     public function show()
     {
+        \Log::channel('daily')->debug('Qualcuno si vuole registrare');
         return view('auth.register');
     }
 

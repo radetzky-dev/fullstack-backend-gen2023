@@ -38,6 +38,8 @@ class LoginController extends Controller
 
         Auth::login($user);
 
+        \Log::channel('daily')->info('Autenticazione avvenuta con successo per '.$user->id);
+
         return $this->authenticated($request, $user);
     }
 
