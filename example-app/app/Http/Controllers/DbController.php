@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Support\ItemNotFoundException as NoResult;
 
 class DbController extends Controller
 {
@@ -12,11 +13,31 @@ class DbController extends Controller
     {
         if ($param == "") {
             $companies = DB::select('select * from companies');
+
         } else {
             $companies = DB::select('select * from companies where name like ?', ["%" . $param . "%"]);
         }
         $data["companies"] = $companies;
         return view('companies.db', $data);
+    }
+
+    public function showQb()
+    {
+        //query builder
+        try {
+
+            $email = DB::select('select email from companies where name = ?', ['Musa spa']);
+
+            $email = DB::table('companies')->where('name', 'Musa spa')->value('email');
+
+            $companies = DB::table('companies')->get()->sortBy('name');
+
+        } catch (NoResult $e) {
+            echo "Nessun risulato";
+            die();
+        }
+
+        return view('companies.db', ['companies' => $companies]);
     }
 
     public function insert(Request $request)

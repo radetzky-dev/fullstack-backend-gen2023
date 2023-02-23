@@ -124,6 +124,7 @@ Route::get('/testblade/', [BladeTesterController::class, 'index']);
 Route::get('/testbladechild/', [BladeTesterController::class, 'child']);
 
 Route::get('/dbtest/show/{param?}', [DbController::class, 'show']);
+Route::get('/dbtest/showqb', [DbController::class, 'showQb']);
 Route::post('/dbtest/insert', [DbController::class, 'insert']);
 Route::get('/dbtest/insert', function () {
     return view('companies.dbcreate');
