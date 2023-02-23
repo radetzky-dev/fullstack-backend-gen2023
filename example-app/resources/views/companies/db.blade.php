@@ -49,6 +49,7 @@
                     <td>{{ $company->email }}</td>
                     <td>{{ $company->address }}</td>
                     <td>
+                        <a class="btn btn-primary" href="{{ url('/dbtest/showqb', $company->id) }}">Mostra</a>
                         <a class="btn btn-primary" href="{{ route('companies.edit', $company->id) }}">Edit</a>
                         <form action="{{ url('/dbtest/delete', $company->id) }}" method="Post"
                             onSubmit="return areyousure();">

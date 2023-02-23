@@ -21,20 +21,45 @@ class DbController extends Controller
         return view('companies.db', $data);
     }
 
+    public function getSingle($id)
+    {
+        //utile per evitare errori
+        if (DB::table('companies')->where('id', $id)->exists()) {
+            $company = DB::table('companies')->find($id);
+            foreach ($company as $key => $value) {
+                echo $key . " : " . $value . "<br>";
+            }
+        } else {
+            echo "Nessun risultato";
+        }
+
+
+
+        //TODO mostrare i risultati in view apposita
+        die();
+    }
+
     public function showQb()
     {
         //query builder
         try {
 
-            $email = DB::table('companies')->where('name', 'Musa spa')->value('email');
+            $email = DB::table('companies')
+            ->where('name', 'Musa spa')
+            ->where('email', 'LIKE', "%m%")
+            ->value('email');
 
+            //FOR  DEBUG
+           // DB::table('companiers')->where('name', '=', 'Musa spa')->dump();
+
+            $comp = DB::table('companies')->select('name', 'email as user_email')->where('name', 'Musa spa')->get();
             $companies = DB::table('companies')->get()->sortBy('name');
-            
+
             $email = DB::select('select email from companies where name = ?', ['Musa spa']);
 
-   
 
-         
+
+
 
         } catch (NoResult $e) {
             echo "Nessun risulato";
