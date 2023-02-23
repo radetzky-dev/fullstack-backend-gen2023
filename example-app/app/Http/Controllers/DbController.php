@@ -4,27 +4,47 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class DbController extends Controller
 {
-    public function show($param)
+    public function show(string $param = ""): View
     {
-
-        //select
-        //  $companies = DB::select('select * from companies where id > ?', [$param]);
-
-        //name binding
-        //  $companies = DB::select('select * from companies where name = :name', ['name' => "prova"]);
-
-        DB::insert('insert into companies (name,email,address) values (?, ?,?)', ["prova nuova", 'ciccio@test.com', 'via del tramonto 7']);
-
-        $companies = DB::select('select * from companies where name like ? and id > ?', ["%prova%", $param]);
-
-       // $companies = DB::select('select * from companies');
-
+        if ($param == "") {
+            $companies = DB::select('select * from companies');
+        } else {
+            $companies = DB::select('select * from companies where name like ?', ["%" . $param . "%"]);
+        }
         $data["companies"] = $companies;
-
-        // $data["companies"] =[];
         return view('companies.db', $data);
     }
+
+    public function insert(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+        ]);
+
+        $result = DB::insert('insert into companies (name,email,address) values (?, ?,?)', [$request->name, $request->email, $request->address]);
+
+        if (!$result) {
+            return redirect('/dbtest/show/')
+                ->with('error', 'La compagnia NON è stata creata.');
+        }
+
+        return redirect('/dbtest/show/')
+            ->with('success', 'La compagnia è stata creata con successo.');
+    }
+
+
+/*  public function update($array)
+{
+}
+public function delete($array)
+{
+}
+*/
+
 }

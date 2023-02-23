@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    <div class="pull-right mb-2">
+        <a class="btn btn-success" href="{{ url('/dbtest/insert') }}"> Crea nuova compagnia</a>
+    </div>
     <div class="container mt-2">
         <div class="row">
             <div class="col-lg-12 margin-tb">
@@ -19,6 +22,17 @@
             </div>
         </div>
 
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+        @endif
+
+        @if ($message = Session::get('error'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+        @endif
 
         <table class="table table-bordered">
             <tr>
