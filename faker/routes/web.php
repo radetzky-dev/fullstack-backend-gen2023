@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+//TODO mostrare lista titoli articoli e autore  paginato per 15 a pagina
