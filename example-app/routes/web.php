@@ -7,6 +7,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\BladeTesterController;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\DbController;
 
 /*
 |--------------------------------------------------------------------------
@@ -122,3 +123,4 @@ Route::get('/hellocontroller/sendmailcheck', [HelloController::class, 'sendMailC
 Route::get('/testblade/', [BladeTesterController::class, 'index']);
 Route::get('/testbladechild/', [BladeTesterController::class, 'child']);
 
+Route::get('/dbtest/', [DbController::class, 'show']);
