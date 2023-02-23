@@ -26,11 +26,15 @@ class DbController extends Controller
         //query builder
         try {
 
-            $email = DB::select('select email from companies where name = ?', ['Musa spa']);
-
             $email = DB::table('companies')->where('name', 'Musa spa')->value('email');
 
             $companies = DB::table('companies')->get()->sortBy('name');
+            
+            $email = DB::select('select email from companies where name = ?', ['Musa spa']);
+
+   
+
+         
 
         } catch (NoResult $e) {
             echo "Nessun risulato";
