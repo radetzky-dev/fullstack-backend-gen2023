@@ -128,3 +128,4 @@ Route::post('/dbtest/insert', [DbController::class, 'insert']);
 Route::get('/dbtest/insert', function () {
     return view('companies.dbcreate');
 });
+Route::delete('/dbtest/delete/{id}', [DbController::class, 'delete']);

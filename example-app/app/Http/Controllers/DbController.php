@@ -39,12 +39,23 @@ class DbController extends Controller
     }
 
 
-/*  public function update($array)
-{
-}
-public function delete($array)
-{
-}
-*/
+    /*  public function update($array)
+    {
+    }
+    */
+    public function delete(string $id)
+    {
+
+        $deleted = DB::delete('delete from companies where id = ?', [$id]);
+
+        if (!$deleted) {
+            return redirect('/dbtest/show/')
+                ->with('error', 'La compagnia NON è stata CANCELLATA.');
+        }
+
+        return redirect('/dbtest/show/')
+            ->with('success', 'La compagnia è stata CANCELLATA con successo.');
+    }
+
 
 }
