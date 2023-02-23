@@ -123,4 +123,4 @@ Route::get('/hellocontroller/sendmailcheck', [HelloController::class, 'sendMailC
 Route::get('/testblade/', [BladeTesterController::class, 'index']);
 Route::get('/testbladechild/', [BladeTesterController::class, 'child']);
 
-Route::get('/dbtest/', [DbController::class, 'show']);
+Route::get('/dbtest/{param}', [DbController::class, 'show']);
