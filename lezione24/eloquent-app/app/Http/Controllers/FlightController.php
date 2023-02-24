@@ -41,9 +41,10 @@ class FlightController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Flight $flight)
+    public function show($id)
     {
- 
+        $flight = Flight::findOrFail($id);
+        return view('voli.single', compact('flight'));
     }
 
     /**
