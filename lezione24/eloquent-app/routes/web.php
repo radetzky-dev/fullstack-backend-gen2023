@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\FlightController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,5 @@ Route::get('/', function () {
 Route::resource('voli', FlightController::class)->missing(function () {
     return Redirect::route('voli.index');
 });
+
+Route::get('userphone/{id}', [UserController::class, 'phone']);
