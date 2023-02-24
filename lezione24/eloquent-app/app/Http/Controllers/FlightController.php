@@ -13,7 +13,11 @@ class FlightController extends Controller
      */
     public function index()
     {
-        //
+    
+      //  $data['flights'] = Flight::all();
+     //   return view('voli.index', $data);
+
+        return view('voli.index', ['flights' => Flight::all()]);
     }
 
     /**
@@ -37,7 +41,7 @@ class FlightController extends Controller
      */
     public function show(Flight $flight)
     {
-        //
+ 
     }
 
     /**
