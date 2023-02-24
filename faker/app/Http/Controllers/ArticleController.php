@@ -10,7 +10,9 @@ class ArticleController extends Controller
 {
     public function show(): View
     {
-        return view('articles', 
-        ['articles' => DB::table('articles')->select('title', 'description')->paginate(15)]);
+        return view(
+            'articles',
+            ['articles' => DB::table('articles')->select('title', 'description')->paginate(15)]
+        );
     }
 }
