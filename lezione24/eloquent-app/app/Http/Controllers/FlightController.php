@@ -14,10 +14,12 @@ class FlightController extends Controller
     public function index()
     {
     
+     
       //  $data['flights'] = Flight::all();
      //   return view('voli.index', $data);
 
-        return view('voli.index', ['flights' => Flight::all()]);
+        return view('voli.index', ['flights' => Flight::where("confirmed", 1)->orderBy('destination')
+        ->take(10)->get()]);
     }
 
     /**
