@@ -26,3 +26,4 @@ Route::resource('voli', FlightController::class)->missing(function () {
 });
 
 Route::get('userphone/{id}', [UserController::class, 'phone']);
+Route::get('phoneid/{idphone}', [UserController::class, 'getUserFromIdPhone']);
