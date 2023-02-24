@@ -29,10 +29,15 @@ Route::get('userphone/{id}', [UserController::class, 'phone']);
 Route::get('phoneid/{idphone}', [UserController::class, 'getUserFromIdPhone']);
 
 use App\Http\Resources\UserResource;
+use App\Http\Resources\UserCollection;
 use App\Models\User;
  
 Route::get('/user/{id}', function (string $id) {
     return new UserResource(User::findOrFail($id));
+});
+
+Route::get('/users', function () {
+    return new UserCollection(User::all());
 });
 
 use App\Http\Resources\FlightResource;
