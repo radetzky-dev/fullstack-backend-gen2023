@@ -17,6 +17,9 @@ class UserController extends Controller
 
     public function search(Request $request)
     {
+        $request->validate([
+            'user_id' => 'required | integer',
+        ]);
 
         $user = User::find($request->input('user_id'));
         if ($user === null) {
