@@ -10,7 +10,9 @@ class UserController extends Controller
 {
     public function phone($id)
     {
-        echo User::find($id)->phone;
+        //echo User::find($id)->phone;
+        $number = User::find($id)->phone;
+        return view('phone', compact('number'));
     }
 
     public function getUserFromIdPhone($idphone)
