@@ -26,6 +26,6 @@ class ExampleTest extends TestCase
     public function test_non_esiste_route(): void
     {
         $response = $this->get('/nonesiste');
-        $response->assertStatus(200);
+        $response->assertStatus(404);
     }
 }
