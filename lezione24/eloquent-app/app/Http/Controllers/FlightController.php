@@ -13,13 +13,12 @@ class FlightController extends Controller
      */
     public function index()
     {
-    
-     
-      //  $data['flights'] = Flight::all();
-     //   return view('voli.index', $data);
+
+        //  $data['flights'] = Flight::all();
+        //   return view('voli.index', $data);
 
         return view('voli.index', ['flights' => Flight::where("confirmed", 1)->orderBy('destination')
-        ->take(10)->get()]);
+                ->take(10)->get()]);
     }
 
     /**
@@ -43,8 +42,28 @@ class FlightController extends Controller
      */
     public function show($id)
     {
-        $flight = Flight::findOrFail($id);
-        return view('voli.single', compact('flight'));
+        if (is_numeric($id)) {
+            try {
+                $flight = Flight::where('id', $id)->first();
+
+                if ($flight) {
+                    return view('voli.single', compact('flight'));
+                }
+
+                echo "Nessun risultato per id $id. Torna alla home <a href='../voli'>home</a>";
+                die();
+
+            } catch (Exception $e) {
+                \Log::error("Errore in show " . $e->getMessage());
+                echo "Impossibile trovare questo id $id";
+                die();
+            }
+
+        } else {
+            echo "Richesta non valida. Il parametro non è numerico";
+            die();
+        }
+
     }
 
     /**
