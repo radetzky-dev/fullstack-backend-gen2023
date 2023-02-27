@@ -32,7 +32,7 @@ use App\Http\Resources\UserResource;
 use App\Http\Resources\UserCollection;
 use App\Models\User;
  
-Route::get('/user/{id}', function (string $id) {
+Route::get('/user/{id}', function (string $ ) {
     return new UserResource(User::findOrFail($id));
 });
 
