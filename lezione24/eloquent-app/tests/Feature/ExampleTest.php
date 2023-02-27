@@ -16,4 +16,16 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_voli_route(): void
+    {
+        $response = $this->get('/voli');
+        $response->assertStatus(200);
+    }
+
+    public function test_non_esiste_route(): void
+    {
+        $response = $this->get('/nonesiste');
+        $response->assertStatus(200);
+    }
 }
