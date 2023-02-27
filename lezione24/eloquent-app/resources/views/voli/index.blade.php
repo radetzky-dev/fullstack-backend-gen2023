@@ -18,7 +18,7 @@
                 <td>{{ $volo->name }}</td>
                 <td>{{ $volo->destination }}</td>
                 <td>
-                    <a class="btn btn-primary" href="">Mostra</a>
+                    <a class="btn btn-primary" href="{{url ("/voli/")}}/{{$volo->id }}">Mostra</a>
                     <a class="btn btn-primary" href="">Edit</a>
                 </td>
             </tr>
