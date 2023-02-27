@@ -54,8 +54,8 @@ Route::get('/volo/{id}', function (string $id) {
     return new FlightResource(Flight::findOrFail($id));
 });
 
-use App\Http\Controllers\SessionController;
+use App\Http\Controllers\SesController;
 
-Route::get('session/get', 'SessionController@accessSessionData');
-Route::get('session/set', 'SessionController@storeSessionData');
-Route::get('session/remove', 'SessionController@deleteSessionData');
+Route::get('session/get', [SesController::class, 'accessSessionData']);
+Route::get('session/set', [SesController::class, 'storeSessionData']);
+Route::get('session/remove', [SesController::class, 'deleteSessionData']);

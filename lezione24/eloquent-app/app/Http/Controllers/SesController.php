@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SessionController extends Controller
+class SesController extends Controller
 {
     public function accessSessionData(Request $request)
     {
