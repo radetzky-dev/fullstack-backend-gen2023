@@ -3,3 +3,6 @@
 <b>Email</b>: {{ $user->email }}
 <br>
 <b>Registered on</b>: {{ $user->created_at }}
+<br>
+Dati salvati nella sessione:
+<?php echo session('username'); 
