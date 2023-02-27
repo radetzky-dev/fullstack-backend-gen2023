@@ -23,6 +23,10 @@ class UserController extends Controller
             return back()->withError("errore user id non trovato!")->withInput();
         }
 
+        $testArray = ['mario','lucia','agnes'];
+
+        session()->push('amici', $testArray);
+
         session(['username' => 'NOME:'.$user->name]);
 
         return view('search', compact('user'));

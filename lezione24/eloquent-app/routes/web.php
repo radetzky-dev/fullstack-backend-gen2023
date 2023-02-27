@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\UserController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,3 +53,9 @@ use App\Models\Flight;
 Route::get('/volo/{id}', function (string $id) {
     return new FlightResource(Flight::findOrFail($id));
 });
+
+use App\Http\Controllers\SessionController;
+
+Route::get('session/get', 'SessionController@accessSessionData');
+Route::get('session/set', 'SessionController@storeSessionData');
+Route::get('session/remove', 'SessionController@deleteSessionData');
