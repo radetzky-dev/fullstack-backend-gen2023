@@ -40,6 +40,12 @@ Route::get('/users', function () {
     return new UserCollection(User::all());
 });
 
+Route::get('/searchuser', function () {
+    return view('searchuser');
+});
+
+Route::post('/search', [UserController::class, 'search']);
+
 use App\Http\Resources\FlightResource;
 use App\Models\Flight;
  
