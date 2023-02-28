@@ -5,9 +5,12 @@ ok - modifa env con nome del database
 OK - installazione pacchetto debug 
 OK installazione lingua italiana e modifica config/app.php = 'locale' => 'it',
 Ok dare permessi cartella:  sudo chmod -R 777 storage/
-- rotte e i controller
-- realizzazione di un template in blade (con parti admin e no) e bootstrap (da importare)
+- creare sistema di login e registrazione https://codeanddeploy.com/blog/laravel/laravel-8-authentication-login-and-registration-with-username-or-email
+- creare i controller i modelli e le migrazioni
+
 - creare Users, Prodotti, Categorie, Ordini, ordiniProdotti
+- creare le rotte 
+- realizzazione di un template in blade (con parti admin e no) e bootstrap (da importare)
 - creare un sistema di log nei controller 
 - creare un Faker per i Prodotti e uno per gli Ordini e Ordini Prodotti
 - CRUD gestione prodotti (ADMIN)
