@@ -1,8 +1,9 @@
 TODO list del progetto
 
 Analisi e lista dei tasks
+ok - modifa env con nome del database   
 OK - installazione pacchetto debug 
-OK installazione lingua italiana
+OK installazione lingua italiana e modifica config/app.php = 'locale' => 'it',
 Ok dare permessi cartella:  sudo chmod -R 777 storage/
 - rotte e i controller
 - realizzazione di un template in blade (con parti admin e no) e bootstrap (da importare)
