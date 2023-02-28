@@ -8,6 +8,8 @@ Ok dare permessi cartella:  sudo chmod -R 777 storage/
 - creare sistema di login e registrazione https://codeanddeploy.com/blog/laravel/laravel-8-authentication-login-and-registration-with-username-or-email
 - creare i controller i modelli e le migrazioni
 
+registrato come: user: testlaravel - test1234
+
 - creare Users, Prodotti, Categorie, Ordini, ordiniProdotti
 - creare le rotte 
 - realizzazione di un template in blade (con parti admin e no) e bootstrap (da importare)
