@@ -1,11 +1,13 @@
 TODO list del progetto
 
 Analisi e lista dei tasks
-- installazione pacchetto debug 
-- installazione lingua italiana
+OK - installazione pacchetto debug 
+OK installazione lingua italiana
+Ok dare permessi cartella:  sudo chmod -R 777 storage/
 - rotte e i controller
 - realizzazione di un template in blade (con parti admin e no) e bootstrap (da importare)
 - creare Users, Prodotti, Categorie, Ordini, ordiniProdotti
+- creare un sistema di log nei controller 
 - creare un Faker per i Prodotti e uno per gli Ordini e Ordini Prodotti
 - CRUD gestione prodotti (ADMIN)
 - creare login e autenticazione per acquisto
