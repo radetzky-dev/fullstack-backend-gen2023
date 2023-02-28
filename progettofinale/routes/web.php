@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +29,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::post('/register', 'RegisterController@register')->name('register.perform');
 
         /**
-         * Login Routes
+         * Login Routes 
          */
         Route::get('/login', 'LoginController@show')->name('login.show');
         Route::post('/login', 'LoginController@login')->name('login.perform');
@@ -40,4 +42,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
          */
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
     });
+});
+
+
+Route::resource('products', ProductController::class)->missing(function (Request $request) {
+    return Redirect::route('product.index');
 });

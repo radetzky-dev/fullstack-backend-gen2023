@@ -22,7 +22,8 @@ class ProductFactory extends Factory
             'price' => $this->faker->randomFloat(2, 5, 350),
             'quantity' => $this->faker->randomDigit(),
             'image' => $this->faker->imageUrl(360, 300, 'animals', true, 'dogs'),
-            'category_id' => \App\Models\Category::factory()->create()
+            'category_id' => 5
+          // 'category_id' => \App\Models\Category::factory()->create()
         ];
     }
 }
