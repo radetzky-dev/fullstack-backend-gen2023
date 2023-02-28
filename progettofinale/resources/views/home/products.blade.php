@@ -20,7 +20,20 @@
                             <p> {{ $product->description }} </p>
                             <li class="d-flex align-items-center me-3">
 
-                                <small>INSERISCI NEL CARRELLO </small>
+                                <small>
+                                    <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="hidden" value="{{ $product->id }}" name="id">
+                                        <input type="hidden" value="{{ $product->name }}" name="name">
+                                        <input type="hidden" value="{{ $product->price }}" name="price">
+                                        <input type="hidden" value="{{ $product->image }}"  name="image">
+                                        <input type="hidden" value="1" name="quantity">
+                                        <button class="px-4 py-2 text-white bg-blue-800 rounded">Inserisci del carrello</button>
+                                    </form>
+
+
+
+                                </small>
                             </li>
 
                         </ul>

@@ -48,3 +48,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 Route::resource('products', ProductController::class)->missing(function (Request $request) {
     return Redirect::route('product.index');
 });
+
+use App\Http\Controllers\CartController;
+
+Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
+Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');
