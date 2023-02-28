@@ -9,7 +9,7 @@ class CartController extends Controller
     public function addToCart(Request $request)
     {
         //  session(['key' => 'value']);
-        session()->put('cart', ['id' => $request->id,
+        session()->push('cart', ['id' => $request->id,
             'name' => $request->name,
             'price' => $request->price,
             'quantity' => $request->quantity,
@@ -17,7 +17,7 @@ class CartController extends Controller
 
         session()->flash('success', 'Product is Added to Cart Successfully !');
 
-       // var_dump(session('cart'));
+        // var_dump(session('cart'));
 
         return redirect()->route('cart.list');
     }
