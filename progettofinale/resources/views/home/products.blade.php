@@ -4,7 +4,6 @@
     @auth
         <h1>Dashboard</h1>
         <p class="lead">Sei un utente autenticato con ID {{ Auth::id() }}</p>
-        
     @endauth
     <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
 
